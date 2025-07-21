@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция по диагностике аккумуляторов Makita</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --sidebar-width: 280px;
+            --sidebar-collapsed-width: 70px;
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --light-text: #ecf0f1;
+            --warning-color: #ff9800;
+            --note-color: #3498db;
+            --transition-speed: 0.3s;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            transition: margin-left var(--transition-speed);
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Стили для выдвижного меню */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+            transition: all var(--transition-speed) ease;
+            z-index: 1000;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            left: 0;
+        }
+        
+        .sidebar.collapsed {
+            width: var(--sidebar-collapsed-width);
+        }
+        
+        .sidebar-header {
+            padding: 15px;
+            border-bottom: 1px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            background-color: rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        
+        .sidebar h3 {
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 1.2rem;
+        }
+        
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sidebar-content {
+            padding: 15px 0;
+            height: calc(100% - 70px);
+            overflow-y: auto;
+        }
+        
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar li a {
+            display: flex;
+            align-items: center;
+            color: var(--light-text);
+            padding: 12px 20px;
+            text-decoration: none;
+            transition: all var(--transition-speed);
+            white-space: nowrap;
+            position: relative;
+        }
+        
+        .sidebar li a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .sidebar li a i {
+            margin-right: 15px;
+            min-width: 24px;
+            text-align: center;
+            transition: all var(--transition-speed);
+            font-size: 1.1rem;
+        }
+        
+        .sidebar li a span {
+            transition: opacity var(--transition-speed);
+        }
+        
+        .sidebar.collapsed li a span {
+            opacity: 0;
+            position: absolute;
+            left: 100%;
+            background-color: var(--primary-color);
+            padding: 12px 15px;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        
+        .sidebar.collapsed li:hover a span {
+            opacity: 1;
+        }
+        
+        .sidebar.collapsed li a i {
+            margin-right: 0;
+            font-size: 1.3rem;
+            min-width: 40px;
+        }
+        
+        .content {
+            margin-left: var(--sidebar-width);
+            padding: 25px;
+            transition: margin-left var(--transition-speed);
+            position: relative;
+            max-width: 1200px;
+            margin-right: auto;
+        }
+        
+        .sidebar.collapsed ~ .content {
+            margin-left: var(--sidebar-collapsed-width);
+        }
+        
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        h1 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 2rem;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        h3 i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            font-size: 0.9em;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #fafafa;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .image-caption {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .note {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid var(--note-color);
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .note i {
+            color: var(--note-color);
+            margin-right: 8px;
+        }
+        
+        .warning {
+            background-color: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid var(--warning-color);
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .warning i {
+            color: var(--warning-color);
+            margin-right: 8px;
+        }
+        
+        ol, ul {
+            padding-left: 25px;
+            line-height: 1.6;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        strong {
+            color: var(--primary-color);
+        }
+        
+        /* Мобильные стили */
+        @media screen and (max-width: 992px) {
+            .sidebar {
+                width: var(--sidebar-width);
+                left: calc(-1 * var(--sidebar-width));
+                height: 100%;
+            }
+            
+            .sidebar.show {
+                left: 0;
+            }
+            
+            .sidebar.collapsed {
+                width: var(--sidebar-collapsed-width);
+                left: 0;
+            }
+            
+            .sidebar.collapsed ~ .content {
+                margin-left: var(--sidebar-collapsed-width);
+            }
+            
+            .sidebar:not(.collapsed) ~ .content {
+                margin-left: 0;
+            }
+            
+            .content {
+                margin-left: 0;
+                padding: 20px 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                z-index: 1100;
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                transition: all var(--transition-speed);
+            }
+            
+            .sidebar.collapsed .mobile-menu-btn {
+                left: calc(var(--sidebar-collapsed-width) + 15px);
+            }
+            
+            .sidebar.show ~ .mobile-menu-btn {
+                left: calc(var(--sidebar-width) + 15px);
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+        
+        @media screen and (min-width: 993px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        /* Анимация для важных элементов */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite ease-in-out;
+        }
+        
+        /* Оверлей для мобильного меню */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 900;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-speed);
+        }
+        
+        .overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Дополнительные улучшения */
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 8px;
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: rgba(255,255,255,0.1);
+            margin: 15px 0;
+        }
+        
+        /* Прокрутка для браузеров WebKit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* Специальные стили для меню */
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .sidebar::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+        }
+        
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+        }
+        
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню"><i class="fas fa-bars"></i></button>
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="sidebar collapsed" id="sidebar">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-battery-full"></i> <span>Makita Tools</span></h3>
+            <button class="toggle-btn" id="toggleBtn" aria-label="Свернуть меню"><i class="fas fa-chevron-left"></i></button>
+        </div>
+        <div class="sidebar-content">
+            <ul>
+                <li><a href="#section1"><i class="fas fa-plug"></i> <span>1. Подключение</span></a></li>
+                <li><a href="#section1-1"><i class="fas fa-microchip"></i> <span>1.1 Аппаратное</span></a></li>
+                <li><a href="#section1-2"><i class="fas fa-wifi"></i> <span>1.2 Wi-Fi</span></a></li>
+                <li><a href="#section2"><i class="fas fa-laptop-code"></i> <span>2. Веб-интерфейс</span></a></li>
+                <li><a href="#section2-1"><i class="fas fa-database"></i> <span>2.1 Чтение данных</span></a></li>
+                <li><a href="#section2-2"><i class="fas fa-lightbulb"></i> <span>2.2 Светодиоды</span></a></li>
+                <li><a href="#section2-3"><i class="fas fa-exclamation-triangle"></i> <span>2.3 Сброс ошибок</span></a></li>
+                <li><a href="#section3"><i class="fas fa-terminal"></i> <span>3. Программатор</span></a></li>
+                <li><a href="#section4"><i class="fas fa-shield-alt"></i> <span>4. Защита</span></a></li>
+                <li class="divider"></li>
+                <li><a href="https://makita.com" target="_blank"><i class="fas fa-globe"></i> <span>Официальный сайт</span></a></li>
+                <li><a href="mailto:support@makita.com"><i class="fas fa-envelope"></i> <span>Техподдержка</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1><i class="fas fa-battery-three-quarters"></i> Инструкция по диагностике аккумуляторов Makita</h1>
+        
+        <div class="section" id="section1">
+            <h2><i class="fas fa-plug"></i> 1. Подключение и настройка</h2>
+            
+            <div class="section" id="section1-1">
+                <h3><i class="fas fa-microchip"></i> 1.1. Аппаратное подключение</h3>
+                <ol>
+                    <li>Подключите диагностическое устройство к аккумулятору Makita через специальный разъем (рис. 1.1)</li>
+                    <li>Подключите устройство к компьютеру через USB-порт (рис. 1.2)</li>
+                    <li>Дождитесь инициализации устройства (синий светодиод должен начать мигать)</li>
+                </ol>
+                
+                <div class="image-container">
+                    <img src="images/connection.jpg" alt="Подключение устройства к аккумулятору">
+                    <div class="image-caption">Рис. 1.1 - Подключение устройства к аккумулятору BL1860</div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="images/usb-connection.jpg" alt="Подключение к компьютеру">
+                    <div class="image-caption">Рис. 1.2 - Подключение через USB-порт</div>
+                </div>
+                
+                <div class="warning">
+                    <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong> Не подключайте устройство к аккумулятору при включенном питании инструмента!</p>
+                </div>
+            </div>
+            
+            <div class="section" id="section1-2">
+                <h3><i class="fas fa-wifi"></i> 1.2. Настройка Wi-Fi</h3>
+                <p>Устройство автоматически создает защищенную точку доступа Wi-Fi со следующими параметрами:</p>
+                
+                <div class="note">
+                    <p><i class="fas fa-info-circle"></i> <strong>SSID:</strong> Makita_Diagnostic_XXXX (где XXXX - последние 4 цифры MAC-адреса)</p>
+                    <p><strong>Пароль:</strong> 12345678</p>
+                    <p><strong>IP-адрес:</strong> 192.168.4.1</p>
+                </div>
+                
+                <div class="image-container">
+                    <img src="images/wifi-settings.jpg" alt="Настройка Wi-Fi подключения">
+                    <div class="image-caption">Рис. 1.3 - Настройки Wi-Fi на мобильном устройстве</div>
+                </div>
+                
+                <p>После подключения откройте браузер и перейдите по адресу <strong>http://192.168.4.1</strong></p>
+                
+                <div class="image-container">
+                    <img src="images/login-screen.jpg" alt="Экран входа">
+                    <div class="image-caption">Рис. 1.4 - Стартовый экран веб-интерфейса</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="section2">
+            <h2><i class="fas fa-laptop-code"></i> 2. Работа с веб-интерфейсом</h2>
+            
+            <div class="section" id="section2-1">
+                <h3><i class="fas fa-database"></i> 2.1. Чтение данных</h3>
+                <p>Для получения информации об аккумуляторе выполните следующие действия:</p>
+                
+                <ol>
+                    <li>В разделе <strong>"📚 Чтение данных"</strong> нажмите кнопку <strong>"Модель"</strong> (рис. 2.1)</li>
+                    <li>Дождитесь определения модели аккумулятора (3-5 секунд)</li>
+                    <li>После успешного определения нажмите кнопку <strong>"Данные"</strong></li>
+                    <li>Ожидайте завершения сбора данных (10-15 секунд)</li>
+                </ol>
+                
+                <div class="image-container">
+                    <img src="images/model-button.jpg" alt="Кнопка определения модели">
+                    <div class="image-caption">Рис. 2.1 - Кнопка определения модели аккумулятора</div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="images/data-output.jpg" alt="Вывод данных аккумулятора">
+                    <div class="image-caption">Рис. 2.2 - Пример вывода данных аккумулятора</div>
+                </div>
+                
+                <div class="note">
+                    <p><i class="fas fa-info-circle"></i> В логе отображаются следующие параметры:</p>
+                    <ul>
+                        <li><strong>Напряжение:</strong> общее и по каждой ячейке (5 ячеек)</li>
+                        <li><strong>Разница напряжений:</strong> между максимальной и минимальной ячейкой</li>
+                        <li><strong>Температура:</strong> элементов и силовых транзисторов</li>
+                        <li><strong>Состояние:</strong> ошибки и предупреждения</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section" id="section2-2">
+                <h3><i class="fas fa-lightbulb"></i> 2.2. Управление светодиодами</h3>
+                <p>После успешного определения модели аккумулятора станет доступен раздел <strong>"💡 Светодиоды"</strong>:</p>
+                
+                <div class="image-container">
+                    <img src="images/led-controls.jpg" alt="Управление светодиодами">
+                    <div class="image-caption">Рис. 2.3 - Панель управления светодиодами</div>
+                </div>
+                
+                <ol>
+                    <li>Нажмите <strong>"Включить"</strong> для активации всех светодиодов аккумулятора</li>
+                    <li>Нажмите <strong>"Выключить"</strong> для деактивации светодиодов</li>
+                </ol>
+                
+                <div class="warning">
+                    <p><i class="fas fa-exclamation-triangle"></i> Некоторые модели аккумуляторов могут не поддерживать эту функцию!</p>
+                </div>
+            </div>
+            
+            <div class="section" id="section2-3">
+                <h3><i class="fas fa-exclamation-triangle"></i> 2.3. Сброс ошибок</h3>
+                <p>В разделе <strong>"▶️ Сброс данных"</strong> доступны функции обслуживания:</p>
+                
+                <div class="image-container">
+                    <img src="images/reset-section.jpg" alt="Раздел сброса ошибок">
+                    <div class="image-caption">Рис. 2.4 - Панель сброса ошибок</div>
+                </div>
+                
+                <ol>
+                    <li>Нажмите <strong>"Ошибки"</strong> для сброса ошибок аккумулятора</li>
+                    <li>Дождитесь подтверждения операции (сообщение в логе)</li>
+                </ol>
+                
+                <div class="warning pulse">
+                    <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong> Сброс ошибок выполняется только при наличии лицензионного ключа!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="section3">
+            <h2><i class="fas fa-terminal"></i> 3. Программатор</h2>
+            <p>В разделе <strong>"👨‍💻 Программатор"</strong> доступны дополнительные функции управления устройством:</p>
+            
+            <div class="image-container">
+                <img src="images/programmer-tab.jpg" alt="Вкладка программатора">
+                <div class="image-caption">Рис. 3.1 - Интерфейс программатора</div>
+            </div>
+            
+            <ol>
+                <li><strong>Перезагрузить:</strong> полная перезагрузка диагностического устройства</li>
+                <li><strong>Ключ:</strong> поле для ввода лицензионного ключа (20 символов)</li>
+            </ol>
+            
+            <div class="note">
+                <p><i class="fas fa-info-circle"></i> После ввода правильного ключа станут доступны все функции диагностики</p>
+            </div>
+            
+            <div class="image-container">
+                <img src="images/license-activated.jpg" alt="Активированная лицензия">
+                <div class="image-caption">Рис. 3.2 - Сообщение об успешной активации</div>
+            </div>
+        </div>
+        
+        <div class="section" id="section4">
+            <h2><i class="fas fa-shield-alt"></i> 4. Защита прошивки</h2>
+            <p>В нижней части интерфейса находится кнопка <strong>"Защита прошивки"</strong>:</p>
+            
+            <div class="image-container">
+                <img src="images/firmware-protection-btn.jpg" alt="Кнопка защиты прошивки">
+                <div class="image-caption">Рис. 4.1 - Кнопка активации защиты</div>
+            </div>
+            
+            <ol>
+                <li>Нажмите кнопку для активации защиты</li>
+                <li>Подтвердите действие в диалоговом окне</li>
+                <li>Дождитесь завершения процесса (5-10 секунд)</li>
+            </ol>
+            
+            <div class="warning pulse">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>Важно!</strong> После активации защиты:</p>
+                <ul>
+                    <li>Невозможно будет прочитать прошивку через UART/JTAG</li>
+                    <li>Отключится возможность обновления через USB</li>
+                    <li>Действие необратимо!</li>
+                </ul>
+            </div>
+            
+            <div class="image-container">
+                <img src="images/protection-activated.jpg" alt="Защита активирована">
+                <div class="image-caption">Рис. 4.2 - Сообщение об успешной активации защиты</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('toggleBtn');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const overlay = document.getElementById('overlay');
+            let isMobile = window.innerWidth <= 992;
+            
+            // Инициализация меню
+            function initMenu() {
+                if (isMobile) {
+                    sidebar.classList.add('collapsed');
+                    sidebar.classList.remove('show');
+                    overlay.classList.remove('show');
+                } else {
+                    sidebar.classList.remove('show');
+                    overlay.classList.remove('show');
+                }
+                updateToggleIcon();
+            }
+            
+            // Переключение меню
+            function toggleMenu() {
+                if (isMobile) {
+                    if (sidebar.classList.contains('collapsed')) {
+                        sidebar.classList.remove('collapsed');
+                        sidebar.classList.add('show');
+                        overlay.classList.add('show');
+                    } else {
+                        sidebar.classList.add('collapsed');
+                        sidebar.classList.remove('show');
+                        overlay.classList.remove('show');
+                    }
+                } else {
+                    sidebar.classList.toggle('collapsed');
+                }
+                updateToggleIcon();
+            }
+            
+            // Обновление иконки кнопки
+            function updateToggleIcon() {
+                const icon = toggleBtn.querySelector('i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-chevron-right');
+                } else {
+                    icon.classList.remove('fa-chevron-right');
+                    icon.classList.add('fa-chevron-left');
+                }
+            }
+            
+            // Обработчики событий
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            overlay.addEventListener('click', function() {
+                if (isMobile) {
+                    toggleMenu();
+                }
+            });
+            
+            // Закрытие меню при клике на пункт (мобильные)
+            document.querySelectorAll('.sidebar li a').forEach(item => {
+                item.addEventListener('click', function() {
+                    if (isMobile && sidebar.classList.contains('show')) {
+                        toggleMenu();
+                    }
+                });
+            });
+            
+            // Плавная прокрутка
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#') return;
+                    
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Адаптация к изменению размера
+            window.addEventListener('resize', function() {
+                const newIsMobile = window.innerWidth <= 992;
+                if (isMobile !== newIsMobile) {
+                    isMobile = newIsMobile;
+                    initMenu();
+                }
+            });
+            
+            // Инициализация
+            initMenu();
+            
+            // Подсветка текущего раздела
+            const sections = document.querySelectorAll('.section');
+            const menuItems = document.querySelectorAll('.sidebar li a');
+            
+            function highlightMenu() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                menuItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}`) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightMenu);
+            highlightMenu();
+        });
+    </script>
+</body>
+</html>
