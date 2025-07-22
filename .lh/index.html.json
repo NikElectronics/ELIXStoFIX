@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 70,
+            "activePatchIndex": 76,
             "patches": [
                 {
                     "date": 1753164040059,
@@ -288,6 +288,30 @@
                 {
                     "date": 1753179170930,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -662,9 +662,10 @@\n         </div>\r\n \r\n         <div class=\"section\" id=\"Другие наши продукты\">\r\n             <h2><i class=\"fas fa-info-circle\"></i> Другие наши продукты</h2>\r\n-            <li><ahref=\"https://nikelectronics.github.io/fountain_manual/\">Контроллер управления фонтаном </a></li>\r\n+            <li>Контроллер управления фонтаном <a\r\n+                    href=\"https://nikelectronics.github.io/fountain_manual/\">Мой фонтан</a></li>\r\n         </div>\r\n \r\n \r\n \r\n"
+                },
+                {
+                    "date": 1753179708773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -660,9 +660,9 @@\n             </div>\r\n \r\n         </div>\r\n \r\n-        <div class=\"section\" id=\"Другие наши продукты\">\r\n+        <div class=\"section\" id=\"any products\">\r\n             <h2><i class=\"fas fa-info-circle\"></i> Другие наши продукты</h2>\r\n             <li>Контроллер управления фонтаном <a\r\n                     href=\"https://nikelectronics.github.io/fountain_manual/\">Мой фонтан</a></li>\r\n         </div>\r\n"
+                },
+                {
+                    "date": 1753179750252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -463,8 +463,9 @@\n                 <li><a href=\"#section2-3\"><i class=\"fas fa-exclamation-triangle\"></i> <span>2.3 Сброс ошибок</span></a>\r\n                 </li>\r\n                 <li><a href=\"#section3\"><i class=\"fas fa-terminal\"></i> <span>3. Программатор</span></a></li>\r\n                 <li><a href=\"#section4\"><i class=\"fas fa-battery-three-quarters\"></i> <span>4. Защита</span></a></li>\r\n+                <li><a href=\"#any products\"><i class=\"fas fa-terminal\"></i> <span>3. Программатор</span></a></li>\r\n                 <li class=\"divider\"></li>\r\n                 <!-- <li><a href=\"https://makita.com\" target=\"_blank\"><i class=\"fas fa-globe\"></i> <span>Официальный\r\n                             сайт</span></a></li> -->\r\n                 <li><a href=\"mailto:nikelectronics78@gmail.com\"><i class=\"fas fa-envelope\"></i>\r\n"
+                },
+                {
+                    "date": 1753179778296,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -463,9 +463,9 @@\n                 <li><a href=\"#section2-3\"><i class=\"fas fa-exclamation-triangle\"></i> <span>2.3 Сброс ошибок</span></a>\r\n                 </li>\r\n                 <li><a href=\"#section3\"><i class=\"fas fa-terminal\"></i> <span>3. Программатор</span></a></li>\r\n                 <li><a href=\"#section4\"><i class=\"fas fa-battery-three-quarters\"></i> <span>4. Защита</span></a></li>\r\n-                <li><a href=\"#any products\"><i class=\"fas fa-terminal\"></i> <span>3. Программатор</span></a></li>\r\n+                <li><a href=\"#any products\"><i class=\"fas fa-info-circle\"></i> <span>3. Программатор</span></a></li>\r\n                 <li class=\"divider\"></li>\r\n                 <!-- <li><a href=\"https://makita.com\" target=\"_blank\"><i class=\"fas fa-globe\"></i> <span>Официальный\r\n                             сайт</span></a></li> -->\r\n                 <li><a href=\"mailto:nikelectronics78@gmail.com\"><i class=\"fas fa-envelope\"></i>\r\n"
+                },
+                {
+                    "date": 1753179813885,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -463,9 +463,9 @@\n                 <li><a href=\"#section2-3\"><i class=\"fas fa-exclamation-triangle\"></i> <span>2.3 Сброс ошибок</span></a>\r\n                 </li>\r\n                 <li><a href=\"#section3\"><i class=\"fas fa-terminal\"></i> <span>3. Программатор</span></a></li>\r\n                 <li><a href=\"#section4\"><i class=\"fas fa-battery-three-quarters\"></i> <span>4. Защита</span></a></li>\r\n-                <li><a href=\"#any products\"><i class=\"fas fa-info-circle\"></i> <span>3. Программатор</span></a></li>\r\n+                <li><a href=\"#anyproducts\"><i class=\"fas fa-info-circle\"></i> <span>3. Программатор</span></a></li>\r\n                 <li class=\"divider\"></li>\r\n                 <!-- <li><a href=\"https://makita.com\" target=\"_blank\"><i class=\"fas fa-globe\"></i> <span>Официальный\r\n                             сайт</span></a></li> -->\r\n                 <li><a href=\"mailto:nikelectronics78@gmail.com\"><i class=\"fas fa-envelope\"></i>\r\n"
+                },
+                {
+                    "date": 1753179830921,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -463,9 +463,9 @@\n                 <li><a href=\"#section2-3\"><i class=\"fas fa-exclamation-triangle\"></i> <span>2.3 Сброс ошибок</span></a>\r\n                 </li>\r\n                 <li><a href=\"#section3\"><i class=\"fas fa-terminal\"></i> <span>3. Программатор</span></a></li>\r\n                 <li><a href=\"#section4\"><i class=\"fas fa-battery-three-quarters\"></i> <span>4. Защита</span></a></li>\r\n-                <li><a href=\"#anyproducts\"><i class=\"fas fa-info-circle\"></i> <span>3. Программатор</span></a></li>\r\n+                <li><a href=\"#anyproducts\"><i class=\"fas fa-info-circle\"></i> <span>Информация</span></a></li>\r\n                 <li class=\"divider\"></li>\r\n                 <!-- <li><a href=\"https://makita.com\" target=\"_blank\"><i class=\"fas fa-globe\"></i> <span>Официальный\r\n                             сайт</span></a></li> -->\r\n                 <li><a href=\"mailto:nikelectronics78@gmail.com\"><i class=\"fas fa-envelope\"></i>\r\n"
+                },
+                {
+                    "date": 1753179876814,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -661,17 +661,13 @@\n             </div>\r\n \r\n         </div>\r\n \r\n-        <div class=\"section\" id=\"any products\">\r\n+        <div class=\"section\" id=\"anyproducts\">\r\n             <h2><i class=\"fas fa-info-circle\"></i> Другие наши продукты</h2>\r\n             <li>Контроллер управления фонтаном <a\r\n                     href=\"https://nikelectronics.github.io/fountain_manual/\">Мой фонтан</a></li>\r\n         </div>\r\n-\r\n-\r\n-\r\n-\r\n     </div>\r\n \r\n     <script>\r\n         document.addEventListener('DOMContentLoaded', function () {\r\n"
                 }
             ],
             "date": 1753164040059,
