@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 76,
+            "activePatchIndex": 77,
             "patches": [
                 {
                     "date": 1753164040059,
@@ -312,6 +312,10 @@
                 {
                     "date": 1753179876814,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -661,17 +661,13 @@\n             </div>\r\n \r\n         </div>\r\n \r\n-        <div class=\"section\" id=\"any products\">\r\n+        <div class=\"section\" id=\"anyproducts\">\r\n             <h2><i class=\"fas fa-info-circle\"></i> Другие наши продукты</h2>\r\n             <li>Контроллер управления фонтаном <a\r\n                     href=\"https://nikelectronics.github.io/fountain_manual/\">Мой фонтан</a></li>\r\n         </div>\r\n-\r\n-\r\n-\r\n-\r\n     </div>\r\n \r\n     <script>\r\n         document.addEventListener('DOMContentLoaded', function () {\r\n"
+                },
+                {
+                    "date": 1753242264885,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -462,9 +462,9 @@\n                 <li><a href=\"#section2-2\"><i class=\"fas fa-lightbulb\"></i> <span>2.2 Светодиоды</span></a></li>\r\n                 <li><a href=\"#section2-3\"><i class=\"fas fa-exclamation-triangle\"></i> <span>2.3 Сброс ошибок</span></a>\r\n                 </li>\r\n                 <li><a href=\"#section3\"><i class=\"fas fa-terminal\"></i> <span>3. Программатор</span></a></li>\r\n-                <li><a href=\"#section4\"><i class=\"fas fa-battery-three-quarters\"></i> <span>4. Защита</span></a></li>\r\n+                <li><a href=\"#section4\"><i class=\"fas fa-battery-three-quarters\"></i> <span>4. Зарядка</span></a></li>\r\n                 <li><a href=\"#anyproducts\"><i class=\"fas fa-info-circle\"></i> <span>Информация</span></a></li>\r\n                 <li class=\"divider\"></li>\r\n                 <!-- <li><a href=\"https://makita.com\" target=\"_blank\"><i class=\"fas fa-globe\"></i> <span>Официальный\r\n                             сайт</span></a></li> -->\r\n"
                 }
             ],
             "date": 1753164040059,
