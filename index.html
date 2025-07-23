@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Инструкция по диагностике аккумуляторов Makita</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -36,7 +36,6 @@
             overflow-x: hidden;
         }
 
-        /* Стили для выдвижного меню */
         .sidebar {
             width: var(--sidebar-width);
             background-color: var(--primary-color);
@@ -111,8 +110,13 @@
             position: relative;
         }
 
-        .sidebar li a:hover {
+        .sidebar li a:hover,
+        .sidebar li a.active {
             background-color: var(--secondary-color);
+        }
+
+        .sidebar li a.active {
+            background-color: var(--accent-color);
         }
 
         .sidebar li a i {
@@ -152,7 +156,7 @@
         .content {
             margin-left: var(--sidebar-width);
             padding: 25px;
-            transition: margin-left var(--transition-speed);
+            transition: all var(--transition-speed);
             position: relative;
             max-width: 1200px;
             margin-right: auto;
@@ -278,7 +282,6 @@
             color: var(--primary-color);
         }
 
-        /* Мобильные стили */
         @media screen and (max-width: 992px) {
             .sidebar {
                 width: var(--sidebar-width);
@@ -297,15 +300,17 @@
 
             .sidebar.collapsed~.content {
                 margin-left: var(--sidebar-collapsed-width);
+                transform: translateX(0);
             }
 
-            .sidebar:not(.collapsed)~.content {
-                margin-left: 0;
+            .sidebar.show~.content {
+                transform: translateX(var(--sidebar-width));
             }
 
             .content {
                 margin-left: 0;
                 padding: 20px 15px;
+                transition: transform var(--transition-speed);
             }
 
             .mobile-menu-btn {
@@ -346,7 +351,6 @@
             }
         }
 
-        /* Анимация для важных элементов */
         @keyframes pulse {
             0% {
                 transform: scale(1);
@@ -365,7 +369,6 @@
             animation: pulse 2s infinite ease-in-out;
         }
 
-        /* Оверлей для мобильного меню */
         .overlay {
             position: fixed;
             top: 0;
@@ -384,7 +387,6 @@
             visibility: visible;
         }
 
-        /* Дополнительные улучшения */
         .badge {
             display: inline-block;
             padding: 3px 8px;
@@ -402,7 +404,6 @@
             margin: 15px 0;
         }
 
-        /* Прокрутка для браузеров WebKit */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -422,7 +423,6 @@
             background: #a8a8a8;
         }
 
-        /* Специальные стили для меню */
         .sidebar::-webkit-scrollbar {
             width: 6px;
         }
@@ -466,8 +466,6 @@
                 <li><a href="#section4"><i class="fas fa-battery-three-quarters"></i> <span>4. Зарядка</span></a></li>
                 <li><a href="#anyproducts"><i class="fas fa-info-circle"></i> <span>Информация</span></a></li>
                 <li class="divider"></li>
-                <!-- <li><a href="https://makita.com" target="_blank"><i class="fas fa-globe"></i> <span>Официальный
-                            сайт</span></a></li> -->
                 <li><a href="mailto:nikelectronics78@gmail.com"><i class="fas fa-envelope"></i>
                         <span>Техподдержка</span></a>
                 </li>
@@ -568,7 +566,6 @@
                         <li><strong>Напряжение:</strong> общее и по каждой ячейке (5 ячеек)</li>
                         <li><strong>Разница напряжений:</strong> между максимальной и минимальной ячейкой</li>
                         <li><strong>Температура:</strong> элементов и силовых транзисторов</li>
-                        <!-- <li><strong>Состояние:</strong> ошибки и предупреждения</li> -->
                     </ul>
                 </div>
             </div>
@@ -632,10 +629,8 @@
 
             <div class="note">
                 <p><i class="fas fa-info-circle"></i> После ввода правильного ключа (указан на корпусе) станут доступны
-                    все функции
-                    диагностики</p>
+                    все функции диагностики</p>
             </div>
-
         </div>
 
         <div class="section" id="section4">
@@ -659,13 +654,14 @@
                     <li>Не оставляйте устройство без контроля во время заряда.</li>
                 </ul>
             </div>
-
         </div>
 
         <div class="section" id="anyproducts">
             <h2><i class="fas fa-info-circle"></i> Другие наши продукты</h2>
-            <li>Контроллер управления фонтаном <a
-                    href="https://nikelectronics.github.io/fountain_manual/">Мой фонтан</a></li>
+            <ul>
+                <li>Контроллер управления фонтаном <a
+                        href="https://nikelectronics.github.io/fountain_manual/">Мой фонтан</a></li>
+            </ul>
         </div>
     </div>
 
@@ -737,15 +733,6 @@
                 }
             });
 
-            // Закрытие меню при клике на пункт (мобильные)
-            document.querySelectorAll('.sidebar li a').forEach(item => {
-                item.addEventListener('click', function () {
-                    if (isMobile && sidebar.classList.contains('show')) {
-                        toggleMenu();
-                    }
-                });
-            });
-
             // Плавная прокрутка
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -754,10 +741,22 @@
                     e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 20,
-                            behavior: 'smooth'
-                        });
+                        // Закрываем меню на мобильных устройствах перед прокруткой
+                        if (isMobile && sidebar.classList.contains('show')) {
+                            toggleMenu();
+                            // Небольшая задержка для анимации закрытия меню
+                            setTimeout(() => {
+                                window.scrollTo({
+                                    top: target.offsetTop - 20,
+                                    behavior: 'smooth'
+                                });
+                            }, 300);
+                        } else {
+                            window.scrollTo({
+                                top: target.offsetTop - 20,
+                                behavior: 'smooth'
+                            });
+                        }
                     }
                 });
             });
@@ -780,18 +779,32 @@
 
             function highlightMenu() {
                 let current = '';
+                const scrollPosition = window.pageYOffset;
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.body.offsetHeight;
 
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    if (pageYOffset >= sectionTop - 150) {
+                    const sectionHeight = section.offsetHeight;
+                    if (scrollPosition >= sectionTop - 150 && 
+                        scrollPosition < sectionTop + sectionHeight - 150) {
                         current = section.getAttribute('id');
                     }
                 });
+
+                // Проверка для последнего раздела (когда прокрутка в самом низу)
+                if (scrollPosition + windowHeight >= documentHeight - 50) {
+                    current = 'anyproducts';
+                }
 
                 menuItems.forEach(item => {
                     item.classList.remove('active');
                     if (item.getAttribute('href') === `#${current}`) {
                         item.classList.add('active');
+                        // Прокручиваем пункт меню в видимую область
+                        if (!sidebar.classList.contains('collapsed')) {
+                            item.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+                        }
                     }
                 });
             }
