@@ -657,10 +657,24 @@
         </div>
 
         <div class="section" id="anyproducts">
+            <h2><i class="fas fa-info-circle"></i> Дополнительно:</h2>
+            <div class="warning pulse">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong></p>
+                <ul>
+                    <li>Данный диагностический модуль предоставляется на условиях «как есть». 
+                        Разработчик не несет ответственности за любые прямые или косвенные последствия, 
+                        возникшие в результате использования или невозможности использования данного модуля, 
+                        включая потерю данных, сбои в работе оборудования или встроенного программного обеспечения, 
+                        а также любые финансовые потери. Используйте данный модуль на свой страх и риск.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="anyproducts">
             <h2><i class="fas fa-info-circle"></i> Другие наши продукты</h2>
             <ul>
-                <li>Контроллер управления фонтаном <a
-                        href="https://nikelectronics.github.io/fountain_manual/">Мой фонтан</a></li>
+                <li>Контроллер управления фонтаном <a href="https://nikelectronics.github.io/fountain_manual/">Мой
+                        фонтан</a></li>
             </ul>
         </div>
     </div>
@@ -786,7 +800,7 @@
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.offsetHeight;
-                    if (scrollPosition >= sectionTop - 150 && 
+                    if (scrollPosition >= sectionTop - 150 &&
                         scrollPosition < sectionTop + sectionHeight - 150) {
                         current = section.getAttribute('id');
                     }
