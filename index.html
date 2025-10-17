@@ -17,6 +17,8 @@
             --light-text: #ecf0f1;
             --warning-color: #ff9800;
             --note-color: #3498db;
+            --error-color: #e74c3c;
+            --success-color: #2ecc71;
             --transition-speed: 0.3s;
         }
 
@@ -263,6 +265,32 @@
             margin-right: 8px;
         }
 
+        .error {
+            background-color: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid var(--error-color);
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .error i {
+            color: var(--error-color);
+            margin-right: 8px;
+        }
+
+        .success {
+            background-color: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid var(--success-color);
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .success i {
+            color: var(--success-color);
+            margin-right: 8px;
+        }
+
         ol,
         ul {
             padding-left: 25px;
@@ -280,6 +308,32 @@
 
         strong {
             color: var(--primary-color);
+        }
+
+        .troubleshooting-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .troubleshooting-table th,
+        .troubleshooting-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .troubleshooting-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .troubleshooting-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .troubleshooting-table tr:hover {
+            background-color: #f1f1f1;
         }
 
         @media screen and (max-width: 992px) {
@@ -342,6 +396,11 @@
 
             .section {
                 padding: 20px;
+            }
+
+            .troubleshooting-table {
+                display: block;
+                overflow-x: auto;
             }
         }
 
@@ -464,6 +523,7 @@
                 </li>
                 <li><a href="#section3"><i class="fas fa-terminal"></i> <span>3. Программатор</span></a></li>
                 <li><a href="#section4"><i class="fas fa-battery-three-quarters"></i> <span>4. Зарядка</span></a></li>
+                <li><a href="#section5"><i class="fas fa-tools"></i> <span>5. Устранение неисправностей</span></a></li>
                 <li><a href="#anyproducts"><i class="fas fa-info-circle"></i> <span>Информация</span></a></li>
                 <li class="divider"></li>
                 <li><a href="mailto:nikelectronics78@gmail.com"><i class="fas fa-envelope"></i>
@@ -474,11 +534,15 @@
     </div>
 
     <div class="content">
-        <h1><i class="fas fa-battery-three-quarters"></i> Инструкция по работе с диагностическим модулем ЭлИкс toFIX</h1>
+        <h1><i class="fas fa-battery-three-quarters"></i> Инструкция по работе с диагностическим модулем ЭлИксtoFIX</h1>
         <div class="image-container">
             <img src="images/nemakita.png" alt="Общий вид">
             <div class="image-caption">Общий вид устройства</div>
+            <div class="note">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong></strong> Данный модуль имеет функционал соответствующий возможностям проекта Open battery information c возможность подключения через WEB интерфейс</p>
+            </div>
         </div>
+
         <div class="section" id="section1">
             <h2><i class="fas fa-plug"></i> 1. Подключение и настройка</h2>
 
@@ -655,15 +719,115 @@
             </div>
         </div>
 
+        <div class="section" id="section5">
+            <h2><i class="fas fa-tools"></i> 5. Устранение неисправностей</h2>
+
+            <div class="warning">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>Перед устранением неисправностей убедитесь,
+                        что:</strong></p>
+                <ul>
+                    <li>Аккумулятор устройства заряжен</li>
+                    <li>Подключение к аккумулятору Makita выполнено правильно</li>
+                    <li>Вы используете совместимую модель аккумулятора Makita</li>
+                </ul>
+            </div>
+
+            <h3><i class="fas fa-question-circle"></i> Распространенные проблемы и решения</h3>
+
+            <table class="troubleshooting-table">
+                <thead>
+                    <tr>
+                        <th>Проблема</th>
+                        <th>Возможная причина</th>
+                        <th>Решение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Поддерживает не все платы BMC</td>
+                        <td>Данный модуль имеет функционал соответствующий возможностям проекта open-battery-information
+                        </td>
+                        <td>Ждать новых релизов</td>
+                    </tr>
+                    <tr>
+                        <td>Устройство не включается</td>
+                        <td>Разряжен встроенный аккумулятор</td>
+                        <td>Подключите зарядное устройство к порту USB-C и зарядите аккумулятор</td>
+                    </tr>
+                    <tr>
+                        <td>Не определяется точка доступа Wi-Fi "Makita"</td>
+                        <td>Устройство выключено или Wi-Fi модуль не работает</td>
+                        <td>Убедитесь, что устройство включено. Перезагрузите устройство кнопкой питания</td>
+                    </tr>
+                    <tr>
+                        <td>Не удается подключиться к точке доступа</td>
+                        <td>Неверный пароль или проблемы с подключением</td>
+                        <td>Используйте пароль: <strong>12345678</strong>. Перезагрузите Wi-Fi на устройстве. Попробуйте подключиться к устройству без подключенного аккумулятора.</td>
+                    </tr>
+                    <tr>
+                        <td>Веб-интерфейс не открывается по адресу 192.168.4.1</td>
+                        <td>Проблемы с сетью или браузером</td>
+                        <td>Попробуйте другой браузер. Очистите кеш браузера. Проверьте подключение к сети "Makita"</td>
+                    </tr>
+                    <tr>
+                        <td>Не определяется модель аккумулятора</td>
+                        <td>Неисправность аккумулятора или неправильное подключение</td>
+                        <td>Проверьте подключение к аккумулятору. Очистите контакты разъема аккумулятора. Попробуйте
+                            другой аккумулятор. Убедитесь, что аккумулятор не полностью разряжен. Воспользуйтесь
+                            программой open-battery-information.</td>
+                    </tr>
+                    <tr>
+                        <td>Ошибки при чтении данных аккумулятора</td>
+                        <td>Проблемы связи с контроллером аккумулятора</td>
+                        <td>Переподключите аккумулятор. Перезагрузите диагностическое устройство. Проверьте контакты
+                            подключения</td>
+                    </tr>
+                    <tr>
+                        <td>Не работает сброс ошибок</td>
+                        <td>Отсутствует лицензионный ключ или проблемы с аккумулятором</td>
+                        <td>Проверьте ввод лицензионного ключа в разделе "Программатор". Убедитесь, что ключ активирован
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Устройство быстро разряжается</td>
+                        <td>Проблемы с аккумулятором устройства или фоновые процессы</td>
+                        <td>Выключайте устройство после использования. Проверьте состояние встроенного аккумулятора</td>
+                    </tr>
+                    <tr>
+                        <td>Не горят светодиоды на аккумуляторе при управлении</td>
+                        <td>Аккумулятор не поддерживает эту функцию.</td>
+                        <td>Проверьте совместимость модели аккумулятора.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <p><i class="fas fa-info-circle"></i> <strong>Дополнительные рекомендации:</strong></p>
+                <ul>
+                    <!-- <li>Регулярно обновляйте прошивку устройства для получения новых функций и исправления ошибок</li> -->
+                    <li>Храните устройство в сухом месте при температуре от 0°C до 40°C</li>
+                    <li>Избегайте механических повреждений и попадания влаги</li>
+                    <li>При длительном хранении заряжайте устройство не реже одного раза в 3 месяца</li>
+                </ul>
+            </div>
+
+            <div class="error">
+                <p><i class="fas fa-exclamation-circle"></i> <strong>Если проблемы сохраняются:</strong></p>
+                <p>Обратитесь в техническую поддержку по адресу: <a
+                        href="mailto:nikelectronics78@gmail.com">nikelectronics78@gmail.com</a>.
+                    Укажите модель вашего устройства, версию прошивки и подробное описание проблемы.</p>
+            </div>
+        </div>
+
         <div class="section" id="anyproducts">
             <h2><i class="fas fa-info-circle"></i> Дополнительно:</h2>
             <div class="warning pulse">
                 <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong></p>
                 <ul>
-                    <li>Данный диагностический модуль предоставляется на условиях «как есть». 
-                        Разработчик не несет ответственности за любые прямые или косвенные последствия, 
-                        возникшие в результате использования или невозможности использования данного модуля, 
-                        включая потерю данных, сбои в работе оборудования или встроенного программного обеспечения, 
+                    <li>Данный диагностический модуль предоставляется на условиях «как есть».
+                        Разработчик не несет ответственности за любые прямые или косвенные последствия,
+                        возникшие в результате использования или невозможности использования данного модуля,
+                        включая потерю данных, сбои в работе оборудования или встроенного программного обеспечения,
                         а также любые финансовые потери. Используйте данный модуль на свой страх и риск.</li>
                 </ul>
             </div>
@@ -754,76 +918,62 @@
                     e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
-                        // Закрываем меню на мобильных устройствах перед прокруткой
-                        if (isMobile && sidebar.classList.contains('show')) {
-                            toggleMenu();
-                            // Небольшая задержка для анимации закрытия меню
+                        const headerHeight = 70;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // Закрываем меню на мобильных устройствах после клика
+                        if (isMobile) {
                             setTimeout(() => {
-                                window.scrollTo({
-                                    top: target.offsetTop - 20,
-                                    behavior: 'smooth'
-                                });
+                                sidebar.classList.add('collapsed');
+                                sidebar.classList.remove('show');
+                                overlay.classList.remove('show');
+                                updateToggleIcon();
                             }, 300);
-                        } else {
-                            window.scrollTo({
-                                top: target.offsetTop - 20,
-                                behavior: 'smooth'
-                            });
                         }
                     }
                 });
             });
 
-            // Адаптация к изменению размера
+            // Обновление активного пункта меню при прокрутке
+            function updateActiveMenuItem() {
+                const sections = document.querySelectorAll('.section');
+                const scrollPos = window.scrollY || document.documentElement.scrollTop;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                        document.querySelectorAll('.sidebar li a').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+
+            // Обработчик изменения размера окна
             window.addEventListener('resize', function () {
-                const newIsMobile = window.innerWidth <= 992;
-                if (isMobile !== newIsMobile) {
-                    isMobile = newIsMobile;
+                const wasMobile = isMobile;
+                isMobile = window.innerWidth <= 992;
+
+                if (wasMobile !== isMobile) {
                     initMenu();
                 }
             });
 
             // Инициализация
             initMenu();
-
-            // Подсветка текущего раздела
-            const sections = document.querySelectorAll('.section');
-            const menuItems = document.querySelectorAll('.sidebar li a');
-
-            function highlightMenu() {
-                let current = '';
-                const scrollPosition = window.pageYOffset;
-                const windowHeight = window.innerHeight;
-                const documentHeight = document.body.offsetHeight;
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    if (scrollPosition >= sectionTop - 150 &&
-                        scrollPosition < sectionTop + sectionHeight - 150) {
-                        current = section.getAttribute('id');
-                    }
-                });
-
-                // Проверка для последнего раздела (когда прокрутка в самом низу)
-                if (scrollPosition + windowHeight >= documentHeight - 50) {
-                    current = 'anyproducts';
-                }
-
-                menuItems.forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('href') === `#${current}`) {
-                        item.classList.add('active');
-                        // Прокручиваем пункт меню в видимую область
-                        if (!sidebar.classList.contains('collapsed')) {
-                            item.scrollIntoView({ block: 'nearest', behavior: 'auto' });
-                        }
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', highlightMenu);
-            highlightMenu();
+            updateActiveMenuItem();
+            window.addEventListener('scroll', updateActiveMenuItem);
         });
     </script>
 </body>
