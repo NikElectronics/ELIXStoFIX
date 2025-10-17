@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 98,
+            "activePatchIndex": 99,
             "patches": [
                 {
                     "date": 1753164040059,
@@ -400,6 +400,10 @@
                 {
                     "date": 1760682540566,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -794,9 +794,9 @@\n                         <td>Выключайте устройство после использования. Проверьте состояние встроенного аккумулятора</td>\r\n                     </tr>\r\n                     <tr>\r\n                         <td>Не горят светодиоды на аккумуляторе при управлении</td>\r\n-                        <td>Аккумулятор не поддерживает эту функцию или проблема с прошивкой</td>\r\n+                        <td>Аккумулятор не поддерживает эту функцию.</td>\r\n                         <td>Проверьте совместимость модели аккумулятора.</td>\r\n                     </tr>\r\n                 </tbody>\r\n             </table>\r\n"
+                },
+                {
+                    "date": 1760688210160,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -538,9 +538,9 @@\n         <div class=\"image-container\">\r\n             <img src=\"images/nemakita.png\" alt=\"Общий вид\">\r\n             <div class=\"image-caption\">Общий вид устройства</div>\r\n             <div class=\"note\">\r\n-                <p><i class=\"fas fa-exclamation-triangle\"></i> <strong></strong> Данный модуль имеет функционал соответствующий возможностям проекта Open battery information c возможность подключения через WEB интерфейс</p>\r\n+                <p><i class=\"fas fa-exclamation-triangle\"></i> <strong></strong> Данный модуль имеет функционал соответствующий возможностям проекта Open battery information c возможностью подключения через WEB интерфейс</p>\r\n             </div>\r\n         </div>\r\n \r\n         <div class=\"section\" id=\"section1\">\r\n"
                 }
             ],
             "date": 1753164040059,
