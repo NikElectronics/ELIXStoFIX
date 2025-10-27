@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 10,
+            "activePatchIndex": 11,
             "patches": [
                 {
                     "date": 1760615078607,
@@ -48,6 +48,10 @@
                 {
                     "date": 1761557622588,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,9 @@\n \n \n \n ## 🔗 Ссылки\n-- **📖 Open Battery Information**: [https://nikelectronics.github.io/ELIXStoFIX/](Open Battery Information)\n+- **📖 Open Battery Information**: [https://github.com/mnh-jansson/open-battery-information]\n \n ---\n \n <div align=\"center\">\n"
+                },
+                {
+                    "date": 1761564269954,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,8 +40,8 @@\n ---\n \n <div align=\"center\">\n \n-**Модуль диагностики аккумуляторов Makita LXT** © 2025\n+**Модуль диагностики аккумуляторов ЭликсToFix** © 2025\n \n \n </div>\n"
                 }
             ],
             "date": 1760615078607,
