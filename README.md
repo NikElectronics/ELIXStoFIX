@@ -2,9 +2,9 @@
 
 <div align="center">
 
-**Специализированный инструмент для диагностики и тестирования аккумуляторов Makita платформы LXT**
+**Специализированный инструмент для диагностики и тестирования аккумуляторов Makita платформы LXT основанный на проекте Open Battery Information**
 
-[🚀 Открыть модуль диагностики](https://nikelectronics.github.io/ELIXStoFIX/)
+[🚀 Открыть  инструкцию модуля диагностики](https://nikelectronics.github.io/ELIXStoFIX/)
 
 </div>
 
@@ -35,7 +35,7 @@
 
 
 ## 🔗 Ссылки
-- **📖 Документация**: [https://nikelectronics.github.io/ELIXStoFIX/](https://nikelectronics.github.io/ELIXStoFIX/)
+- **📖 Open Battery Information**: [https://nikelectronics.github.io/ELIXStoFIX/](Open Battery Information)
 
 ---
 
