@@ -35,7 +35,7 @@
 
 
 ## 🔗 Ссылки
-- **📖 Open Battery Information**: [https://nikelectronics.github.io/ELIXStoFIX/](Open Battery Information)
+- **📖 Open Battery Information**: [https://github.com/mnh-jansson/open-battery-information]
 
 ---
 

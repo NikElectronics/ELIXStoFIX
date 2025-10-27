@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 9,
+            "activePatchIndex": 10,
             "patches": [
                 {
                     "date": 1760615078607,
@@ -44,6 +44,10 @@
                 {
                     "date": 1761557530555,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,11 @@\n # 🔋 Модуль диагностики аккумуляторов Makita LXT\n \n <div align=\"center\">\n \n-**Специализированный инструмент для диагностики и тестирования аккумуляторов Makita платформы LXT**\n+**Специализированный инструмент для диагностики и тестирования аккумуляторов Makita платформы LXT основанный на проекте Open Battery Information**\n \n-[🚀 Открыть модуль диагностики](https://nikelectronics.github.io/ELIXStoFIX/)\n+[🚀 Открыть  инструкцию модуля диагностики](https://nikelectronics.github.io/ELIXStoFIX/)\n \n </div>\n \n ## 📋 О проекте\n@@ -34,9 +34,9 @@\n \n \n \n ## 🔗 Ссылки\n-- **📖 Документация**: [https://nikelectronics.github.io/ELIXStoFIX/](https://nikelectronics.github.io/ELIXStoFIX/)\n+- **📖 Open Battery Information**: [https://nikelectronics.github.io/ELIXStoFIX/](Open Battery Information)\n \n ---\n \n <div align=\"center\">\n"
+                },
+                {
+                    "date": 1761557622588,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,9 @@\n \n \n \n ## 🔗 Ссылки\n-- **📖 Open Battery Information**: [https://nikelectronics.github.io/ELIXStoFIX/](Open Battery Information)\n+- **📖 Open Battery Information**: [https://github.com/mnh-jansson/open-battery-information]\n \n ---\n \n <div align=\"center\">\n"
                 }
             ],
             "date": 1760615078607,
