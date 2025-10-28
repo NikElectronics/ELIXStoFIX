@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1761129543384,
@@ -28,6 +28,10 @@
                 {
                     "date": 1761129969782,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,10 +62,9 @@\n \n <body>\n     \n     <h1>Инструкция по загрузке прошивки через OTA</h1>\n-    <p>Скачайте прошивку.</p>\n-    <a href=\"files/lxtfix_V201.bin\" download>Скачать прошивку.</a>\n+    <a href=\"files/lxtfix_V201.bin\" download>Скачайте прошивку (нажми меня).</a>\n     <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>\n     <div class=\"step\">\n         <h2>Шаг 1: Подключение к устройству</h2>\n         <p>Убедитесь, что устройство включено и подключено к Wi-Fi сети. В коде указано, что устройство создает точку\n"
+                },
+                {
+                    "date": 1761625334091,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,15 +56,50 @@\n             padding: 2px 4px;\n             border-radius: 3px;\n             font-family: monospace;\n         }\n+\n+        .download-btn {\n+            display: inline-block;\n+            background-color: #3498db;\n+            color: white;\n+            padding: 12px 24px;\n+            text-decoration: none;\n+            border-radius: 6px;\n+            font-weight: bold;\n+            transition: all 0.3s ease;\n+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);\n+            margin: 15px 0;\n+        }\n+\n+        .download-btn:hover {\n+            background-color: #2980b9;\n+            transform: translateY(-2px);\n+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n+        }\n+\n+        .download-btn:active {\n+            transform: translateY(0);\n+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);\n+        }\n+\n+        .download-container {\n+            text-align: center;\n+            margin: 20px 0;\n+        }\n     </style>\n </head>\n \n <body>\n     \n     <h1>Инструкция по загрузке прошивки через OTA</h1>\n-    <a href=\"files/lxtfix_V201.bin\" download>Скачайте прошивку (нажми меня).</a>\n+    \n+    <div class=\"download-container\">\n+        <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\n+            📥 Скачать прошивку lxtfix_V201.bin\n+        </a>\n+    </div>\n+    \n     <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>\n     <div class=\"step\">\n         <h2>Шаг 1: Подключение к устройству</h2>\n         <p>Убедитесь, что устройство включено и подключено к Wi-Fi сети. В коде указано, что устройство создает точку\n"
                 }
             ],
             "date": 1761129543384,

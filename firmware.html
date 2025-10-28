@@ -57,13 +57,48 @@
             border-radius: 3px;
             font-family: monospace;
         }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin: 15px 0;
+        }
+
+        .download-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-container {
+            text-align: center;
+            margin: 20px 0;
+        }
     </style>
 </head>
 
 <body>
     
     <h1>Инструкция по загрузке прошивки через OTA</h1>
-    <a href="files/lxtfix_V201.bin" download>Скачайте прошивку (нажми меня).</a>
+    
+    <div class="download-container">
+        <a href="files/lxtfix_V201.bin" download class="download-btn">
+            📥 Скачать прошивку lxtfix_V201.bin
+        </a>
+    </div>
+    
     <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>
     <div class="step">
         <h2>Шаг 1: Подключение к устройству</h2>
