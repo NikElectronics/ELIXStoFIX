@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 118,
+            "activePatchIndex": 119,
             "patches": [
                 {
                     "date": 1753164040059,
@@ -480,6 +480,10 @@
                 {
                     "date": 1763964777484,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -905,9 +905,9 @@\n                     <a href=\"#\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n                 \r\n                 <div class=\"product-card\">\r\n-                    <h4><i class=\"fas fa-robot\"></i> MyDryerBot</h4>\r\n+                    <h4><i class=\"fas fa-robot\"></i> TempBot-1000</h4>\r\n                     <p>Интеллектуальная термокамера с PID-регулированием температуры и поддержанием влажности.</p>\r\n                     <a href=\"https://nikelectronics.github.io/TempBot-1000/\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n                 \r\n"
+                },
+                {
+                    "date": 1765431000546,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -778,9 +778,9 @@\n \r\n             <ol>\r\n                 <li>Подключите устройство при помощи кабеля к зарядному устройству 5в 1A</li>\r\n                 <li>Индикатор заряда в процессе будет мигать крассным цветом</li>\r\n-                <li>Дождитесь завершения процесса (все светодиоды горят зеленым)</li>\r\n+                <li>Дождитесь завершения процесса (горят все светодиоды)</li>\r\n             </ol>\r\n \r\n             <div class=\"warning pulse\">\r\n                 <p><i class=\"fas fa-exclamation-triangle\"></i> <strong>Важно!</strong></p>\r\n"
                 }
             ],
             "date": 1753164040059,
