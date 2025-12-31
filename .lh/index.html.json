@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 119,
+            "activePatchIndex": 120,
             "patches": [
                 {
                     "date": 1753164040059,
@@ -484,6 +484,10 @@
                 {
                     "date": 1765431000546,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -778,9 +778,9 @@\n \r\n             <ol>\r\n                 <li>Подключите устройство при помощи кабеля к зарядному устройству 5в 1A</li>\r\n                 <li>Индикатор заряда в процессе будет мигать крассным цветом</li>\r\n-                <li>Дождитесь завершения процесса (все светодиоды горят зеленым)</li>\r\n+                <li>Дождитесь завершения процесса (горят все светодиоды)</li>\r\n             </ol>\r\n \r\n             <div class=\"warning pulse\">\r\n                 <p><i class=\"fas fa-exclamation-triangle\"></i> <strong>Важно!</strong></p>\r\n"
+                },
+                {
+                    "date": 1767161148644,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -899,11 +899,11 @@\n             <p>Мы разрабатываем различные решения для автоматизации:</p>\r\n             \r\n             <div class=\"products-grid\">\r\n                 <div class=\"product-card\">\r\n-                    <h4><i class=\"fas fa-battery-full\"></i> ЭлИксToFIX</h4>\r\n-                    <p>Диагностический модуль для аккумуляторов Makita с функцией сброса ошибок и чтения данных через WEB-интерфейс.</p>\r\n-                    <a href=\"#\" class=\"product-link\">Подробнее</a>\r\n+                    <h4><i class=\"fas fa-cube\"></i> BedLeveling</h4>\r\n+                    <p>Система анализа кривизны стола 3D принтера</p>\r\n+                    <a href=\"https://nikelectronics.github.io/BedLeveling/\" class=\"product-link\">Подробнее</a>\r\n                 </div>\r\n                 \r\n                 <div class=\"product-card\">\r\n                     <h4><i class=\"fas fa-robot\"></i> TempBot-1000</h4>\r\n"
                 }
             ],
             "date": 1753164040059,
