@@ -34,7 +34,53 @@
             border-radius: 4px;
             padding: 5px;
             margin: 10px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.05);
+        }
+
+        /* Стили для модального окна изображения */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 8px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close:hover {
+            color: #ccc;
         }
 
         .note {
@@ -188,6 +234,53 @@
             <li>Убедитесь, что устройство имеет стабильное питание во время обновления</li>
         </ul>
     </div>
+
+    <!-- Модальное окно для изображений -->
+    <div class="modal" id="imageModal">
+        <span class="close" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImage" src="" alt="">
+    </div>
+
+    <script>
+        // Добавляем функционал для увеличения изображений
+        document.addEventListener('click', function(event) {
+            // Проверяем, является ли клик по изображению в контейнере
+            if (event.target.classList.contains('screenshot')) {
+                openImageModal(event.target.src, event.target.alt);
+            }
+        });
+
+        // Функция для открытия модального окна с изображением
+        function openImageModal(src, alt) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeModal = document.getElementById('closeModal');
+
+            modalImg.src = src;
+            modalImg.alt = alt;
+            
+            modal.style.display = 'block';
+
+            // Обработчики закрытия
+            closeModal.onclick = function() {
+                modal.style.display = 'none';
+            };
+            
+            modal.onclick = function() {
+                modal.style.display = 'none';
+            };
+        }
+
+        // Закрытие модального окна при нажатии на клавишу Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modal = document.getElementById('imageModal');
+                if (modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
