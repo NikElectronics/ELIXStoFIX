@@ -601,10 +601,24 @@
             </div>
 
             <div class="section">
+                <div class="system-cards">
+                    
+                    <div class="system-card" style="height: fit-content;">
+                        <div class="system-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3 style="font-size: 2rem;">Общее описание модуля диагностики</h3>
+                        <p>Подробная информация о разъёмах и способах подключения к диагностическому модулю</p>
+
+                        <a href="connectors.html" class="btn" style="background-color: #8e44ad;">
+                            <i class="fas fa-arrow-right"></i> Перейти к описанию модуля
+                        </a>
+                    </div>
+                </div>
                 <h2><i class="fas fa-bolt"></i> Выберите систему аккумуляторов</h2>
                 <p class="section-intro">Для перехода к подробной инструкциям по диагностике выберите систему
                     аккумуляторов.</p>
-
+                    
                 <div class="system-cards">
                     <div class="system-card lxt">
                         <div class="system-icon">
@@ -700,7 +714,8 @@
 
                 <div
                     style="text-align: center; margin-top: 40px; padding: 25px; background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 10px;">
-                    <h3 style="color: var(--primary-color); margin-bottom: 15px;">Нужна дополнительная помощь и информация?</h3>
+                    <h3 style="color: var(--primary-color); margin-bottom: 15px;">Нужна дополнительная помощь и
+                        информация?</h3>
                     <p style="margin-bottom: 20px; color: #666;">Наша техническая поддержка готова ответить на ваши
                         вопросы</p>
                     <a href="mailto:nikelectronics78@gmail.com" class="btn"
@@ -719,7 +734,9 @@
                 <h3 style="color: var(--primary-color); margin-bottom: 15px;">Быстрые ссылки</h3>
                 <div class="quick-links">
                     <a href="lxt.html"><i class="fas fa-battery-three-quarters"></i> Инструкция LXT</a>
-                    <a href="xgt.html" style="opacity: 0.6; pointer-events: none; text-decoration: none; color: #999;"><i class="fas fa-bolt"></i> Инструкция XGT</a>
+                    <a href="xgt.html"
+                        style="opacity: 0.6; pointer-events: none; text-decoration: none; color: #999;"><i
+                            class="fas fa-bolt"></i> Инструкция XGT</a>
                     <a href="firmware.html"><i class="fas fa-microchip"></i> Обновление прошивки</a>
                     <a href="mailto:nikelectronics78@gmail.com"><i class="fas fa-headset"></i> Техподдержка</a>
                 </div>
@@ -824,7 +841,7 @@
         });
 
         // Добавляем функционал для увеличения изображений
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             // Проверяем, является ли клик по изображению в контейнере
             if (event.target.classList.contains('image-container') || event.target.closest('.image-container')) {
                 const img = event.target.tagName === 'IMG' ? event.target : event.target.querySelector('img');
@@ -856,11 +873,11 @@
             const closeModal = modal.querySelector('.close');
 
             // Обработчики закрытия
-            closeModal.onclick = function() {
+            closeModal.onclick = function () {
                 modal.style.display = 'none';
             };
-            
-            modal.onclick = function() {
+
+            modal.onclick = function () {
                 modal.style.display = 'none';
             };
 
