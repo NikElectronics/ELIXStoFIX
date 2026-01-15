@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диагностический модуль аккумуляторов Makita LXT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, #e60000, #b30000);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            letter-spacing: 1px;
+        }
+
+        .overview {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .overview img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            padding: 20px;
+            background: #f0f4f8;
+            color: #2c3e50;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .element-card {
+            background: white;
+            border-radius: 10px;
+            overflow: visible;
+            /* Позволяет изображению отображаться полностью */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin: 20px auto;
+            max-width: 800px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .element-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .element-img {
+            width: 100%;
+            height: auto;
+            /* Позволяет изображению масштабироваться без обрезки */
+            object-fit: contain;
+            /* Всё изображение видно целиком */
+            border-bottom: 1px solid #eee;
+        }
+
+        .element-content {
+            padding: 20px;
+        }
+
+        .element-content h3 {
+            color: #e60000;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .instructions {
+            padding: 30px;
+            background: #f9fafc;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 12px;
+        }
+
+        .highlight {
+            background-color: #fff8dc;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #ffcc00;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Диагностический модуль аккумуляторов Makita LXT</h1>
+        </header>
+
+        <!-- <div class="overview">
+            <img src="ImagesMain/nemakita.png" alt="Общий вид диагностического модуля Makita LXT">
+            <p style="margin-top: 15px; font-size: 1.1em;">
+                Полная диагностика аккумуляторов Makita LXT: напряжение, температура, состояние ячеек.
+            </p>
+        </div> -->
+
+        <div class="section-title">Основные элементы устройства</div>
+
+        <!-- Элемент 1: Разъём Makita -->
+        <div class="element-card">
+            <img src="ImagesMain/makita.png" alt="Разъём Makita для подключения к аккумулятору" class="element-img">
+            <div class="element-content">
+                <h3>🔌 Разъём Makita</h3>
+                <p>Подключите аккумулятор Makita LXT. Совместимость с большинством моделей. Надежный контакт до щелчка.
+                </p>
+            </div>
+        </div>
+
+        <!-- Элемент 2: Кнопка включения -->
+        <div class="element-card">
+            <img src="ImagesMain/button.png" alt="Кнопка включения" class="element-img">
+            <div class="element-content">
+                <h3>🔘 Кнопка включения</h3>
+                <p>Удерживайте 2 секунды для запуска. Светодиодный индикатор показывает статус питания.</p>
+            </div>
+        </div>
+
+        <!-- Элемент 3: USB-разъем зарядки -->
+        <div class="element-card">
+            <img src="ImagesMain/nemakita.png" alt="USB-разъем зарядки" class="element-img">
+            <img src="ImagesMain/usb-charge.png" alt="USB-разъем зарядки" class="element-img">
+            <div class="element-content">
+                <h3>🔌 USB-разъём зарядки</h3>
+                <p>Для питания от внешнего источника: Power Bank, адаптер. Работа без аккумулятора.</p>
+            </div>
+        </div>
+
+        <!-- Элемент 4: Диагностический USB-разъем -->
+        <div class="element-card">
+            <img src="ImagesMain/usb-comp.png" alt="Диагностический USB-разъем" class="element-img">
+            <div class="element-content">
+                <h3>💻 Диагностический USB</h3>
+                <p>Для подключения к ПК. Передача отчётов и логов диагностики. Поддержка ПО.</p>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h2 style="color: #2c3e50;">Как использовать модуль</h2>
+            <ol>
+                <li>Убедитесь, что аккумулятор чистый и сухой.</li>
+                <li>Подключите аккумулятор к <strong>разъёму Makita</strong>.</li>
+                <li>Нажмите и удерживайте <strong>кнопку включения</strong> до появления индикации.</li>
+                <li>Дождитесь окончания автоматической диагностики.</li>
+                <li>Подключите <strong>диагностический USB-порт</strong> к компьютеру.</li>
+                <li>Запустите программное обеспечение и сохраните результаты.</li>
+            </ol>
+        </div>
+
+        <div class="highlight">
+            <strong>Совет:</strong> Регулярно обновляйте программное обеспечение для получения наиболее точных данных
+            диагностики.
+        </div>
+
+        <footer>
+            &copy; 2026 Инструкция по использованию диагностического модуля Makita LXT
+        </footer>
+    </div>
+
+</body>
+
+</html>
