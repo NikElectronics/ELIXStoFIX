@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 36,
+            "activePatchIndex": 37,
             "patches": [
                 {
                     "date": 1767699478445,
@@ -152,6 +152,10 @@
                 {
                     "date": 1768552638296,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -934,9 +934,9 @@\n                     обращайтесь по email: <a href=\"mailto:nikelectronics78@gmail.com\">nikelectronics78@gmail.com</a></p>\r\n             </div>\r\n         </div>\r\n \r\n-        <div class=\"section\" id=\"anyproducts\">\r\n+        <!-- <div class=\"section\" id=\"anyproducts\">\r\n             <h2><i class=\"fas fa-info-circle\"></i> Дополнительно:</h2>\r\n             <div class=\"warning pulse\">\r\n                 <p><i class=\"fas fa-exclamation-triangle\"></i> <strong>Внимание!</strong></p>\r\n                 <ul>\r\n@@ -946,9 +946,9 @@\n                         включая потерю данных, сбои в работе оборудования или встроенного программного обеспечения,\r\n                         а также любые финансовые потери. Используйте данный модуль на свой страх и риск.</li>\r\n                 </ul>\r\n             </div>\r\n-        </div>\r\n+        </div> -->\r\n     </div>\r\n \r\n     <script>\r\n         document.addEventListener('DOMContentLoaded', function () {\r\n"
+                },
+                {
+                    "date": 1768576974490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -802,11 +802,11 @@\n         </div>\r\n \r\n         <div class=\"section\" id=\"section4\">\r\n             <h2><i class=\"fas fa-tools\"></i> 3. Устранение неисправностей</h2>\r\n-            <p><a href=\"firmware.html\"\r\n-                    style=\"font-size: 18px;color: var(--secondary-color); text-decoration: underline;\">Инструкция\r\n-                    по обновлению прошивки.</a></p>\r\n+            <div class=\"note\">\r\n+                <p><i class=\"fas fa-download\"></i> <strong>Важно:</strong> <a href=\"firmware.html\" style=\"color: var(--note-color); text-decoration: none; font-weight: bold;\">Инструкция по обновлению прошивки</a> - следуйте этой инструкции для правильного обновления прошивки вашего устройства.</p>\r\n+            </div>\r\n             <div class=\"warning\">\r\n                 <p><i class=\"fas fa-exclamation-triangle\"></i> <strong>Перед устранением неисправностей убедитесь,\r\n                         что:</strong></p>\r\n                 <ul>\r\n"
                 }
             ],
             "date": 1767699478445,
