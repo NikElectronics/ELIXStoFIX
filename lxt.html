@@ -627,9 +627,8 @@
                 <li><a href="#section2-2"><i class="fas fa-lightbulb"></i> <span>2.2 Светодиоды</span></a></li>
                 <li><a href="#section2-3"><i class="fas fa-exclamation-triangle"></i> <span>2.3 Сброс ошибок</span></a>
                 </li>
-                <li><a href="#section3"><i class="fas fa-terminal"></i> <span>3. Программатор</span></a></li>
-                <li><a href="#section4"><i class="fas fa-battery-three-quarters"></i> <span>4. Зарядка</span></a></li>
-                <li><a href="#section5"><i class="fas fa-tools"></i> <span>5. Устранение неисправностей</span></a></li>
+                <li><a href="#section4"><i class="fas fa-tools"></i> <span>3. Устранение неисправностей</span></a></li>
+                <!-- <li><a href="#section3"><i class="fas fa-terminal"></i> <span>4. Программатор</span></a></li> -->
                 <li><a href="#section-products"><i class="fas fa-cube"></i> <span>Наши продукты</span></a></li>
                 <li class="divider"></li>
                 <li><a href="mailto:nikelectronics78@gmail.com"><i class="fas fa-envelope"></i>
@@ -646,9 +645,11 @@
             <!-- <img src="images/nemakita.png" alt="Общий вид">
             <div class="image-caption">Общий вид устройства</div> -->
             <div class="note">
-                <p><i class="fas fa-exclamation-triangle"></i> <strong></strong> Данный модуль имеет функционал
-                    соответствующий возможностям проекта Open battery information c возможностью подключения через WEB
-                    интерфейс</p>
+                <p><i class="fas fa-exclamation-triangle"></i> <strong></strong> Данный модуль при работе с серией LXT
+                    имеет функционал
+                    соответствующий возможностям проекта Open battery information c дополнительной возможностью
+                    подключения через WEB
+                    интерфейс.</p>
             </div>
         </div>
 
@@ -658,26 +659,26 @@
             <div class="section" id="section1-1">
                 <h3><i class="fas fa-microchip"></i> 1.1. Аппаратное подключение</h3>
                 <ol>
-                    <li>Подключите диагностическое устройство к аккумулятору Makita через специальный разъем (рис. 1.1)
+                    <li>Подключите диагностическое устройство к аккумулятору Makita через специальный разъем
                     </li>
-                    <li>Подключите устройство к компьютеру через USB-порт (рис. 1.2)</li>
-                    <li>Включите прибор нажав кнопку включения (рис. 1.1)</li>
+                    <li>Подключите устройство к компьютеру через диагностический USB-порт </li>
+                    <li>Включите прибор нажав кнопку включения </li>
                     <li>Воспользуйтесь программой <a
                             href="https://github.com/mnh-jansson/open-battery-information/releases">open battery
                             information</a></li>
-                    <li>После завершения работы нажмите кнопку включения 2 раза для выключения устройства (рис. 1.1)
+                    <li>После завершения работы нажмите кнопку включения 2 раза для выключения устройства
                     </li>
                 </ol>
 
-                <div class="image-container">
+                <!-- <div class="image-container">
                     <img src="images/connection.png" alt="Подключение устройства к аккумулятору">
                     <div class="image-caption">Рис. 1.1 - Подключение устройства к аккумулятору BL1860</div>
-                </div>
+                </div> -->
 
-                <div class="image-container">
+                <!-- <div class="image-container">
                     <img src="images/usb-connection.png" alt="Подключение к компьютеру">
                     <div class="image-caption">Рис. 1.2 - Подключение через USB-порт</div>
-                </div>
+                </div> -->
 
                 <div class="warning">
                     <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong> Не подключайте устройство
@@ -695,14 +696,15 @@
                     <p><strong>IP-адрес:</strong> 192.168.4.1</p>
                 </div>
 
-                <p>После подключения к "Makita" откройте браузер и перейдите по адресу
+                <p>После подключения к "Makita", если не открылся Captive Portal, откройте браузер и перейдите по адресу
                     <strong>http://192.168.4.1</strong>
                 </p>
 
                 <div class="image-container">
-                    <img src="images/login-screen.jpeg" alt="Экран входа">
-                    <div class="image-caption">Рис. 1.4 - Стартовый экран веб-интерфейса</div>
+                    <img src="images/main.jpg" alt="Экран входа">
+                    <div class="image-caption">Рис. 1 - Стартовый экран веб-интерфейса</div>
                 </div>
+                <p>Далее выберите пункт <strong>Makita LXT</strong>
             </div>
         </div>
 
@@ -715,9 +717,14 @@
 
                 <ol>
                     <li>В разделе <strong>"📚 Чтение данных"</strong> нажмите кнопку <strong>"Модель"</strong> (рис.
-                        2.1)</li>
+                        2)</li>
+                    <div class="image-container">
+                        <img src="images/login-screen.jpeg" alt="Экран входа">
+                        <div class="image-caption">Рис. 2 - Стартовый экран веб-интерфейса</div>
+                    </div>
                     <li>Дождитесь определения модели аккумулятора</li>
-                    <li>После успешного определения нажмите кнопку <strong>"Данные"</strong> или <strong>"Инфо"</strong></li>
+                    <li>После успешного определения нажмите кнопку <strong>"Данные"</strong> или <strong>"Инфо"</strong>
+                    </li>
                     <li>Ожидайте завершения сбора данных </li>
                 </ol>
 
@@ -787,58 +794,15 @@
                 </div>
 
                 <div class="warning pulse">
-                    <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong> Сброс ошибок через WEB интерфейс выполняется
+                    <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong> Сброс ошибок через WEB
+                        интерфейс выполняется
                         только при наличии лицензионного ключа!</p>
                 </div>
             </div>
         </div>
 
-        <div class="section" id="section3">
-            <h2><i class="fas fa-terminal"></i> 3. Программатор</h2>
-            <p>В разделе <strong>"👨‍💻 Программатор"</strong> доступны дополнительные функции управления устройством:
-            </p>
-
-            <div class="image-container">
-                <img src="images/programmer-tab.jpeg" alt="Вкладка программатора">
-                <div class="image-caption">Рис. 3.1 - Интерфейс программатора</div>
-            </div>
-
-            <ol>
-                <li><strong>Перезагрузить:</strong> полная перезагрузка диагностического устройства</li>
-                <li><strong>Ключ:</strong> поле для ввода лицензионного ключа (предустановлен)</li>
-            </ol>
-
-            <div class="note">
-                <p><i class="fas fa-info-circle"></i> После ввода правильного ключа (указан на корпусе) станут доступны
-                    все функции диагностики</p>
-            </div>
-        </div>
-
         <div class="section" id="section4">
-            <h2><i class="fas fa-battery-three-quarters"></i> 4. Зарядка встроенного аккумулятора</h2>
-            <p>Устройство оснащено встроенным аккумулятором c портом для заряда USB Type C:</p>
-
-            <div class="image-container">
-                <img src="images/charge.png" alt="Зарядка аккумулятора">
-                <div class="image-caption">Рис. 4.1 - Зарядка аккумулятора</div>
-            </div>
-
-            <ol>
-                <li>Подключите устройство при помощи кабеля к зарядному устройству 5в 1A</li>
-                <li>Индикатор заряда в процессе будет мигать крассным цветом</li>
-                <li>Дождитесь завершения процесса (горят все светодиоды)</li>
-            </ol>
-
-            <div class="warning pulse">
-                <p><i class="fas fa-exclamation-triangle"></i> <strong>Важно!</strong></p>
-                <ul>
-                    <li>Не оставляйте устройство без контроля во время заряда.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section" id="section5">
-            <h2><i class="fas fa-tools"></i> 5. Устранение неисправностей</h2>
+            <h2><i class="fas fa-tools"></i> 3. Устранение неисправностей</h2>
             <p><a href="firmware.html"
                     style="font-size: 18px;color: var(--secondary-color); text-decoration: underline;">Инструкция
                     по обновлению прошивки.</a></p>
@@ -944,33 +908,34 @@
         <div class="section" id="section-products">
             <h2><i class="fas fa-cube"></i> Наши продукты</h2>
             <p>Мы разрабатываем различные решения для автоматизации:</p>
-            
+
             <div class="products-grid">
                 <div class="product-card">
                     <h4><i class="fas fa-cube"></i> BedLeveling</h4>
                     <p>Система анализа кривизны стола 3D принтера</p>
                     <a href="https://nikelectronics.github.io/BedLeveling/" class="product-link">Подробнее</a>
                 </div>
-                
+
                 <div class="product-card">
                     <h4><i class="fas fa-robot"></i> TempBot-1000</h4>
                     <p>Интеллектуальная термокамера с PID-регулированием температуры и поддержанием влажности.</p>
                     <a href="https://nikelectronics.github.io/TempBot-1000/" class="product-link">Подробнее</a>
                 </div>
-                
+
                 <div class="product-card">
                     <h4><i class="fas fa-water"></i> Мой фонтан</h4>
                     <p>Контроллер управления фонтаном с поддержкой различных режимов работы и удаленным управлением.</p>
                     <a href="https://nikelectronics.github.io/fountain_manual/" class="product-link">Подробнее</a>
                 </div>
             </div>
-            
+
             <div class="note">
-                <p><i class="fas fa-info-circle"></i> <strong>Техническая поддержка:</strong> По всем вопросам обращайтесь по email: <a href="mailto:nikelectronics78@gmail.com">nikelectronics78@gmail.com</a></p>
+                <p><i class="fas fa-info-circle"></i> <strong>Техническая поддержка:</strong> По всем вопросам
+                    обращайтесь по email: <a href="mailto:nikelectronics78@gmail.com">nikelectronics78@gmail.com</a></p>
             </div>
         </div>
 
-        <div class="section" id="anyproducts">
+        <!-- <div class="section" id="anyproducts">
             <h2><i class="fas fa-info-circle"></i> Дополнительно:</h2>
             <div class="warning pulse">
                 <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong></p>
@@ -982,7 +947,7 @@
                         а также любые финансовые потери. Используйте данный модуль на свой страх и риск.</li>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <script>
@@ -1120,7 +1085,7 @@
         });
 
         // Добавляем функционал для увеличения изображений
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             // Проверяем, является ли клик по изображению в контейнере
             if (event.target.classList.contains('image-container') || event.target.closest('.image-container')) {
                 const img = event.target.tagName === 'IMG' ? event.target : event.target.querySelector('img');
@@ -1152,11 +1117,11 @@
             const closeModal = modal.querySelector('.close');
 
             // Обработчики закрытия
-            closeModal.onclick = function() {
+            closeModal.onclick = function () {
                 modal.style.display = 'none';
             };
-            
-            modal.onclick = function() {
+
+            modal.onclick = function () {
                 modal.style.display = 'none';
             };
 

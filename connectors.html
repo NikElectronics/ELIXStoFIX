@@ -84,6 +84,12 @@
             object-fit: contain;
             /* Всё изображение видно целиком */
             border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .element-img:hover {
+            transform: scale(1.02);
         }
 
         .element-content {
@@ -117,6 +123,60 @@
             margin-top: 20px;
         }
 
+        /* Стили для важного предупреждения */
+        .warning {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+            position: relative;
+        }
+
+        .warning::before {
+            content: "⚠️";
+            font-size: 24px;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+
+        .warning p:first-child {
+            font-weight: bold;
+            color: #856404;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            padding-left: 30px;
+        }
+
+        .warning ul {
+            margin: 10px 0 0 0;
+            padding-left: 30px;
+        }
+
+        .warning li {
+            color: #856404;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(255, 193, 7, 0.6);
+            }
+            100% {
+                box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+            }
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -128,6 +188,46 @@
 </head>
 
 <body>
+
+    <!-- Модальное окно для просмотра изображений -->
+    <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);">
+        <span id="closeModal" style="position: absolute; top: 20px; right: 35px; color: white; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
+        <img id="modalImage" style="display: block; margin: auto; max-width: 90%; max-height: 80%; margin-top: 60px;">
+    </div>
+
+    <script>
+        // Функция для открытия изображения в модальном окне
+        function openImageModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = imgSrc;
+        }
+
+        // Закрытие модального окна
+        document.getElementById('closeModal').onclick = function() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Закрытие при клике вне изображения
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Добавляем обработчики кликов на все изображения
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.element-img');
+            images.forEach(function(img) {
+                img.style.cursor = 'pointer';
+                img.onclick = function() {
+                    openImageModal(this.src);
+                };
+            });
+        });
+    </script>
 
     <div class="container">
         <header>
@@ -158,7 +258,10 @@
             <img src="ImagesMain/button.png" alt="Кнопка включения" class="element-img">
             <div class="element-content">
                 <h3>🔘 Кнопка включения</h3>
-                <!-- <p>Удерживайте 2 секунды для запуска. Светодиодный индикатор показывает статус питания.</p> -->
+                <p>
+                    - Одно нажатие включает устройство<br>
+                    - Два нажатия выключает устройство
+                </p>
             </div>
         </div>
 
@@ -168,7 +271,20 @@
             <img src="ImagesMain/usb-charge.png" alt="USB-разъем зарядки" class="element-img">
             <div class="element-content">
                 <h3>🔌 USB-разъём зарядки</h3>
-                <!-- <p>Для питания от внешнего источника: Power Bank, адаптер. Работа без аккумулятора.</p> -->
+                            <ol>
+                <li>Подключите устройство при помощи кабеля к зарядному устройству 5в 1A</li>
+                <li>Индикатор заряда в процессе будет мигать крассным цветом</li>
+                <li>Дождитесь завершения процесса (горят все светодиоды)</li>
+            </ol>
+
+            <div class="warning pulse">
+                <p><strong>ВАЖНО!</strong></p>
+                <ul>
+                    <li>Не оставляйте устройство без контроля во время заряда!</li>
+                    <!-- <li>Используйте только оригинальное зарядное устройство 5V 1A</li>
+                    <li>Прекратите зарядку при появлении необычных звуков или запаха</li> -->
+                </ul>
+            </div>
             </div>
         </div>
 
@@ -177,7 +293,7 @@
             <img src="ImagesMain/usb-comp.png" alt="Диагностический USB-разъем" class="element-img">
             <div class="element-content">
                 <h3>💻 Диагностический USB</h3>
-                <!-- <p>Для подключения к ПК. Передача отчётов и логов диагностики. Поддержка ПО.</p> -->
+                <p>Для подключения к ПК для работы работы с программным обеспечением и прошивки.</p>
             </div>
         </div>
 
