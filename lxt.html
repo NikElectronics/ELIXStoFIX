@@ -48,11 +48,12 @@
             transition: all var(--transition-speed) ease;
             z-index: 1000;
             box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-            left: 0;
+            left: calc(-1 * var(--sidebar-width));
         }
 
         .sidebar.collapsed {
             width: var(--sidebar-collapsed-width);
+            left: calc(-1 * var(--sidebar-width) + var(--sidebar-collapsed-width));
         }
 
         .sidebar-header {
@@ -165,7 +166,7 @@
         }
 
         .sidebar.collapsed~.content {
-            margin-left: var(--sidebar-collapsed-width);
+            margin-left: 0;
         }
 
         .section {
@@ -451,11 +452,11 @@
 
             .sidebar.collapsed {
                 width: var(--sidebar-collapsed-width);
-                left: 0;
+                left: calc(-1 * var(--sidebar-width) + var(--sidebar-collapsed-width));
             }
 
             .sidebar.collapsed~.content {
-                margin-left: var(--sidebar-collapsed-width);
+                margin-left: 0;
                 transform: translateX(0);
             }
 
@@ -489,7 +490,7 @@
             }
 
             .sidebar.collapsed .mobile-menu-btn {
-                left: calc(var(--sidebar-collapsed-width) + 15px);
+                left: 15px;
             }
 
             .sidebar.show~.mobile-menu-btn {
@@ -509,10 +510,86 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        @media screen and (min-width: 993px) {
+            .sidebar {
+                width: var(--sidebar-width);
+                left: calc(-1 * var(--sidebar-width));
+                height: 100%;
+            }
+
+            .sidebar.show {
+                left: 0;
+            }
+
+            .sidebar.collapsed {
+                width: var(--sidebar-collapsed-width);
+                left: calc(-1 * var(--sidebar-width) + var(--sidebar-collapsed-width));
+            }
+
+            .sidebar.collapsed~.content {
+                margin-left: 0;
+            }
+
+            .content {
+                margin-left: 0;
+                padding: 20px 15px;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                z-index: 1100;
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                transition: all var(--transition-speed);
+            }
+            
+            .sidebar.collapsed .mobile-menu-btn {
+                left: 15px;
+            }
+            
+            .sidebar.show~.mobile-menu-btn {
+                left: calc(var(--sidebar-width) + 15px);
+            }
+        }
 
         @media screen and (min-width: 993px) {
             .mobile-menu-btn {
-                display: none;
+                display: flex;
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                z-index: 1100;
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                transition: all var(--transition-speed);
+            }
+            
+            .sidebar.collapsed .mobile-menu-btn {
+                left: 15px;
+            }
+            
+            .sidebar.show~.mobile-menu-btn {
+                left: calc(var(--sidebar-width) + 15px);
             }
         }
 
@@ -615,7 +692,7 @@
         <div class="sidebar-header">
             <h3><i class="fas fa-battery-full"></i> <span>Makita Tools</span></h3>
             <button class="toggle-btn" id="toggleBtn" aria-label="Свернуть меню"><i
-                    class="fas fa-chevron-left"></i></button>
+                    class="fas fa-chevron-right"></i></button>
         </div>
         <div class="sidebar-content">
             <ul>
@@ -640,7 +717,7 @@
     </div>
 
     <div class="content">
-        <h1><i class="fas fa-battery-three-quarters"></i> Инструкция по работе с диагностическим модулем ЭлИксToFIX</h1>
+        <h1><i class="fas fa-battery-three-quarters"></i> Диагностика аккумуляторов Makita LXT</h1>
         <div class="image-container">
             <!-- <img src="images/nemakita.png" alt="Общий вид">
             <div class="image-caption">Общий вид устройства</div> -->
@@ -960,31 +1037,22 @@
 
             // Инициализация меню
             function initMenu() {
-                if (isMobile) {
-                    sidebar.classList.add('collapsed');
-                    sidebar.classList.remove('show');
-                    overlay.classList.remove('show');
-                } else {
-                    sidebar.classList.remove('show');
-                    overlay.classList.remove('show');
-                }
+                sidebar.classList.add('collapsed');
+                sidebar.classList.remove('show');
+                overlay.classList.remove('show');
                 updateToggleIcon();
             }
 
             // Переключение меню
             function toggleMenu() {
-                if (isMobile) {
-                    if (sidebar.classList.contains('collapsed')) {
-                        sidebar.classList.remove('collapsed');
-                        sidebar.classList.add('show');
-                        overlay.classList.add('show');
-                    } else {
-                        sidebar.classList.add('collapsed');
-                        sidebar.classList.remove('show');
-                        overlay.classList.remove('show');
-                    }
+                if (sidebar.classList.contains('collapsed')) {
+                    sidebar.classList.remove('collapsed');
+                    sidebar.classList.add('show');
+                    overlay.classList.add('show');
                 } else {
-                    sidebar.classList.toggle('collapsed');
+                    sidebar.classList.add('collapsed');
+                    sidebar.classList.remove('show');
+                    overlay.classList.remove('show');
                 }
                 updateToggleIcon();
             }
@@ -993,11 +1061,11 @@
             function updateToggleIcon() {
                 const icon = toggleBtn.querySelector('i');
                 if (sidebar.classList.contains('collapsed')) {
-                    icon.classList.remove('fa-chevron-left');
-                    icon.classList.add('fa-chevron-right');
-                } else {
                     icon.classList.remove('fa-chevron-right');
                     icon.classList.add('fa-chevron-left');
+                } else {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-chevron-right');
                 }
             }
 
@@ -1013,9 +1081,7 @@
             });
 
             overlay.addEventListener('click', function () {
-                if (isMobile) {
-                    toggleMenu();
-                }
+                toggleMenu();
             });
 
             // Плавная прокрутка
@@ -1034,15 +1100,13 @@
                             behavior: 'smooth'
                         });
 
-                        // Закрываем меню на мобильных устройствах после клика
-                        if (isMobile) {
-                            setTimeout(() => {
-                                sidebar.classList.add('collapsed');
-                                sidebar.classList.remove('show');
-                                overlay.classList.remove('show');
-                                updateToggleIcon();
-                            }, 300);
-                        }
+                        // Закрываем меню после клика
+                        setTimeout(() => {
+                            sidebar.classList.add('collapsed');
+                            sidebar.classList.remove('show');
+                            overlay.classList.remove('show');
+                            updateToggleIcon();
+                        }, 300);
                     }
                 });
             });
@@ -1070,12 +1134,7 @@
 
             // Обработчик изменения размера окна
             window.addEventListener('resize', function () {
-                const wasMobile = isMobile;
-                isMobile = window.innerWidth <= 992;
-
-                if (wasMobile !== isMobile) {
-                    initMenu();
-                }
+                initMenu();
             });
 
             // Инициализация
