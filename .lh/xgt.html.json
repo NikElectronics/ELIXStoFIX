@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 115,
+            "activePatchIndex": 116,
             "patches": [
                 {
                     "date": 1767699660836,
@@ -468,6 +468,10 @@
                 {
                     "date": 1768629018453,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -729,9 +729,9 @@\n         </div>\r\n     </div>\r\n \r\n     <div class=\"content\">\r\n-         <h1><i class=\"fas fa-bolt\"></i> Диагностика аккумуляторов Makita XGT <span class=\"xgt-badge\">XGT</span></h1>\r\n+         <h1></h1>\r\n         <h1><i class=\"fas fa-bolt\"></i> Диагностика аккумуляторов Makita XGT <span class=\"xgt-badge\">XGT</span></h1>\r\n \r\n         <div class=\"section\" id=\"section1\">\r\n             <h2><i class=\"fas fa-plug\"></i> 1. Подключение и настройка</h2>\r\n"
+                },
+                {
+                    "date": 1768799856192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -738,9 +738,9 @@\n \r\n             <div class=\"section\" id=\"section1-1\">\r\n                 <h3><i class=\"fas fa-plug\"></i> 1.1. Подключение к аккумулятору</h3>\r\n                 <p>Подключитесь к аккумулятору сгласно схеме изготвив необходимый переходник</p>\r\n-                <p>или приобретите переходник у нас.</p>\r\n+                <p>или приобретите переходник у нас (переходник в разработке).</p>\r\n                 <div class=\"image-container\">\r\n                     <img src=\"imagesXGT/scheme.png\" alt=\"Экран входа\">\r\n                     <div class=\"image-caption\">Рис. 1.1 - Подключение к аккумулятору</div>\r\n                 </div>\r\n"
                 }
             ],
             "date": 1767699660836,
