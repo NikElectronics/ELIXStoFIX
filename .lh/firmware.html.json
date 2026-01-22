@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 73,
+            "activePatchIndex": 74,
             "patches": [
                 {
                     "date": 1761129543384,
@@ -300,6 +300,10 @@
                 {
                     "date": 1769081817526,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -354,8 +354,9 @@\n                 <img src=\"images/JTAG.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Также дополнительно скачайте файлы <a href=\"files/bootloader.bin\" download>bootloader.bin</a> и <a href=\"files/partitions.bin\" download>partitions.bin</a>,\r\n                      которые потребуются для прошивки чистого контроллера.</li>\r\n                 <li>Нажав иконку SELECT и выберите файл прошивки, который вы скачали ранее </li>\r\n+                <img src=\"images/_select.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>И установите адреса в соответствии со скриншотом </li>\r\n                 <img src=\"images/Select.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Нажмите иконку PROGRAM.</li>\r\n                 <img src=\"images/Program.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n"
+                },
+                {
+                    "date": 1769082494959,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -354,9 +354,9 @@\n                 <img src=\"images/JTAG.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Также дополнительно скачайте файлы <a href=\"files/bootloader.bin\" download>bootloader.bin</a> и <a href=\"files/partitions.bin\" download>partitions.bin</a>,\r\n                      которые потребуются для прошивки чистого контроллера.</li>\r\n                 <li>Нажав иконку SELECT и выберите файл прошивки, который вы скачали ранее </li>\r\n-                <img src=\"images/_select.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n+                <img src=\"images/Sselect.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>И установите адреса в соответствии со скриншотом </li>\r\n                 <img src=\"images/Select.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Нажмите иконку PROGRAM.</li>\r\n                 <img src=\"images/Program.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n"
                 }
             ],
             "date": 1761129543384,
