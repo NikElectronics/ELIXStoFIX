@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 69,
+            "activePatchIndex": 73,
             "patches": [
                 {
                     "date": 1761129543384,
@@ -284,6 +284,22 @@
                 {
                     "date": 1768987821037,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -286,9 +286,9 @@\n                 <li>Под паролем администратора не совершайте иных действий кроме указанных в данной инструкции.</li>\r\n                 <li>Убедитесь, что источник прошивки надежный и файл не поврежден</li>\r\n                 <li>Не прерывайте процесс обновления</li>\r\n                 <li>Убедитесь, что устройство имеет стабильное питание во время обновления</li>\r\n-                <li>После прошивки выйдите из режима администратора.</li>\r\n+                <li>После прошивки выйдите из режима администратора введя неверный пароль.</li>\r\n             </ul>\r\n         </div>\r\n     </div>\r\n \r\n"
+                },
+                {
+                    "date": 1769080918063,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -351,8 +351,9 @@\n                 <li>Нажмите иконку CONNECT</li>\r\n                 <img src=\"images/connect.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Из предлагаемого списка com выберите USB JTAG/Serial debug и нажмите Подключение</li>\r\n                 <img src=\"images/JTAG.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n+                <li>Также дополнительно скачайте файлы <a href=\"files/bootloader.bin\" download>bootloader.bin</a> и <a href=\"files/partitions.bin\" download>partitions.bin</a>, которые могут потребоваться для некоторых устройств</li>\r\n                 <li>Нажав иконку SELECT и выберите файл прошивки, который вы скачали ранее </li>\r\n                 <img src=\"images/Select.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Нажмите иконку PROGRAM.</li>\r\n                 <img src=\"images/Program.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n"
+                },
+                {
+                    "date": 1769081308463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -303,9 +303,9 @@\n         </div>\r\n \r\n         <div class=\"warning\">\r\n             <h3>⚠️ ВАЖНО: Перед началом обновления</h3>\r\n-            <p><strong>Обязательно сохраните лицензионный ключ и номер прибора!.</p>\r\n+            <p>Обязательно сохраните лицензионный ключ и номер прибора!.</p>\r\n             <p>Рекомендуется:</p>\r\n             <ul>\r\n                 <li>Сделать скриншот раздела с лицензионной информацией</li>\r\n                 <li>Записать номер прибора и лицензионный ключ на бумаге</li>\r\n"
+                },
+                {
+                    "date": 1769081578289,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -351,10 +351,12 @@\n                 <li>Нажмите иконку CONNECT</li>\r\n                 <img src=\"images/connect.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Из предлагаемого списка com выберите USB JTAG/Serial debug и нажмите Подключение</li>\r\n                 <img src=\"images/JTAG.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n-                <li>Также дополнительно скачайте файлы <a href=\"files/bootloader.bin\" download>bootloader.bin</a> и <a href=\"files/partitions.bin\" download>partitions.bin</a>, которые могут потребоваться для некоторых устройств</li>\r\n+                <li>Также дополнительно скачайте файлы <a href=\"files/bootloader.bin\" download>bootloader.bin</a> и <a href=\"files/partitions.bin\" download>partitions.bin</a>,\r\n+                     которые потребуются для прошивки чистого контроллера.</li>\r\n                 <li>Нажав иконку SELECT и выберите файл прошивки, который вы скачали ранее </li>\r\n+                <li>И установите адреса в соответствии со скриншотом </li>\r\n                 <img src=\"images/Select.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Нажмите иконку PROGRAM.</li>\r\n                 <img src=\"images/Program.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Дождитесь окончания загруки.</li>\r\n"
+                },
+                {
+                    "date": 1769081817526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -354,8 +354,9 @@\n                 <img src=\"images/JTAG.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Также дополнительно скачайте файлы <a href=\"files/bootloader.bin\" download>bootloader.bin</a> и <a href=\"files/partitions.bin\" download>partitions.bin</a>,\r\n                      которые потребуются для прошивки чистого контроллера.</li>\r\n                 <li>Нажав иконку SELECT и выберите файл прошивки, который вы скачали ранее </li>\r\n+                <img src=\"images/_select.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>И установите адреса в соответствии со скриншотом </li>\r\n                 <img src=\"images/Select.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Нажмите иконку PROGRAM.</li>\r\n                 <img src=\"images/Program.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n"
                 }
             ],
             "date": 1761129543384,
