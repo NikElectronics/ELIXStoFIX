@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 74,
+            "activePatchIndex": 77,
             "patches": [
                 {
                     "date": 1761129543384,
@@ -304,6 +304,18 @@
                 {
                     "date": 1769082494959,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -354,9 +354,9 @@\n                 <img src=\"images/JTAG.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Также дополнительно скачайте файлы <a href=\"files/bootloader.bin\" download>bootloader.bin</a> и <a href=\"files/partitions.bin\" download>partitions.bin</a>,\r\n                      которые потребуются для прошивки чистого контроллера.</li>\r\n                 <li>Нажав иконку SELECT и выберите файл прошивки, который вы скачали ранее </li>\r\n-                <img src=\"images/_select.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n+                <img src=\"images/Sselect.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>И установите адреса в соответствии со скриншотом </li>\r\n                 <img src=\"images/Select.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n                 <li>Нажмите иконку PROGRAM.</li>\r\n                 <img src=\"images/Program.png\" alt=\"Интерфейс программатора\" class=\"screenshot\">\r\n"
+                },
+                {
+                    "date": 1769183201536,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -176,9 +176,9 @@\n         <div class=\"download-container\" id=\"downloadSection\">\r\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n-            <a href=\"files/lxtfix_V3(XGT).bin\" download class=\"download-btn\">\r\n+            <a href=\"files/lxtfix_V3(+XGT).bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V3(XGT).bin\r\n             </a>\r\n         </div>\r\n \r\n@@ -296,9 +296,9 @@\n         <div class=\"download-container\" id=\"downloadSection\">\r\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n-            <a href=\"files/lxtfix_V3(XGT).bin\" download class=\"download-btn\">\r\n+            <a href=\"files/lxtfix_V3(+XGT).bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V3(XGT).bin\r\n             </a>\r\n         </div>\r\n \r\n"
+                },
+                {
+                    "date": 1769183331187,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -177,9 +177,9 @@\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n             <a href=\"files/lxtfix_V3(+XGT).bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V3(XGT).bin\r\n+                📥 Скачать прошивку lxtfix_V3(+XGT).bin\r\n             </a>\r\n         </div>\r\n \r\n         <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>\r\n"
+                },
+                {
+                    "date": 1769183352114,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -297,9 +297,9 @@\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n             <a href=\"files/lxtfix_V3(+XGT).bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V3(XGT).bin\r\n+                📥 Скачать прошивку lxtfix_V3(+XGT).bin\r\n             </a>\r\n         </div>\r\n \r\n         <div class=\"warning\">\r\n"
                 }
             ],
             "date": 1761129543384,
