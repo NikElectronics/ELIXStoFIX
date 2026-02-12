@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 77,
+            "activePatchIndex": 86,
             "patches": [
                 {
                     "date": 1761129543384,
@@ -316,6 +316,42 @@
                 {
                     "date": 1769183352114,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -297,9 +297,9 @@\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n             <a href=\"files/lxtfix_V3(+XGT).bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V3(XGT).bin\r\n+                📥 Скачать прошивку lxtfix_V3(+XGT).bin\r\n             </a>\r\n         </div>\r\n \r\n         <div class=\"warning\">\r\n"
+                },
+                {
+                    "date": 1770893401506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -176,9 +176,9 @@\n         <div class=\"download-container\" id=\"downloadSection\">\r\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n-            <a href=\"files/lxtfix_V3(+XGT).bin\" download class=\"download-btn\">\r\n+            <a href=\"files/lxtfix_V301(+XGT).bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V3(+XGT).bin\r\n             </a>\r\n         </div>\r\n \r\n"
+                },
+                {
+                    "date": 1770893420316,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -296,9 +296,9 @@\n         <div class=\"download-container\" id=\"downloadSection\">\r\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n-            <a href=\"files/lxtfix_V3(+XGT).bin\" download class=\"download-btn\">\r\n+            <a href=\"files/lxtfix_V301(+XGT).bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V3(+XGT).bin\r\n             </a>\r\n         </div>\r\n \r\n"
+                },
+                {
+                    "date": 1770893775273,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -297,9 +297,9 @@\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n             <a href=\"files/lxtfix_V301(+XGT).bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V3(+XGT).bin\r\n+                📥 Скачать прошивку lxtfix_V301(+XGT).bin\r\n             </a>\r\n         </div>\r\n \r\n         <div class=\"warning\">\r\n"
+                },
+                {
+                    "date": 1770893790995,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -177,9 +177,9 @@\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n             <a href=\"files/lxtfix_V301(+XGT).bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V3(+XGT).bin\r\n+                📥 Скачать прошивку lxtfix_V301(+XGT).bin\r\n             </a>\r\n         </div>\r\n \r\n         <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>\r\n"
+                },
+                {
+                    "date": 1770894098353,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -163,8 +163,10 @@\n </head>\r\n \r\n <body>\r\n \r\n+    <p><a href=\"CHANGELOG.md\">История обновлений</a></p>\r\n+\r\n     <h1>Инструкция по обновлению прошивки</h1>\r\n \r\n     <div style=\"display: flex; gap: 20px; margin: 20px 0;\">\r\n         <button id=\"otaTab\" class=\"tab-btn active\" onclick=\"showTab('ota')\">OTA обновление</button>\r\n"
+                },
+                {
+                    "date": 1770894219802,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -163,9 +163,11 @@\n </head>\r\n \r\n <body>\r\n \r\n-    <p><a href=\"CHANGELOG.md\">История обновлений</a></p>\r\n+    <div style=\"margin-bottom: 20px; padding: 10px; background-color: #f0f8ff; border-left: 4px solid #3498db; display: inline-block;\">\r\n+        <span>📋 </span><a href=\"CHANGELOG.md\" style=\"text-decoration: none; color: #2980b9; font-weight: bold;\">История обновлений</a>\r\n+    </div>\r\n \r\n     <h1>Инструкция по обновлению прошивки</h1>\r\n \r\n     <div style=\"display: flex; gap: 20px; margin: 20px 0;\">\r\n"
+                },
+                {
+                    "date": 1770894483024,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -164,9 +164,9 @@\n \r\n <body>\r\n \r\n     <div style=\"margin-bottom: 20px; padding: 10px; background-color: #f0f8ff; border-left: 4px solid #3498db; display: inline-block;\">\r\n-        <span>📋 </span><a href=\"CHANGELOG.md\" style=\"text-decoration: none; color: #2980b9; font-weight: bold;\">История обновлений</a>\r\n+        <span>📋 </span><a href=\"README.md\" style=\"text-decoration: none; color: #2980b9; font-weight: bold;\">История обновлений</a>\r\n     </div>\r\n \r\n     <h1>Инструкция по обновлению прошивки</h1>\r\n \r\n"
+                },
+                {
+                    "date": 1770894606858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -164,9 +164,9 @@\n \r\n <body>\r\n \r\n     <div style=\"margin-bottom: 20px; padding: 10px; background-color: #f0f8ff; border-left: 4px solid #3498db; display: inline-block;\">\r\n-        <span>📋 </span><a href=\"README.md\" style=\"text-decoration: none; color: #2980b9; font-weight: bold;\">История обновлений</a>\r\n+        <span>📋 </span><a href=\"https://github.com/NikElectronics/ELIXStoFIX\" style=\"text-decoration: none; color: #2980b9; font-weight: bold;\">История обновлений</a>\r\n     </div>\r\n \r\n     <h1>Инструкция по обновлению прошивки</h1>\r\n \r\n"
+                },
+                {
+                    "date": 1770894648241,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -164,9 +164,9 @@\n \r\n <body>\r\n \r\n     <div style=\"margin-bottom: 20px; padding: 10px; background-color: #f0f8ff; border-left: 4px solid #3498db; display: inline-block;\">\r\n-        <span>📋 </span><a href=\"https://github.com/NikElectronics/ELIXStoFIX\" style=\"text-decoration: none; color: #2980b9; font-weight: bold;\">История обновлений</a>\r\n+        <span>📋 </span><a href=\"CHANGELOG.md\" style=\"text-decoration: none; color: #2980b9; font-weight: bold;\">История обновлений</a>\r\n     </div>\r\n \r\n     <h1>Инструкция по обновлению прошивки</h1>\r\n \r\n"
                 }
             ],
             "date": 1761129543384,
