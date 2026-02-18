@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 86,
+            "activePatchIndex": 90,
             "patches": [
                 {
                     "date": 1761129543384,
@@ -352,6 +352,22 @@
                 {
                     "date": 1770894648241,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -164,9 +164,9 @@\n \r\n <body>\r\n \r\n     <div style=\"margin-bottom: 20px; padding: 10px; background-color: #f0f8ff; border-left: 4px solid #3498db; display: inline-block;\">\r\n-        <span>📋 </span><a href=\"https://github.com/NikElectronics/ELIXStoFIX\" style=\"text-decoration: none; color: #2980b9; font-weight: bold;\">История обновлений</a>\r\n+        <span>📋 </span><a href=\"CHANGELOG.md\" style=\"text-decoration: none; color: #2980b9; font-weight: bold;\">История обновлений</a>\r\n     </div>\r\n \r\n     <h1>Инструкция по обновлению прошивки</h1>\r\n \r\n"
+                },
+                {
+                    "date": 1771412008306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -180,9 +180,9 @@\n         <div class=\"download-container\" id=\"downloadSection\">\r\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n-            <a href=\"files/lxtfix_V301(+XGT).bin\" download class=\"download-btn\">\r\n+            <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V301(+XGT).bin\r\n             </a>\r\n         </div>\r\n \r\n"
+                },
+                {
+                    "date": 1771412020845,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -300,9 +300,9 @@\n         <div class=\"download-container\" id=\"downloadSection\">\r\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n-            <a href=\"files/lxtfix_V301(+XGT).bin\" download class=\"download-btn\">\r\n+            <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V301(+XGT).bin\r\n             </a>\r\n         </div>\r\n \r\n"
+                },
+                {
+                    "date": 1771412029411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -301,9 +301,9 @@\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V301(+XGT).bin\r\n+                📥 Скачать прошивку lxtfix_V302.bin\r\n             </a>\r\n         </div>\r\n \r\n         <div class=\"warning\">\r\n"
+                },
+                {
+                    "date": 1771412043434,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -181,9 +181,9 @@\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V301(+XGT).bin\r\n+                📥 Скачать прошивку lxtfix_V302.bin\r\n             </a>\r\n         </div>\r\n \r\n         <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>\r\n"
                 }
             ],
             "date": 1761129543384,
