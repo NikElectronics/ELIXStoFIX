@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 120,
+            "activePatchIndex": 121,
             "patches": [
                 {
                     "date": 1767699660836,
@@ -488,6 +488,10 @@
                 {
                     "date": 1768803413180,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -748,9 +748,10 @@\n                     <p><i class=\"fas fa-exclamation-triangle\"></i> <strong>Внимание!</strong></p>\r\n                     <ul style=\"padding-left: 20px; margin: 0;\">\r\n                         <li>Неправильное подключение может привести к выходу из строя диагностического модуля.</li>\r\n                         <li>Работа с высоковольтными аккумуляторами XGT требует особой осторожности.</li>\r\n-                        <li>Если модуль был с прошивкой V2.1 ( <a href=\"https://nikelectronics.github.io/ELIXStoFIX/docs/Schematic_LXT.png\" >схема</a> ), то требуется перепаять резистор R2 согласно <a href=\"https://nikelectronics.github.io/ELIXStoFIX/docs/Schematic_LXT%26XGT.png\" class=\"product-link\">схеме</a>.</li>\r\n+                        <li>Если модуль был с прошивкой V2.1 ( <a href=\"https://nikelectronics.github.io/ELIXStoFIX/docs/Schematic_LXT.png\" >схема</a> ), \r\n+                            то требуется перепаять резистор R2 согласно <a href=\"https://nikelectronics.github.io/ELIXStoFIX/docs/Schematic_LXT%26XGT.png\" class=\"product-link\">схеме</a>.</li>\r\n                         <li>Разработчик не несет ответственности за повреждение оборудования или травмы,\r\n                             вызванные неправильным подключением диагностического модуля.</li>\r\n                     </ul>\r\n                 </div>\r\n"
+                },
+                {
+                    "date": 1780048143660,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -909,9 +909,9 @@\n             <div class=\"section\" id=\"section4\">\r\n                 <h2><i class=\"fas fa-sync-alt\"></i> 3. Сброс данных аккумулятора XGT</h2>\r\n                 \r\n                 <div class=\"note\">\r\n-                    <p><i class=\"fas fa-info-circle\"></i> <strong>Важно:</strong> Для выполнения сброса данных аккумулятора XGT требуется наличие лицензионного ключа.</p>\r\n+                    <p><i class=\"fas fa-info-circle\"></i> <strong>Важно:</strong> Для выполнения сброса данных аккумулятора XGT требуется наличие программного лицензионного ключа (приобретается отдельно).</p>\r\n                 </div>\r\n \r\n                 <h3><i class=\"fas fa-cog\"></i> Процедура сброса данных</h3>\r\n                 \r\n"
                 }
             ],
             "date": 1767699660836,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 42,
+            "activePatchIndex": 44,
             "patches": [
                 {
                     "date": 1767699478445,
@@ -176,6 +176,14 @@
                 {
                     "date": 1768629096362,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -716,8 +716,9 @@\n         </div>\r\n     </div>\r\n \r\n     <div class=\"content\">\r\n+        <h1></h1>\r\n         <h1><i class=\"fas fa-battery-three-quarters\"></i> Диагностика аккумуляторов Makita LXT</h1>\r\n         <div class=\"image-container\">\r\n             <!-- <img src=\"images/nemakita.png\" alt=\"Общий вид\">\r\n             <div class=\"image-caption\">Общий вид устройства</div> -->\r\n"
+                },
+                {
+                    "date": 1780048042057,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -873,9 +873,9 @@\n \r\n                 <div class=\"warning pulse\">\r\n                     <p><i class=\"fas fa-exclamation-triangle\"></i> <strong>Внимание!</strong> Сброс ошибок через WEB\r\n                         интерфейс выполняется\r\n-                        только при наличии лицензионного ключа!</p>\r\n+                        только при наличии программного лицензионного ключа!(установлен)</p>\r\n                 </div>\r\n             </div>\r\n         </div>\r\n \r\n"
+                },
+                {
+                    "date": 1780048185358,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -873,9 +873,9 @@\n \r\n                 <div class=\"warning pulse\">\r\n                     <p><i class=\"fas fa-exclamation-triangle\"></i> <strong>Внимание!</strong> Сброс ошибок через WEB\r\n                         интерфейс выполняется\r\n-                        только при наличии программного лицензионного ключа!(установлен)</p>\r\n+                        только при наличии программного лицензионного ключа! (установлен)</p>\r\n                 </div>\r\n             </div>\r\n         </div>\r\n \r\n"
                 }
             ],
             "date": 1767699478445,
