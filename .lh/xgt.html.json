@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 122,
+            "activePatchIndex": 124,
             "patches": [
                 {
                     "date": 1767699660836,
@@ -496,6 +496,14 @@
                 {
                     "date": 1782445564941,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -982,10 +982,9 @@\n                         </tr>\r\n                         <tr>\r\n                             <td>Не определяется точка доступа \"Makita\"</td>\r\n                             <td>Устройство выключено или Wi-Fi модуль не работает</td>\r\n-                            <td>Убедитесь, что устройство включено. Удерживайте кнопку питания 10 секунд для\r\n-                                перезагрузки\r\n+                            <td>Убедитесь, что устройство включено. Перезагрузите устройство.\r\n                             </td>\r\n                         </tr>\r\n                         <tr>\r\n                             <td>Не удается подключиться к точке доступа</td>\r\n"
+                },
+                {
+                    "date": 1782445791579,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1045,9 +1045,9 @@\n                 <p>Мы разрабатываем различные решения для автоматизации и диагностики:</p>\r\n \r\n                 <div class=\"products-grid\">\r\n                     <div class=\"product-card\">\r\n-                        <h4><i class=\"fas fa-battery-full\"></i> Makita LXT Диагностика</h4>\r\n+                        <h4><i class=\"fas fa-battery-full\"></i>ЭликсToFix</h4>\r\n                         <p>Диагностический модуль для аккумуляторов Makita LXT (18V)</p>\r\n                         <a href=\"index.html\" class=\"product-link\">Перейти</a>\r\n                     </div>\r\n \r\n"
+                },
+                {
+                    "date": 1782445805199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1046,9 +1046,9 @@\n \r\n                 <div class=\"products-grid\">\r\n                     <div class=\"product-card\">\r\n                         <h4><i class=\"fas fa-battery-full\"></i>ЭликсToFix</h4>\r\n-                        <p>Диагностический модуль для аккумуляторов Makita LXT (18V)</p>\r\n+                        <p>Диагностический модуль для аккумуляторов Makita</p>\r\n                         <a href=\"index.html\" class=\"product-link\">Перейти</a>\r\n                     </div>\r\n \r\n                     <div class=\"product-card\">\r\n"
                 }
             ],
             "date": 1767699660836,
