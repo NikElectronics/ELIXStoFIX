@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 124,
+            "activePatchIndex": 125,
             "patches": [
                 {
                     "date": 1767699660836,
@@ -504,6 +504,10 @@
                 {
                     "date": 1782445805199,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1046,9 +1046,9 @@\n \r\n                 <div class=\"products-grid\">\r\n                     <div class=\"product-card\">\r\n                         <h4><i class=\"fas fa-battery-full\"></i>ЭликсToFix</h4>\r\n-                        <p>Диагностический модуль для аккумуляторов Makita LXT (18V)</p>\r\n+                        <p>Диагностический модуль для аккумуляторов Makita</p>\r\n                         <a href=\"index.html\" class=\"product-link\">Перейти</a>\r\n                     </div>\r\n \r\n                     <div class=\"product-card\">\r\n"
+                },
+                {
+                    "date": 1782446376351,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1045,14 +1045,8 @@\n                 <p>Мы разрабатываем различные решения для автоматизации и диагностики:</p>\r\n \r\n                 <div class=\"products-grid\">\r\n                     <div class=\"product-card\">\r\n-                        <h4><i class=\"fas fa-battery-full\"></i>ЭликсToFix</h4>\r\n-                        <p>Диагностический модуль для аккумуляторов Makita</p>\r\n-                        <a href=\"index.html\" class=\"product-link\">Перейти</a>\r\n-                    </div>\r\n-\r\n-                    <div class=\"product-card\">\r\n                         <h4><i class=\"fas fa-robot\"></i> TempBot-1000</h4>\r\n                         <p>Интеллектуальная термокамера с PID-регулированием температуры и поддержанием влажности.</p>\r\n                         <a href=\"https://nikelectronics.github.io/TempBot-1000/\" class=\"product-link\">Подробнее</a>\r\n                     </div>\r\n@@ -1061,8 +1055,14 @@\n                         <h4><i class=\"fas fa-cube\"></i> BedLeveling</h4>\r\n                         <p>Система анализа кривизны стола 3D принтера</p>\r\n                         <a href=\"https://nikelectronics.github.io/BedLeveling/\" class=\"product-link\">Подробнее</a>\r\n                     </div>\r\n+\r\n+                    <div class=\"product-card\">\r\n+                        <h4><i class=\"fas fa-water\"></i> Мой фонтан</h4>\r\n+                        <p>Контроллер управления фонтаном с поддержкой различных режимов работы и удаленным управлением.</p>\r\n+                        <a href=\"https://nikelectronics.github.io/fountain_manual/\" class=\"product-link\">Подробнее</a>\r\n+                    </div>\r\n                 </div>\r\n \r\n                 <div class=\"note\">\r\n                     <p><i class=\"fas fa-info-circle\"></i> <strong>Техническая поддержка XGT:</strong> По всем вопросам\r\n"
                 }
             ],
             "date": 1767699660836,
