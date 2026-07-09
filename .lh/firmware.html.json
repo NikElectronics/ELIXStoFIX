@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 90,
+            "activePatchIndex": 97,
             "patches": [
                 {
                     "date": 1761129543384,
@@ -368,6 +368,34 @@
                 {
                     "date": 1771412043434,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -181,9 +181,9 @@\n             <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V201.bin\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V301(+XGT).bin\r\n+                📥 Скачать прошивку lxtfix_V302.bin\r\n             </a>\r\n         </div>\r\n \r\n         <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>\r\n"
+                },
+                {
+                    "date": 1783589650989,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -177,10 +177,10 @@\n \r\n     <div id=\"otaContent\" class=\"tab-content\">\r\n \r\n         <div class=\"download-container\" id=\"downloadSection\">\r\n-            <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V201.bin\r\n+            <a href=\"files/lxtfix_V4(zubr_alpha)\" download class=\"download-btn\">\r\n+                📥 Скачать прошивку lxtfix_V4\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V302.bin\r\n             </a>\r\n@@ -297,10 +297,10 @@\n     </div>\r\n \r\n     <div id=\"usbContent\" class=\"tab-content\" style=\"display: none;\">\r\n         <div class=\"download-container\" id=\"downloadSection\">\r\n-            <a href=\"files/lxtfix_V201.bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V201.bin\r\n+            <a href=\"files/lxtfix_V4(zubr_alpha).bin\" download class=\"download-btn\">\r\n+                📥 Скачать прошивку lxtfix_V4\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V302.bin\r\n             </a>\r\n"
+                },
+                {
+                    "date": 1783589783269,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -297,9 +297,9 @@\n     </div>\r\n \r\n     <div id=\"usbContent\" class=\"tab-content\" style=\"display: none;\">\r\n         <div class=\"download-container\" id=\"downloadSection\">\r\n-            <a href=\"files/lxtfix_V4(zubr_alpha).bin\" download class=\"download-btn\">\r\n+            <a href=\"files/lxtfix_V4(zubr_alpha)\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V4\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V302.bin\r\n"
+                },
+                {
+                    "date": 1783589826898,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -177,9 +177,9 @@\n \r\n     <div id=\"otaContent\" class=\"tab-content\">\r\n \r\n         <div class=\"download-container\" id=\"downloadSection\">\r\n-            <a href=\"files/lxtfix_V4(zubr_alpha)\" download class=\"download-btn\">\r\n+            <a href=\"files/lxtfix_V4(zubr_alpha).bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V4\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V302.bin\r\n"
+                },
+                {
+                    "date": 1783589835275,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -297,9 +297,9 @@\n     </div>\r\n \r\n     <div id=\"usbContent\" class=\"tab-content\" style=\"display: none;\">\r\n         <div class=\"download-container\" id=\"downloadSection\">\r\n-            <a href=\"files/lxtfix_V4(zubr_alpha)\" download class=\"download-btn\">\r\n+            <a href=\"files/lxtfix_V4(zubr_alpha).bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V4\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V302.bin\r\n"
+                },
+                {
+                    "date": 1783589926312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -301,9 +301,9 @@\n             <a href=\"files/lxtfix_V4(zubr_alpha).bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V4\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V302.bin\r\n+                📥 Скачать прошивку lxtfix_V302\r\n             </a>\r\n         </div>\r\n \r\n         <div class=\"warning\">\r\n"
+                },
+                {
+                    "date": 1783589935337,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -298,9 +298,9 @@\n \r\n     <div id=\"usbContent\" class=\"tab-content\" style=\"display: none;\">\r\n         <div class=\"download-container\" id=\"downloadSection\">\r\n             <a href=\"files/lxtfix_V4(zubr_alpha).bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V4\r\n+                📥 Скачать прошивку lxtfix_V4 (zubr_alpha)\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V302\r\n             </a>\r\n"
+                },
+                {
+                    "date": 1783589963983,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -178,9 +178,9 @@\n     <div id=\"otaContent\" class=\"tab-content\">\r\n \r\n         <div class=\"download-container\" id=\"downloadSection\">\r\n             <a href=\"files/lxtfix_V4(zubr_alpha).bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V4\r\n+                📥 Скачать прошивку lxtfix_V4 (zubr_alpha)\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V302.bin\r\n             </a>\r\n"
                 }
             ],
             "date": 1761129543384,
