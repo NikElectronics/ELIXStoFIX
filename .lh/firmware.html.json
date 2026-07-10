@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 97,
+            "activePatchIndex": 98,
             "patches": [
                 {
                     "date": 1761129543384,
@@ -396,6 +396,10 @@
                 {
                     "date": 1783589963983,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -178,9 +178,9 @@\n     <div id=\"otaContent\" class=\"tab-content\">\r\n \r\n         <div class=\"download-container\" id=\"downloadSection\">\r\n             <a href=\"files/lxtfix_V4(zubr_alpha).bin\" download class=\"download-btn\">\r\n-                📥 Скачать прошивку lxtfix_V4\r\n+                📥 Скачать прошивку lxtfix_V4 (zubr_alpha)\r\n             </a>\r\n             <a href=\"files/lxtfix_V302.bin\" download class=\"download-btn\">\r\n                 📥 Скачать прошивку lxtfix_V302.bin\r\n             </a>\r\n"
+                },
+                {
+                    "date": 1783660736693,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -227,10 +227,9 @@\n         <div class=\"step\">\r\n             <h2>Шаг 3: Ввод пароля администратора.</h2>\r\n             <p>После открытия меню нажмите иконку ключ указанную на рисунке.</p>\r\n             <img src=\"images/menu_open.png\" alt=\"Главная страница веб-интерфейса\" class=\"screenshot\">\r\n-            <p>И введите в поле, открывшегося окна Password, пароль LXTFIX (для новых версий) или nik1709 (для старых\r\n-                версий)</p>\r\n+            <p>И введите в поле, открывшегося окна Password, пароль LXTFIX</p>\r\n             <img src=\"images/password.png\" alt=\"Главная страница веб-интерфейса\" class=\"screenshot\">\r\n         </div>\r\n \r\n         <div class=\"step\">\r\n"
                 }
             ],
             "date": 1761129543384,
