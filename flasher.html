@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ESP32 Flasher Pro</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #0d1117;
@@ -30,7 +34,10 @@
             gap: 12px;
             margin-bottom: 6px;
         }
-        .header h1 { font-size: 26px; font-weight: 700; }
+        .header h1 {
+            font-size: 26px;
+            font-weight: 700;
+        }
         .header .badge {
             background: #238636;
             color: white;
@@ -83,10 +90,18 @@
             animation: pulse 1s infinite;
         }
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
         }
-        .status-text { font-size: 14px; font-weight: 500; }
+        .status-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
         .status-port {
             color: #8b949e;
             font-size: 13px;
@@ -114,23 +129,31 @@
             background: #238636;
             color: white;
         }
-        .btn-primary:hover:not(:disabled) { background: #2ea043; }
+        .btn-primary:hover:not(:disabled) {
+            background: #2ea043;
+        }
         .btn-secondary {
             background: #21262d;
             color: #c9d1d9;
             border: 1px solid #30363d;
         }
-        .btn-secondary:hover:not(:disabled) { background: #30363d; }
+        .btn-secondary:hover:not(:disabled) {
+            background: #30363d;
+        }
         .btn-danger {
             background: #da3633;
             color: white;
         }
-        .btn-danger:hover:not(:disabled) { background: #f85149; }
+        .btn-danger:hover:not(:disabled) {
+            background: #f85149;
+        }
         .btn-success {
             background: #1f6feb;
             color: white;
         }
-        .btn-success:hover:not(:disabled) { background: #388bfd; }
+        .btn-success:hover:not(:disabled) {
+            background: #388bfd;
+        }
         .file-zone {
             border: 2px dashed #30363d;
             border-radius: 12px;
@@ -170,7 +193,9 @@
             font-size: 14px;
             display: none;
         }
-        .file-zone .file-info.show { display: block; }
+        .file-zone .file-info.show {
+            display: block;
+        }
         #fileInput {
             position: absolute;
             inset: 0;
@@ -227,11 +252,21 @@
             white-space: pre-wrap;
             word-break: break-all;
         }
-        .log .success { color: #2ea043; }
-        .log .error { color: #f85149; }
-        .log .warning { color: #d29922; }
-        .log .info { color: #58a6ff; }
-        .log .dim { color: #484f58; }
+        .log .success {
+            color: #2ea043;
+        }
+        .log .error {
+            color: #f85149;
+        }
+        .log .warning {
+            color: #d29922;
+        }
+        .log .info {
+            color: #58a6ff;
+        }
+        .log .dim {
+            color: #484f58;
+        }
         .log::-webkit-scrollbar {
             width: 4px;
         }
@@ -267,460 +302,472 @@
             color: #30363d;
         }
         @media (max-width: 600px) {
-            .container { padding: 20px 16px; }
-            .info-grid { grid-template-columns: 1fr; }
-            .actions { flex-direction: column; }
-            .actions .btn { flex: none; width: 100%; }
-            .status-bar { flex-direction: column; align-items: stretch; gap: 4px; }
-            .header h1 { font-size: 22px; }
+            .container {
+                padding: 20px 16px;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .actions {
+                flex-direction: column;
+            }
+            .actions .btn {
+                flex: none;
+                width: 100%;
+            }
+            .status-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 4px;
+            }
+            .header h1 {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <h1>⚡ ESP32 Flasher</h1>
-        <span class="badge">Pro</span>
-    </div>
-    <div class="subtitle">Прошивка ESP32 — полная совместимость</div>
-
-    <div class="status-bar">
-        <div class="status-left">
-            <span class="status-dot" id="statusDot"></span>
-            <span class="status-text" id="statusText">Не подключено</span>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ ESP32 Flasher</h1>
+            <span class="badge">Pro</span>
         </div>
-        <span class="status-port" id="portDisplay">—</span>
-    </div>
+        <div class="subtitle">Прошивка ESP32 прямо из браузера</div>
 
-    <div class="info-grid">
-        <div class="info-card">
-            <div class="label">Чип</div>
-            <div class="value placeholder" id="chipDisplay">—</div>
+        <div class="status-bar">
+            <div class="status-left">
+                <span class="status-dot" id="statusDot"></span>
+                <span class="status-text" id="statusText">Не подключено</span>
+            </div>
+            <span class="status-port" id="portDisplay">—</span>
         </div>
-        <div class="info-card">
-            <div class="label">Прошивка</div>
-            <div class="value placeholder" id="firmwareDisplay">Не выбрана</div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">Чип</div>
+                <div class="value placeholder" id="chipDisplay">—</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Прошивка</div>
+                <div class="value placeholder" id="firmwareDisplay">Не выбрана</div>
+            </div>
         </div>
-    </div>
 
-    <div class="file-zone" id="fileZone">
-        <span class="icon">📂</span>
-        <div class="title">Выберите .bin файл</div>
-        <div class="hint">Перетащите файл или нажмите для выбора</div>
-        <div class="file-info" id="fileInfo"></div>
-        <input type="file" id="fileInput" accept=".bin">
-    </div>
-
-    <div class="progress-section">
-        <div class="progress-label">
-            <span id="progressLabel">Готов</span>
-            <span id="progressPercent">0%</span>
+        <div class="file-zone" id="fileZone">
+            <span class="icon">📂</span>
+            <div class="title">Выберите .bin файл</div>
+            <div class="hint">Перетащите файл или нажмите для выбора</div>
+            <div class="file-info" id="fileInfo"></div>
+            <input type="file" id="fileInput" accept=".bin">
         </div>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
+
+        <div class="progress-section">
+            <div class="progress-label">
+                <span id="progressLabel">Готов</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
         </div>
+
+        <div class="actions">
+            <button class="btn btn-primary" id="connectBtn">🔌 Подключить</button>
+            <button class="btn btn-success" id="flashBtn" disabled>🔥 Прошить</button>
+            <button class="btn btn-secondary" id="resetBtn" disabled>🔄 Сброс</button>
+            <button class="btn btn-danger" id="eraseBtn" disabled>🗑️ Стереть</button>
+        </div>
+
+        <div class="log" id="log">💡 Нажмите «Подключить»</div>
     </div>
 
-    <div class="actions">
-        <button class="btn btn-primary" id="connectBtn">🔌 Подключить</button>
-        <button class="btn btn-success" id="flashBtn" disabled>🔥 Прошить</button>
-        <button class="btn btn-secondary" id="resetBtn" disabled>🔄 Сброс</button>
-        <button class="btn btn-danger" id="eraseBtn" disabled>🗑️ Стереть</button>
-    </div>
+    <script>
+        // ================================================================
+        //  ESP32 FLASHER PRO — РАБОТАЕТ НА GITHUB PAGES (HTTPS)
+        //  Использует официальную библиотеку Espressif
+        // ================================================================
 
-    <div class="log" id="log">💡 Нажмите «Подключить»</div>
-</div>
+        // ===== Загрузка библиотеки с запасными источниками =====
+        async function loadEspFlasher() {
+            return new Promise((resolve, reject) => {
+                // Несколько источников для надёжности
+                const sources = [
+                    'https://unpkg.com/esp-web-flasher@1.0.1/dist/esp-web-flasher.min.js',
+                    'https://cdn.jsdelivr.net/npm/esp-web-flasher@1.0.1/dist/esp-web-flasher.min.js',
+                    'https://cdnjs.cloudflare.com/ajax/libs/esp-web-flasher/1.0.1/esp-web-flasher.min.js'
+                ];
 
-<script>
-    // ================================================================
-    //  ESP32 FLASHER — ИСПОЛЬЗУЕТ БИБЛИОТЕКУ ESPRESSIF
-    //  Полная совместимость со всеми платами
-    // ================================================================
+                let loaded = false;
 
-    // ===== Загрузка библиотеки =====
-    async function loadEspFlasher() {
-        return new Promise((resolve, reject) => {
-            // Пробуем несколько источников
-            const sources = [
-                'https://unpkg.com/esp-web-flasher@1.0.1/dist/esp-web-flasher.min.js',
-                'https://cdn.jsdelivr.net/npm/esp-web-flasher@1.0.1/dist/esp-web-flasher.min.js'
-            ];
+                function tryLoad(index) {
+                    if (index >= sources.length) {
+                        reject(new Error('Не удалось загрузить библиотеку'));
+                        return;
+                    }
 
-            let loaded = false;
+                    const script = document.createElement('script');
+                    script.src = sources[index];
+                    script.onload = () => {
+                        if (typeof ESPWebFlasher !== 'undefined') {
+                            loaded = true;
+                            resolve();
+                        } else {
+                            tryLoad(index + 1);
+                        }
+                    };
+                    script.onerror = () => tryLoad(index + 1);
+                    document.head.appendChild(script);
+                }
 
-            function tryLoad(index) {
-                if (index >= sources.length) {
-                    reject(new Error('Не удалось загрузить библиотеку'));
+                // Проверяем, может уже загружена
+                if (typeof ESPWebFlasher !== 'undefined') {
+                    resolve();
                     return;
                 }
 
-                const script = document.createElement('script');
-                script.src = sources[index];
-                script.onload = () => {
-                    if (typeof ESPWebFlasher !== 'undefined') {
-                        loaded = true;
-                        resolve();
-                    } else {
-                        tryLoad(index + 1);
-                    }
-                };
-                script.onerror = () => tryLoad(index + 1);
-                document.head.appendChild(script);
-            }
+                tryLoad(0);
+            });
+        }
 
-            // Проверяем, может уже загружена
-            if (typeof ESPWebFlasher !== 'undefined') {
-                resolve();
+        // ===== DOM элементы =====
+        const $ = id => document.getElementById(id);
+        const logEl = $('log');
+        const statusDot = $('statusDot');
+        const statusText = $('statusText');
+        const portDisplay = $('portDisplay');
+        const chipDisplay = $('chipDisplay');
+        const firmwareDisplay = $('firmwareDisplay');
+        const fileInfo = $('fileInfo');
+        const fileZone = $('fileZone');
+        const fileInput = $('fileInput');
+        const progressFill = $('progressFill');
+        const progressLabel = $('progressLabel');
+        const progressPercent = $('progressPercent');
+        const connectBtn = $('connectBtn');
+        const flashBtn = $('flashBtn');
+        const resetBtn = $('resetBtn');
+        const eraseBtn = $('eraseBtn');
+
+        let port = null;
+        let transport = null;
+        let flasher = null;
+        let selectedFile = null;
+        let isConnected = false;
+        let isFlashing = false;
+        let isErasing = false;
+        let libraryLoaded = false;
+
+        // ===== Логирование =====
+        function log(msg, type = '') {
+            const time = new Date().toLocaleTimeString();
+            const line = document.createElement('div');
+            line.textContent = `[${time}] ${msg}`;
+            if (type) line.className = type;
+            logEl.appendChild(line);
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+
+        function setStatus(text, state = 'idle') {
+            statusText.textContent = text;
+            statusDot.className = 'status-dot';
+            if (state === 'connected') statusDot.classList.add('connected');
+            else if (state === 'error') statusDot.classList.add('error');
+            else if (state === 'busy') statusDot.classList.add('busy');
+        }
+
+        function setProgress(percent, label) {
+            const p = Math.min(Math.max(percent, 0), 100);
+            progressFill.style.width = p + '%';
+            progressPercent.textContent = Math.round(p) + '%';
+            if (label) progressLabel.textContent = label;
+        }
+
+        function resetProgress() {
+            progressFill.style.width = '0%';
+            progressPercent.textContent = '0%';
+            progressLabel.textContent = 'Готов';
+        }
+
+        function updateUI() {
+            flashBtn.disabled = !isConnected || !selectedFile || isFlashing;
+            resetBtn.disabled = !isConnected;
+            eraseBtn.disabled = !isConnected || isErasing;
+            connectBtn.textContent = isConnected ? '🔌 Отключить' : '🔌 Подключить';
+        }
+
+        // ===== Проверка браузера =====
+        if (!('serial' in navigator)) {
+            log('❌ Web Serial API не поддерживается', 'error');
+            log('📌 Используйте Google Chrome или Microsoft Edge', 'error');
+            connectBtn.disabled = true;
+            setStatus('❌ Не поддерживается', 'error');
+        }
+
+        // ===== Файл =====
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (!file.name.toLowerCase().endsWith('.bin')) {
+                log('⚠️ Выберите .bin файл', 'warning');
+                fileInput.value = '';
                 return;
             }
-
-            tryLoad(0);
+            selectedFile = file;
+            const size = (file.size / 1024).toFixed(1);
+            fileInfo.textContent = `📄 ${file.name} (${size} KB)`;
+            fileInfo.classList.add('show');
+            firmwareDisplay.textContent = file.name;
+            log(`📁 Выбран: ${file.name} (${size} KB)`, 'info');
+            updateUI();
         });
-    }
 
-    // ===== DOM =====
-    const $ = id => document.getElementById(id);
-    const logEl = $('log');
-    const statusDot = $('statusDot');
-    const statusText = $('statusText');
-    const portDisplay = $('portDisplay');
-    const chipDisplay = $('chipDisplay');
-    const firmwareDisplay = $('firmwareDisplay');
-    const fileInfo = $('fileInfo');
-    const fileZone = $('fileZone');
-    const fileInput = $('fileInput');
-    const progressFill = $('progressFill');
-    const progressLabel = $('progressLabel');
-    const progressPercent = $('progressPercent');
-    const connectBtn = $('connectBtn');
-    const flashBtn = $('flashBtn');
-    const resetBtn = $('resetBtn');
-    const eraseBtn = $('eraseBtn');
+        fileZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileZone.classList.add('dragover');
+        });
+        fileZone.addEventListener('dragleave', () => {
+            fileZone.classList.remove('dragover');
+        });
+        fileZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                fileInput.dispatchEvent(new Event('change'));
+            }
+        });
 
-    let port = null;
-    let transport = null;
-    let flasher = null;
-    let selectedFile = null;
-    let isConnected = false;
-    let isFlashing = false;
-    let isErasing = false;
-    let libraryLoaded = false;
-
-    function log(msg, type = '') {
-        const time = new Date().toLocaleTimeString();
-        const line = document.createElement('div');
-        line.textContent = `[${time}] ${msg}`;
-        if (type) line.className = type;
-        logEl.appendChild(line);
-        logEl.scrollTop = logEl.scrollHeight;
-    }
-
-    function setStatus(text, state = 'idle') {
-        statusText.textContent = text;
-        statusDot.className = 'status-dot';
-        if (state === 'connected') statusDot.classList.add('connected');
-        else if (state === 'error') statusDot.classList.add('error');
-        else if (state === 'busy') statusDot.classList.add('busy');
-    }
-
-    function setProgress(percent, label) {
-        const p = Math.min(Math.max(percent, 0), 100);
-        progressFill.style.width = p + '%';
-        progressPercent.textContent = Math.round(p) + '%';
-        if (label) progressLabel.textContent = label;
-    }
-
-    function resetProgress() {
-        progressFill.style.width = '0%';
-        progressPercent.textContent = '0%';
-        progressLabel.textContent = 'Готов';
-    }
-
-    function updateUI() {
-        flashBtn.disabled = !isConnected || !selectedFile || isFlashing;
-        resetBtn.disabled = !isConnected;
-        eraseBtn.disabled = !isConnected || isErasing;
-        connectBtn.textContent = isConnected ? '🔌 Отключить' : '🔌 Подключить';
-    }
-
-    // Проверка браузера
-    if (!('serial' in navigator)) {
-        log('❌ Web Serial API не поддерживается', 'error');
-        log('📌 Используйте Google Chrome или Microsoft Edge', 'error');
-        connectBtn.disabled = true;
-        setStatus('❌ Не поддерживается', 'error');
-    }
-
-    if (window.location.protocol === 'file:') {
-        log('⚠️ Страница открыта через file://', 'warning');
-        log('📌 Запустите локальный сервер: python -m http.server 8080', 'warning');
-    }
-
-    // Файл
-    fileInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        if (!file.name.toLowerCase().endsWith('.bin')) {
-            log('⚠️ Выберите .bin файл', 'warning');
-            fileInput.value = '';
-            return;
-        }
-        selectedFile = file;
-        const size = (file.size / 1024).toFixed(1);
-        fileInfo.textContent = `📄 ${file.name} (${size} KB)`;
-        fileInfo.classList.add('show');
-        firmwareDisplay.textContent = file.name;
-        log(`📁 Выбран: ${file.name} (${size} KB)`, 'info');
-        updateUI();
-    });
-
-    fileZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        fileZone.classList.add('dragover');
-    });
-    fileZone.addEventListener('dragleave', () => {
-        fileZone.classList.remove('dragover');
-    });
-    fileZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        fileZone.classList.remove('dragover');
-        const files = e.dataTransfer.files;
-        if (files.length > 0) {
-            fileInput.files = files;
-            fileInput.dispatchEvent(new Event('change'));
-        }
-    });
-
-    // ===== Загрузка библиотеки при старте =====
-    async function initLibrary() {
-        try {
-            log('📦 Загрузка библиотеки...', 'info');
-            await loadEspFlasher();
-            libraryLoaded = true;
-            log('✅ Библиотека загружена!', 'success');
-            return true;
-        } catch (e) {
-            log(`❌ Ошибка загрузки: ${e.message}`, 'error');
-            log('📌 Попробуйте обновить страницу', 'error');
-            return false;
-        }
-    }
-
-    // ===== Подключение =====
-    connectBtn.onclick = async () => {
-        if (isConnected) {
-            // Отключение
-            setStatus('Отключение...', 'busy');
+        // ===== Загрузка библиотеки при старте =====
+        async function initLibrary() {
             try {
-                if (flasher) await flasher.close();
-                if (port) await port.close();
-            } catch (e) {}
-            isConnected = false;
-            port = null;
-            transport = null;
-            flasher = null;
-            setStatus('Не подключено');
-            chipDisplay.textContent = '—';
-            updateUI();
-            log('🔌 Отключено', 'info');
-            resetProgress();
-            return;
-        }
-
-        // Загружаем библиотеку если нужно
-        if (!libraryLoaded) {
-            connectBtn.disabled = true;
-            connectBtn.textContent = '⏳ Загрузка...';
-            const ok = await initLibrary();
-            connectBtn.disabled = false;
-            connectBtn.textContent = '🔌 Подключить';
-            if (!ok) return;
-        }
-
-        connectBtn.disabled = true;
-        connectBtn.textContent = '⏳ Подключение...';
-        setStatus('Подключение...', 'busy');
-
-        try {
-            // === ОТКРЫВАЕМ ПОРТ ЧЕРЕЗ БИБЛИОТЕКУ ===
-            port = await navigator.serial.requestPort();
-            await port.open({ baudRate: 115200 });
-
-            transport = new ESPWebFlasher.WebSerialTransport(port);
-            flasher = new ESPWebFlasher.ESP32Flasher(transport);
-
-            // === ВХОД В BOOTLOADER (АВТОМАТИЧЕСКИ) ===
-            log('🔄 Вход в режим загрузки...', 'info');
-            await flasher.enterBootloader();
-            log('✅ Режим загрузки активирован!', 'success');
-
-            // === ОПРЕДЕЛЯЕМ ЧИП ===
-            try {
-                const info = await flasher.getChipInfo();
-                chipDisplay.textContent = info.model || 'ESP32';
-                log(`🔍 Чип: ${info.model || 'ESP32'}`, 'info');
+                log('📦 Загрузка библиотеки...', 'info');
+                await loadEspFlasher();
+                libraryLoaded = true;
+                log('✅ Библиотека загружена!', 'success');
+                return true;
             } catch (e) {
-                chipDisplay.textContent = 'ESP32';
-                log('ℹ️ Чип: ESP32 (упрощённо)', 'info');
+                log(`❌ Ошибка загрузки: ${e.message}`, 'error');
+                log('📌 Попробуйте обновить страницу', 'error');
+                return false;
             }
-
-            portDisplay.textContent = 'ESP32';
-            isConnected = true;
-            setStatus('Подключено', 'connected');
-            log('✅ Готов к работе!', 'success');
-            updateUI();
-
-        } catch (e) {
-            log(`❌ Ошибка: ${e.message}`, 'error');
-
-            // Если ошибка связана с bootloader — даём инструкцию
-            if (e.message.includes('bootloader') || e.message.includes('sync')) {
-                log('📌 Инструкция:', 'info');
-                log('   1. Зажмите кнопку BOOT на ESP32', 'info');
-                log('   2. Нажмите кнопку EN/RST', 'info');
-                log('   3. Отпустите кнопку BOOT', 'info');
-                log('   4. Нажмите "Подключить" снова', 'info');
-            }
-
-            setStatus('Ошибка', 'error');
-            try {
-                if (flasher) await flasher.close();
-                if (port) await port.close();
-            } catch (err) {}
-            isConnected = false;
-            port = null;
-            transport = null;
-            flasher = null;
-            updateUI();
-        } finally {
-            connectBtn.disabled = false;
-            connectBtn.textContent = '🔌 Подключить';
-            updateUI();
         }
-    };
 
-    // ===== Прошивка =====
-    flashBtn.onclick = async () => {
-        if (!selectedFile) {
-            log('⚠️ Выберите файл прошивки', 'warning');
-            return;
-        }
-        if (!isConnected || !flasher) {
-            log('⚠️ Сначала подключитесь к ESP32', 'warning');
-            return;
-        }
-        if (isFlashing) return;
-
-        isFlashing = true;
-        flashBtn.disabled = true;
-        flashBtn.textContent = '⏳ Прошивка...';
-        setStatus('Прошивка...', 'busy');
-
-        try {
-            const buffer = await selectedFile.arrayBuffer();
-            const firmware = new Uint8Array(buffer);
-            log(`📦 Прошивка ${(firmware.length/1024).toFixed(1)} KB...`, 'info');
-            setProgress(0, 'Прошивка...');
-
-            // Используем библиотеку для прошивки
-            await flasher.flash(firmware, (progress) => {
-                const p = progress * 100;
-                setProgress(p, `Прошивка ${Math.round(p)}%`);
-            });
-
-            setProgress(100, '✅ Готово!');
-            log('✅ Прошивка успешно завершена!', 'success');
-
-            // Автосброс
-            try {
-                await flasher.reset();
-                log('🔄 Автосброс выполнен', 'info');
-                await flasher.close();
-                await port.close();
+        // ===== Подключение =====
+        connectBtn.onclick = async () => {
+            if (isConnected) {
+                // Отключение
+                setStatus('Отключение...', 'busy');
+                try {
+                    if (flasher) await flasher.close();
+                    if (port) await port.close();
+                } catch (e) {}
                 isConnected = false;
                 port = null;
                 transport = null;
                 flasher = null;
-                setStatus('Отключено');
+                setStatus('Не подключено');
                 chipDisplay.textContent = '—';
                 updateUI();
-                log('🔌 Порт закрыт', 'info');
-            } catch (e) {
-                log(`⚠️ Ошибка сброса: ${e.message}`, 'warning');
+                log('🔌 Отключено', 'info');
+                resetProgress();
+                return;
             }
 
-        } catch (e) {
-            log(`❌ Ошибка прошивки: ${e.message}`, 'error');
-            setProgress(0, '❌ Ошибка');
-        } finally {
-            isFlashing = false;
-            flashBtn.textContent = '🔥 Прошить';
-            updateUI();
-        }
-    };
+            // Загружаем библиотеку если нужно
+            if (!libraryLoaded) {
+                connectBtn.disabled = true;
+                connectBtn.textContent = '⏳ Загрузка...';
+                const ok = await initLibrary();
+                connectBtn.disabled = false;
+                connectBtn.textContent = '🔌 Подключить';
+                if (!ok) return;
+            }
 
-    // ===== Сброс =====
-    resetBtn.onclick = async () => {
-        if (!isConnected || !flasher) {
-            log('⚠️ Сначала подключитесь', 'warning');
-            return;
-        }
-        try {
-            resetBtn.disabled = true;
-            resetBtn.textContent = '⏳';
-            await flasher.reset();
-            log('✅ Сброс выполнен', 'success');
-        } catch (e) {
-            log(`❌ Ошибка: ${e.message}`, 'error');
-        } finally {
-            resetBtn.disabled = false;
-            resetBtn.textContent = '🔄 Сброс';
-        }
-    };
+            connectBtn.disabled = true;
+            connectBtn.textContent = '⏳ Подключение...';
+            setStatus('Подключение...', 'busy');
 
-    // ===== Стирание =====
-    eraseBtn.onclick = async () => {
-        if (!isConnected || !flasher) {
-            log('⚠️ Сначала подключитесь', 'warning');
-            return;
-        }
-        if (!confirm('🗑️ Стереть всю flash-память?')) return;
-        if (isErasing) return;
+            try {
+                // === ОТКРЫВАЕМ ПОРТ ЧЕРЕЗ БИБЛИОТЕКУ ===
+                port = await navigator.serial.requestPort();
+                await port.open({ baudRate: 115200 });
 
-        isErasing = true;
-        eraseBtn.disabled = true;
-        eraseBtn.textContent = '⏳ Стирание...';
-        setStatus('Стирание...', 'busy');
+                transport = new ESPWebFlasher.WebSerialTransport(port);
+                flasher = new ESPWebFlasher.ESP32Flasher(transport);
 
-        try {
-            log('🗑️ Стирание flash...', 'warning');
-            setProgress(20, 'Стирание...');
-            await flasher.eraseFlash();
-            setProgress(100, '✅ Flash стёрта');
-            log('✅ Flash-память стёрта', 'success');
-        } catch (e) {
-            log(`❌ Ошибка: ${e.message}`, 'error');
-            setProgress(0, '❌ Ошибка');
-        } finally {
-            isErasing = false;
-            eraseBtn.disabled = false;
-            eraseBtn.textContent = '🗑️ Стереть';
-            updateUI();
-        }
-    };
+                // === ВХОД В BOOTLOADER (АВТОМАТИЧЕСКИ) ===
+                log('🔄 Вход в режим загрузки...', 'info');
+                await flasher.enterBootloader();
+                log('✅ Режим загрузки активирован!', 'success');
 
-    // ===== Старт =====
-    log('💡 Нажмите «Подключить»', 'dim');
-    log('📌 Если не получается — зажмите BOOT, нажмите EN/RST, отпустите BOOT', 'dim');
-    log('📌 Используйте Chrome/Edge', 'dim');
-    updateUI();
+                // === ОПРЕДЕЛЯЕМ ЧИП ===
+                try {
+                    const info = await flasher.getChipInfo();
+                    chipDisplay.textContent = info.model || 'ESP32';
+                    log(`🔍 Чип: ${info.model || 'ESP32'}`, 'info');
+                } catch (e) {
+                    chipDisplay.textContent = 'ESP32';
+                    log('ℹ️ Чип: ESP32 (упрощённо)', 'info');
+                }
 
-    // Предзагрузка библиотеки
-    initLibrary();
+                portDisplay.textContent = 'ESP32';
+                isConnected = true;
+                setStatus('Подключено', 'connected');
+                log('✅ Готов к работе!', 'success');
+                updateUI();
 
-    console.log('ESP32 Flasher Pro — с библиотекой Espressif');
-</script>
+            } catch (e) {
+                log(`❌ Ошибка: ${e.message}`, 'error');
+
+                // Если ошибка связана с bootloader — даём инструкцию
+                if (e.message.includes('bootloader') || e.message.includes('sync')) {
+                    log('📌 Инструкция:', 'info');
+                    log('   1. Зажмите кнопку BOOT на ESP32', 'info');
+                    log('   2. Нажмите кнопку EN/RST', 'info');
+                    log('   3. Отпустите кнопку BOOT', 'info');
+                    log('   4. Нажмите "Подключить" снова', 'info');
+                }
+
+                setStatus('Ошибка', 'error');
+                try {
+                    if (flasher) await flasher.close();
+                    if (port) await port.close();
+                } catch (err) {}
+                isConnected = false;
+                port = null;
+                transport = null;
+                flasher = null;
+                updateUI();
+            } finally {
+                connectBtn.disabled = false;
+                connectBtn.textContent = '🔌 Подключить';
+                updateUI();
+            }
+        };
+
+        // ===== Прошивка =====
+        flashBtn.onclick = async () => {
+            if (!selectedFile) {
+                log('⚠️ Выберите файл прошивки', 'warning');
+                return;
+            }
+            if (!isConnected || !flasher) {
+                log('⚠️ Сначала подключитесь к ESP32', 'warning');
+                return;
+            }
+            if (isFlashing) return;
+
+            isFlashing = true;
+            flashBtn.disabled = true;
+            flashBtn.textContent = '⏳ Прошивка...';
+            setStatus('Прошивка...', 'busy');
+
+            try {
+                const buffer = await selectedFile.arrayBuffer();
+                const firmware = new Uint8Array(buffer);
+                log(`📦 Прошивка ${(firmware.length/1024).toFixed(1)} KB...`, 'info');
+                setProgress(0, 'Прошивка...');
+
+                // Используем библиотеку для прошивки
+                await flasher.flash(firmware, (progress) => {
+                    const p = progress * 100;
+                    setProgress(p, `Прошивка ${Math.round(p)}%`);
+                });
+
+                setProgress(100, '✅ Готово!');
+                log('✅ Прошивка успешно завершена!', 'success');
+
+                // Автосброс
+                try {
+                    await flasher.reset();
+                    log('🔄 Автосброс выполнен', 'info');
+                    await flasher.close();
+                    await port.close();
+                    isConnected = false;
+                    port = null;
+                    transport = null;
+                    flasher = null;
+                    setStatus('Отключено');
+                    chipDisplay.textContent = '—';
+                    updateUI();
+                    log('🔌 Порт закрыт', 'info');
+                } catch (e) {
+                    log(`⚠️ Ошибка сброса: ${e.message}`, 'warning');
+                }
+
+            } catch (e) {
+                log(`❌ Ошибка прошивки: ${e.message}`, 'error');
+                setProgress(0, '❌ Ошибка');
+            } finally {
+                isFlashing = false;
+                flashBtn.textContent = '🔥 Прошить';
+                updateUI();
+            }
+        };
+
+        // ===== Сброс =====
+        resetBtn.onclick = async () => {
+            if (!isConnected || !flasher) {
+                log('⚠️ Сначала подключитесь', 'warning');
+                return;
+            }
+            try {
+                resetBtn.disabled = true;
+                resetBtn.textContent = '⏳';
+                await flasher.reset();
+                log('✅ Сброс выполнен', 'success');
+            } catch (e) {
+                log(`❌ Ошибка: ${e.message}`, 'error');
+            } finally {
+                resetBtn.disabled = false;
+                resetBtn.textContent = '🔄 Сброс';
+            }
+        };
+
+        // ===== Стирание =====
+        eraseBtn.onclick = async () => {
+            if (!isConnected || !flasher) {
+                log('⚠️ Сначала подключитесь', 'warning');
+                return;
+            }
+            if (!confirm('🗑️ Стереть всю flash-память?')) return;
+            if (isErasing) return;
+
+            isErasing = true;
+            eraseBtn.disabled = true;
+            eraseBtn.textContent = '⏳ Стирание...';
+            setStatus('Стирание...', 'busy');
+
+            try {
+                log('🗑️ Стирание flash...', 'warning');
+                setProgress(20, 'Стирание...');
+                await flasher.eraseFlash();
+                setProgress(100, '✅ Flash стёрта');
+                log('✅ Flash-память стёрта', 'success');
+            } catch (e) {
+                log(`❌ Ошибка: ${e.message}`, 'error');
+                setProgress(0, '❌ Ошибка');
+            } finally {
+                isErasing = false;
+                eraseBtn.disabled = false;
+                eraseBtn.textContent = '🗑️ Стереть';
+                updateUI();
+            }
+        };
+
+        // ===== Старт =====
+        log('💡 Нажмите «Подключить»', 'dim');
+        log('📌 Используйте Chrome/Edge', 'dim');
+        log('📌 Если не получается — зажмите BOOT, нажмите EN/RST, отпустите BOOT', 'dim');
+        updateUI();
+
+        // Предзагрузка библиотеки
+        initLibrary();
+
+        console.log('ESP32 Flasher Pro — готов к работе!');
+    </script>
 
 </body>
 </html>
