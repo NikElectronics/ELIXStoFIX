@@ -1,5 +1,5 @@
 /* ESP32-C3 firmware uploader — single-button wizard.
-   Flashes firmware/esp32.bin (merged bootloader + partitions + app) to an
+   Flashes firmware/firmware.bin (merged bootloader + partitions + app) to an
    ESP32-C3 SuperMini using esptool.js over Web Serial. */
 
 const $ = (id) => document.getElementById(id);
@@ -71,7 +71,7 @@ async function getFirmware() {
   const [bootloader, partitions, app] = await Promise.all([
     fetchBin("bootloader.bin"),
     fetchBin("partitions.bin"),
-    fetchBin("esp32.bin"),
+    fetchBin("firmware.bin"),
   ]);
   return { bootloader, partitions, app };
 }
@@ -132,11 +132,16 @@ async function flash() {
     setProgress(0);
     setStatus("Ошибка прошивки: " + e.message, "err");
     appendLog("Ошибка: " + e.message, "l-err");
-    /* Close the serial port so it stops reading and releases the connection;
-       otherwise a stale port holds the Web Serial connection open and the
-       next attempt fails or hangs. */
-    closeActiveSerialPort();
   } finally {
+    /* Always release the browser serial port (and its reader/writer) after
+       every attempt — success or failure — and forget the port handle.
+       Otherwise the (possibly still-open) port object is reused on the next
+       flash and esptool's open() call fails with
+       "The port is already open." Resetting myPort forces a fresh
+       navigator.serial.requestPort() (and a clean, closed port) next time. */
+    closeActiveSerialPort();
+    myPort = null;
+    window.activePort = null;
     els.flashBtn.disabled = false;
   }
 }
@@ -235,7 +240,15 @@ function closeActiveSerialPort() {
       window.__rxWriter = null;
     }
     if (window.__rxQueue) window.__rxQueue.length = 0;
-    if (port.readable || port.writable) port.close().catch(() => {});
+    /* Always try to close the port, even when readable/writable are already
+       nulled. A port left open here is exactly what makes the next flash fail
+       with "The port is already open." close() rejects harmlessly if the port
+       is not actually open (we swallow that). */
+    try {
+      port.close().catch(() => {});
+    } catch (e) {
+      /* ignore */
+    }
   } catch (e) {
     /* ignore */
   }

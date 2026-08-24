@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1787551187654,
@@ -24,6 +24,26 @@
                 {
                     "date": 1787551716531,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n <html lang=\"ru\">\n <head>\n   <meta charset=\"utf-8\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n-  <meta name=\"description\" content=\"Прошивка Open Battery Information на ESP32-C3 прямо из браузера — через esptool.js и Web Serial.\">\n+  <meta name=\"description\" content=\"Прошивка Open ESP32-C3 прямо из браузера — через esptool.js и Web Serial.\">\n   <title>Прошивка · Open Battery Information</title>\n   <style>\n /* Shared design system for the Open Battery Information web app. */\n :root {\n"
+                },
+                {
+                    "date": 1787565925854,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   The flasher is self-contained inside the firmware/ folder: the site-wide\n   css/style.css, css/uploader.css, js/theme.js and js/reveal.js are inlined\n   into the final HTML at build time, so uploader.html no longer depends on\n   anything outside firmware/. Only files living next to it are required\n-  (uploader.js, esptool.js, bootloader.bin, partitions.bin, esp32.bin).\n+  (uploader.js, esptool.js, bootloader.bin, partitions.bin, firmware.bin).\n \n   Do NOT edit uploader.html directly — edit this template and re-run:\n       powershell -ExecutionPolicy Bypass -File firmware/build-standalone.ps1\n -->\n@@ -1014,9 +1014,9 @@\n <body>\n   <div class=\"uploader-wrap\">\n     <header class=\"uploader-header\">\n       <h1>Записать прошивку</h1>\n-      <p class=\"subtitle\">В один клик запишете прошивку  — без IDE.</p>\n+      <p class=\"subtitle\">В пару кликов запишете прошивку  — без лишних заморочек.</p>\n     </header>\n \n     <div class=\"flash-card\">\n       <div class=\"flash-flow\">\n"
+                },
+                {
+                    "date": 1787565961843,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1031,9 +1031,9 @@\n         <div class=\"flash-status\">\n           <div class=\"spinner\" id=\"spinner\" hidden></div>\n           <span class=\"status-text\" id=\"status-text\">Подключите контроллер и нажмите \"Записать прошивку\".</span>\n         </div>\n-        <button id=\"flash-btn\" class=\"primary btn-lg btn-block\">Записать прошивку</button>\n+        <button id=\"flash-btn\" class=\"primary btn-lg btn-block\">Записать или обновить прошивку</button>\n         <div class=\"progress-track\"><div class=\"bar\" id=\"progress-bar\"></div></div>\n         <div id=\"flash-done-msg\" class=\"flash-done-msg\" hidden>✅ Прошивка загружена. Перезагрузите контроллер.</div>\n       </div>\n     </div>\n"
+                },
+                {
+                    "date": 1787566022258,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1013,9 +1013,9 @@\n </head>\n <body>\n   <div class=\"uploader-wrap\">\n     <header class=\"uploader-header\">\n-      <h1>Записать прошивку</h1>\n+      <h1>Записать или обновить прошивку</h1>\n       <p class=\"subtitle\">В пару кликов запишете прошивку  — без лишних заморочек.</p>\n     </header>\n \n     <div class=\"flash-card\">\n@@ -1031,9 +1031,9 @@\n         <div class=\"flash-status\">\n           <div class=\"spinner\" id=\"spinner\" hidden></div>\n           <span class=\"status-text\" id=\"status-text\">Подключите контроллер и нажмите \"Записать прошивку\".</span>\n         </div>\n-        <button id=\"flash-btn\" class=\"primary btn-lg btn-block\">Записать или обновить прошивку</button>\n+        <button id=\"flash-btn\" class=\"primary btn-lg btn-block\">Записать прошивку</button>\n         <div class=\"progress-track\"><div class=\"bar\" id=\"progress-bar\"></div></div>\n         <div id=\"flash-done-msg\" class=\"flash-done-msg\" hidden>✅ Прошивка загружена. Перезагрузите контроллер.</div>\n       </div>\n     </div>\n"
+                },
+                {
+                    "date": 1787566160848,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n <head>\n   <meta charset=\"utf-8\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n   <meta name=\"description\" content=\"Прошивка Open ESP32-C3 прямо из браузера — через esptool.js и Web Serial.\">\n-  <title>Прошивка · Open Battery Information</title>\n+  <title>Прошивка · ЭликсToFix</title>\n   <style>\n /* Shared design system for the Open Battery Information web app. */\n :root {\n   --bg: #1e1f22;\n"
+                },
+                {
+                    "date": 1787566181912,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n   <meta name=\"description\" content=\"Прошивка Open ESP32-C3 прямо из браузера — через esptool.js и Web Serial.\">\n   <title>Прошивка · ЭликсToFix</title>\n   <style>\n-/* Shared design system for the Open Battery Information web app. */\n+/* Shared design system for the  web app. */\n :root {\n   --bg: #1e1f22;\n   --bg-elevated: #2b2d31;\n   --bg-input: #232428;\n"
                 }
             ],
             "date": 1787551187654,

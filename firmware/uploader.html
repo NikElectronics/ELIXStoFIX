@@ -6,7 +6,7 @@
   css/style.css, css/uploader.css, js/theme.js and js/reveal.js are inlined
   into the final HTML at build time, so uploader.html no longer depends on
   anything outside firmware/. Only files living next to it are required
-  (uploader.js, esptool.js, bootloader.bin, partitions.bin, esp32.bin).
+  (uploader.js, esptool.js, bootloader.bin, partitions.bin, firmware.bin).
 
   Do NOT edit uploader.html directly — edit this template and re-run:
       powershell -ExecutionPolicy Bypass -File firmware/build-standalone.ps1
@@ -16,7 +16,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Прошивка Open ESP32-C3 прямо из браузера — через esptool.js и Web Serial.">
-  <title>Прошивка ЭликсToFix</title>
+  <title>Прошивка · ЭликсToFix</title>
   <style>
 /* Shared design system for the  web app. */
 :root {
@@ -1014,8 +1014,8 @@ html.js-reveal .reveal.revealed {
 <body>
   <div class="uploader-wrap">
     <header class="uploader-header">
-      <h1>Записать последнюю версию прошивки</h1>
-      <p class="subtitle">В один клик запишете прошивку  — без IDE.</p>
+      <h1>Записать или обновить прошивку</h1>
+      <p class="subtitle">В пару кликов запишете прошивку  — без лишних заморочек.</p>
     </header>
 
     <div class="flash-card">

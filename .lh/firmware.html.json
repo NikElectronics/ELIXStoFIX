@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 98,
+            "activePatchIndex": 100,
             "patches": [
                 {
                     "date": 1761129543384,
@@ -400,6 +400,14 @@
                 {
                     "date": 1783660736693,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -227,10 +227,9 @@\n         <div class=\"step\">\r\n             <h2>Шаг 3: Ввод пароля администратора.</h2>\r\n             <p>После открытия меню нажмите иконку ключ указанную на рисунке.</p>\r\n             <img src=\"images/menu_open.png\" alt=\"Главная страница веб-интерфейса\" class=\"screenshot\">\r\n-            <p>И введите в поле, открывшегося окна Password, пароль LXTFIX (для новых версий) или nik1709 (для старых\r\n-                версий)</p>\r\n+            <p>И введите в поле, открывшегося окна Password, пароль LXTFIX</p>\r\n             <img src=\"images/password.png\" alt=\"Главная страница веб-интерфейса\" class=\"screenshot\">\r\n         </div>\r\n \r\n         <div class=\"step\">\r\n"
+                },
+                {
+                    "date": 1787566473881,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -169,8 +169,16 @@\n     </div>\r\n \r\n     <h1>Инструкция по обновлению прошивки</h1>\r\n \r\n+    <div style=\"text-align: center; margin: 20px 0;\">\r\n+        <a href=\"firmware/uploader.html\" class=\"download-btn\"\r\n+            style=\"background-color: #27ae60; font-size: 20px; padding: 16px 32px; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.4);\">\r\n+            ⚡ Прошить в пару кликов <span style=\"opacity: 0.75;\">(beta версия)</span>\r\n+        </a>\r\n+        <p style=\"font-size: 14px; color: #666; margin: 6px 0 0;\">Прямая прошивка через браузер — без скачивания файлов и программ</p>\r\n+    </div>\r\n+\r\n     <div style=\"display: flex; gap: 20px; margin: 20px 0;\">\r\n         <button id=\"otaTab\" class=\"tab-btn active\" onclick=\"showTab('ota')\">OTA обновление</button>\r\n         <button id=\"usbTab\" class=\"tab-btn\" onclick=\"showTab('usb')\">USB обновление</button>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1787566510713,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -174,9 +174,9 @@\n         <a href=\"firmware/uploader.html\" class=\"download-btn\"\r\n             style=\"background-color: #27ae60; font-size: 20px; padding: 16px 32px; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.4);\">\r\n             ⚡ Прошить в пару кликов <span style=\"opacity: 0.75;\">(beta версия)</span>\r\n         </a>\r\n-        <p style=\"font-size: 14px; color: #666; margin: 6px 0 0;\">Прямая прошивка через браузер — без скачивания файлов и программ</p>\r\n+        <!-- <p style=\"font-size: 14px; color: #666; margin: 6px 0 0;\">Прямая прошивка через браузер — без скачивания файлов и программ</p> -->\r\n     </div>\r\n \r\n     <div style=\"display: flex; gap: 20px; margin: 20px 0;\">\r\n         <button id=\"otaTab\" class=\"tab-btn active\" onclick=\"showTab('ota')\">OTA обновление</button>\r\n"
                 }
             ],
             "date": 1761129543384,
