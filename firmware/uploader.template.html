@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+  Template used by build-standalone.ps1 to produce uploader.html.
+
+  The flasher is self-contained inside the firmware/ folder: the site-wide
+  css/style.css, css/uploader.css, js/theme.js and js/reveal.js are inlined
+  into the final HTML at build time, so uploader.html no longer depends on
+  anything outside firmware/. Only files living next to it are required
+  (uploader.js, esptool.js, bootloader.bin, partitions.bin, esp32.bin).
+
+  Do NOT edit uploader.html directly — edit this template and re-run:
+      powershell -ExecutionPolicy Bypass -File firmware/build-standalone.ps1
+-->
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Прошивка Open Battery Information на ESP32-C3 прямо из браузера — через esptool.js и Web Serial.">
+  <title>Прошивка · Open Battery Information</title>
+  <style>
+@@CSS@@
+  </style>
+  <script>
+@@THEME_JS@@
+  </script>
+</head>
+<body>
+  <div class="uploader-wrap">
+    <header class="uploader-header">
+      <h1>Записать прошивку</h1>
+      <p class="subtitle">В один клик запишете прошивку Open Battery Information на ESP32-C3 — без IDE.</p>
+    </header>
+
+    <div class="flash-card">
+      <div class="flash-flow">
+        <div class="flow-item active" id="flow-1"><span class="flow-dot">1</span><span class="flow-label">Подключить</span></div>
+        <div class="flow-connector"></div>
+        <div class="flow-item" id="flow-2"><span class="flow-dot">2</span><span class="flow-label">Прошивка</span></div>
+        <div class="flow-connector"></div>
+        <div class="flow-item" id="flow-3"><span class="flow-dot">3</span><span class="flow-label">Готово</span></div>
+      </div>
+
+      <div class="flash-area">
+        <div class="flash-status">
+          <div class="spinner" id="spinner" hidden></div>
+          <span class="status-text" id="status-text">Готово. Подключите ESP32-C3 и нажмите кнопку.</span>
+        </div>
+        <button id="flash-btn" class="primary btn-lg btn-block">Записать прошивку</button>
+        <div class="progress-track"><div class="bar" id="progress-bar"></div></div>
+        <div id="flash-done-msg" class="flash-done-msg" hidden>✅ Прошивка загружена. Перезагрузите контроллер.</div>
+      </div>
+    </div>
+
+    <p class="requirements-note">
+      Работает в <b>Chrome, Edge, Opera или Firefox</b> на десктопе, через HTTPS или localhost.
+    </p>
+  </div>
+
+  <script>
+@@REVEAL_JS@@
+  </script>
+  <script type="module" src="uploader.js?v=6"></script>
+</body>
+</html>
