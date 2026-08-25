@@ -192,7 +192,7 @@
         }
 
         .section {
-            background-color: white;
+            background-color: #f3f4f6;
             border-radius: var(--radius-md);
             padding: 30px;
             box-shadow: var(--shadow-sm);
@@ -237,11 +237,11 @@
             padding: 30px;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid transparent;
+            border: 2px solid rgba(0, 0, 0, 0.05);
             box-shadow: var(--shadow-sm);
             position: relative;
             overflow: hidden;
-            background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.6), transparent 60%);
+            background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.7), transparent 60%);
         }
 
         .system-card::after {
@@ -834,10 +834,8 @@
                 </div>
             </div>
 
-            <div class="section">
-                <div class="system-cards">
-
-                    <div class="system-card purple" style="height: fit-content;">
+            <div class="system-cards">
+                <div class="system-card purple" style="height: fit-content;">
                         <div class="warning-box">
                             <p><i class="fas fa-exclamation-triangle"></i> <strong>Важно!</strong> Данный
                                 диагностический модуль не устраняет физические неисправности. Он
@@ -855,7 +853,6 @@
                         </a>
                     </div>
                 </div>
-            </div>
 
             <div class="section">
                 <h2><i class="fas fa-feather"></i> Light Version <span style="background-color: #e74c3c; color: white; padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 10px;">NEW</span></h2>
