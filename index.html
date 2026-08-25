@@ -12,6 +12,7 @@
             --primary-color: #1a2b3c;
             --secondary-color: #2c3e50;
             --accent-color: #3498db;
+            --accent-light: #5dade2;
             --xgt-color: #e74c3c;
             --lxt-color: #3498db;
             --text-color: #333;
@@ -21,12 +22,22 @@
             --error-color: #e74c3c;
             --success-color: #2ecc71;
             --transition-speed: 0.3s;
+            --radius-sm: 10px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.16);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -39,6 +50,21 @@
             min-height: 100vh;
         }
 
+        /* Аккуратный скроллбар */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e9ecf1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b6c2cf;
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -47,28 +73,53 @@
 
         header {
             text-align: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #0d1b2a, #1b263b);
+            padding: 22px 0;
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 45%, #14213d 100%);
             color: white;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), #8e44ad, var(--xgt-color), var(--accent-color));
+            background-size: 300% 100%;
+            animation: header-shimmer 6s linear infinite;
+        }
+
+        @keyframes header-shimmer {
+            0% { background-position: 0% 0; }
+            100% { background-position: 100% 0; }
         }
 
         header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
+            font-size: 2rem;
+            margin-bottom: 8px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+        }
+
+        header h1 i {
+            color: var(--accent-light);
+            margin-right: 6px;
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             opacity: 0.95;
             max-width: 800px;
-            margin: 0 auto 30px;
+            margin: 0 auto 14px;
             color: white;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             line-height: 1.6;
@@ -76,64 +127,81 @@
 
         .system-features {
             display: flex;
-            justify-content: center;
-            margin: 30px 0 10px;
+            justify-content: space-evenly;
+            align-items: stretch;
+            margin: 12px 0;
             flex-wrap: wrap;
-            gap: 25px;
-            padding: 0 20px;
+            gap: 14px;
+            padding: 4px 20px;
         }
 
         .feature {
             text-align: center;
-            padding: 20px 15px;
-            flex: 1;
-            min-width: 170px;
-            max-width: 220px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
+            padding: 14px 12px;
+            flex: 1 1 200px;
+            min-width: 150px;
+            max-width: 230px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: var(--radius-md);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .feature:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .feature i {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+            font-size: 1.7rem;
+            margin-bottom: 8px;
             color: white;
             filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+            transition: transform 0.25s ease;
+        }
+
+        .feature:hover i {
+            transform: scale(1.15);
         }
 
         .feature span {
             font-weight: 600;
             color: white;
             display: block;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
         }
 
         .feature small {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.9rem;
-            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.78rem;
+            line-height: 1.3;
         }
 
         .main-content {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 28px;
         }
 
         .section {
             background-color: white;
-            border-radius: 10px;
+            border-radius: var(--radius-md);
             padding: 30px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: var(--shadow-md);
         }
 
         h2 {
@@ -141,7 +209,8 @@
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
+            font-weight: 700;
         }
 
         h2 i {
@@ -157,21 +226,34 @@
 
         .system-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 25px;
             margin: 30px 0;
         }
 
         .system-card {
             background: white;
-            border-radius: 10px;
+            border-radius: var(--radius-md);
             padding: 30px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 2px solid transparent;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow-sm);
             position: relative;
             overflow: hidden;
+            background-image: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.6), transparent 60%);
+        }
+
+        .system-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            opacity: 0.25;
+            transition: opacity 0.3s ease;
         }
 
         .system-card.lxt {
@@ -182,9 +264,37 @@
             border-top: 5px solid var(--xgt-color);
         }
 
+        .system-card.lite {
+            border-top: 5px solid #27ae60;
+        }
+
+        .system-card.purple {
+            border-top: 5px solid #8e44ad;
+        }
+
+        .system-card.lxt::after {
+            background: linear-gradient(90deg, transparent, var(--lxt-color), transparent);
+        }
+
+        .system-card.xgt::after {
+            background: linear-gradient(90deg, transparent, var(--xgt-color), transparent);
+        }
+
+        .system-card.lite::after {
+            background: linear-gradient(90deg, transparent, #27ae60, transparent);
+        }
+
+        .system-card.purple::after {
+            background: linear-gradient(90deg, transparent, #8e44ad, transparent);
+        }
+
         .system-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .system-card:hover::after {
+            opacity: 1;
         }
 
         .system-icon {
@@ -219,44 +329,63 @@
             display: inline-block;
             padding: 12px 25px;
             background-color: var(--accent-color);
+            background-image: linear-gradient(135deg, var(--accent-light), var(--accent-color));
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-weight: 600;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
         }
 
         .btn:hover {
             background-color: var(--secondary-color);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 18px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-purple {
+            background-color: #8e44ad;
+            background-image: linear-gradient(135deg, #a569bd, #8e44ad);
+            box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
+        }
+
+        .btn-purple:hover {
+            background-color: #7d3c98;
+            background-image: linear-gradient(135deg, #9b59b6, #6c3483);
+            box-shadow: 0 8px 18px rgba(142, 68, 173, 0.4);
         }
 
         .btn-lxt {
             background-color: var(--lxt-color);
+            background-image: linear-gradient(135deg, #5dade2, var(--lxt-color));
         }
 
         .btn-lxt:hover {
             background-color: #2980b9;
+            background-image: linear-gradient(135deg, #3498db, #1f6fb0);
         }
 
         .btn-xgt {
             background-color: var(--xgt-color);
+            background-image: linear-gradient(135deg, #f0636b, var(--xgt-color));
         }
 
         .btn-xgt:hover {
             background-color: #c0392b;
+            background-image: linear-gradient(135deg, #e74c3c, #b03a2e);
         }
 
         .warning-box,
         .note-box {
             padding: 20px;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             margin: 25px 0;
             border-left: 4px solid;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
         .warning-box {
@@ -287,15 +416,16 @@
         .config-item {
             background: #f8f9fa;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             margin-bottom: 15px;
             border: 1px solid #e9ecef;
             transition: all 0.3s ease;
         }
 
         .config-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent-light);
         }
 
         .config-item strong {
@@ -328,14 +458,15 @@
         .image-container img {
             max-width: 70%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .image-container img:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
+            box-shadow: var(--shadow-lg);
         }
 
         /* Стили для модального окна изображения */
@@ -360,7 +491,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
         }
 
         .close {
@@ -372,10 +504,19 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
+            transition: transform 0.3s ease, color 0.3s ease;
+            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close:hover {
-            color: #ccc;
+            color: #ff5a5a;
+            transform: rotate(90deg) scale(1.1);
         }
 
         .image-caption {
@@ -388,9 +529,12 @@
         footer {
             text-align: center;
             padding: 30px 0;
-            margin-top: 50px;
-            border-top: 1px solid #e0e0e0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
             color: #666;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
         }
 
         .quick-links {
@@ -402,28 +546,54 @@
             flex-wrap: wrap;
         }
 
+        .quick-links-section {
+            background-color: white;
+            border-radius: var(--radius-md);
+            padding: 20px 30px 10px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .quick-links-section h2 {
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+            justify-content: center;
+        }
+
+        .quick-links-section .quick-links {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
         .quick-links a {
             color: var(--accent-color);
             text-decoration: none;
-            padding: 8px 15px;
+            padding: 9px 18px;
             border: 1px solid var(--accent-color);
-            border-radius: 5px;
+            border-radius: 999px;
             transition: all 0.3s ease;
+            font-weight: 600;
+            background: rgba(52, 152, 219, 0.05);
         }
 
         .quick-links a:hover {
             background-color: var(--accent-color);
+            background-image: linear-gradient(135deg, var(--accent-light), var(--accent-color));
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(52, 152, 219, 0.35);
         }
 
         .badge {
             display: inline-block;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 0.78rem;
             font-weight: bold;
             margin-left: 10px;
             color: white;
+            letter-spacing: 0.3px;
         }
 
         .badge-lxt {
@@ -440,10 +610,12 @@
 
         .btn-lite {
             background-color: #27ae60;
+            background-image: linear-gradient(135deg, #52be80, #27ae60);
         }
 
         .btn-lite:hover {
             background-color: #229954;
+            background-image: linear-gradient(135deg, #2ecc71, #1e8449);
         }
 
         @media (max-width: 768px) {
@@ -452,24 +624,26 @@
             }
 
             header {
-                padding: 30px 15px;
+                padding: 16px 12px;
             }
 
             header h1 {
-                font-size: 2.2rem;
+                font-size: 1.6rem;
             }
 
             header p {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .system-features {
-                gap: 15px;
+                gap: 10px;
             }
 
             .feature {
-                min-width: 140px;
-                padding: 15px 10px;
+                flex-basis: 44%;
+                min-width: 120px;
+                padding: 10px 8px;
+                height: 110px;
             }
 
             .system-cards {
@@ -486,37 +660,40 @@
             }
 
             .quick-links a {
-                width: 200px;
+                width: 100%;
+                max-width: 320px;
                 text-align: center;
             }
         }
 
         @media (max-width: 480px) {
             header h1 {
-                font-size: 1.8rem;
+                font-size: 1.3rem;
             }
 
             .slogan {
-                font-size: 1.2rem;
-                padding: 10px 18px;
-                margin: 12px 0 20px;
+                font-size: 0.95rem;
+                padding: 7px 14px;
+                margin: 6px 0 10px;
             }
 
             .feature {
-                min-width: 120px;
-                padding: 12px 8px;
+                flex-basis: 100%;
+                min-width: 100%;
+                padding: 10px 8px;
+                height: 100px;
             }
 
             .feature i {
-                font-size: 1.8rem;
+                font-size: 1.3rem;
             }
 
             .feature span {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .feature small {
-                font-size: 0.8rem;
+                font-size: 0.72rem;
             }
         }
 
@@ -527,12 +704,12 @@
         }
 
         .slogan {
-            font-size: 1.4rem;
+            font-size: 1.05rem;
             font-weight: bold;
             color: white;
             text-align: center;
-            margin: 15px 0 25px;
-            padding: 12px 28px;
+            margin: 8px 0 12px;
+            padding: 8px 20px;
             background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(231, 76, 60, 0.3));
             border-radius: 12px;
             border: 2px solid rgba(255, 255, 255, 0.2);
@@ -597,8 +774,8 @@
             <h1><i class="fas fa-battery-full"></i> Эликс toFix - диагностический модуль аккумуляторов Makita</h1>
             <p>Профессиональный инструменты для диагностики и обслуживания аккумуляторов.</p>
             <div class="slogan">Один прибор для двух систем LXT (18V) и XGT (40V)</div>
-            <div style="display: block; text-align: center; margin-top: 14px;">
-                <div style="display: inline-block; padding: 9px 24px; background: linear-gradient(135deg, #b06a2b, #8e4462); color: #f0e0e0; font-size: 1.05rem; font-weight: 600; border-radius: 8px; letter-spacing: 0.4px; box-shadow: 0 2px 8px rgba(0,0,0,0.18);">
+            <div style="display: block; text-align: center; margin-top: 8px;">
+                <div style="display: inline-block; padding: 6px 18px; background: linear-gradient(135deg, #b06a2b, #8e4462); color: #f0e0e0; font-size: 0.9rem; font-weight: 600; border-radius: 8px; letter-spacing: 0.4px; box-shadow: 0 2px 8px rgba(0,0,0,0.18);">
                     <i class="fas fa-wrench" style="margin-right: 7px;"></i>Частичная поддержка Зубр LMS
                 </div>
             </div>
@@ -608,6 +785,11 @@
                     <i class="fas fa-plug"></i>
                     <span>Wi-Fi подключение</span>
                     <small>Беспроводная диагностика</small>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-rss"></i>
+                    <span>Подключение к Wi-Fi через NFC</span>
+                    <small>Быстрое подключение к WiFi</small>
                 </div>
                 <div class="feature">
                     <i class="fas fa-bolt"></i>
@@ -629,17 +811,13 @@
                     <span>Мультиязычный интерфейс</span>
                     <small>Русский, английский, немецкий, польский</small>
                 </div>
+                <div class="feature">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Обновление ПО прибора</span>
+                    <small>Новые функции и исправления</small>
+                </div>
             </div>
         </header>
-
-        <div class="quick-links">
-            <a href="lxt.html"><i class="fas fa-battery-three-quarters"></i> Инструкция LXT</a>
-            <a href="lxt_lite.html"><i class="fas fa-feather"></i> Инструкция Light</a>
-            <a href="xgt.html"><i class="fas fa-bolt"></i> Инструкция XGT</a>
-            <a href="firmware.html"><i class="fas fa-microchip"></i> Обновление прошивки</a>
-            <a href="firmware/uploader.html"><i class="fas fa-download"></i>Flasher</a>
-            <a href="mailto:nikelectronics78@gmail.com"><i class="fas fa-headset"></i> Техподдержка</a>
-        </div>
 
         <div class="main-content">
             <div class="section">
@@ -659,7 +837,7 @@
             <div class="section">
                 <div class="system-cards">
 
-                    <div class="system-card" style="height: fit-content; border-top: 5px solid #8e44ad;">
+                    <div class="system-card purple" style="height: fit-content;">
                         <div class="warning-box">
                             <p><i class="fas fa-exclamation-triangle"></i> <strong>Важно!</strong> Данный
                                 диагностический модуль не устраняет физические неисправности. Он
@@ -672,7 +850,7 @@
                         <h3 style="font-size: 2rem;">Общее описание модуля диагностики</h3>
                         <p>Подробная информация о разъёмах и способах подключения к диагностическому модулю</p>
 
-                        <a href="connectors.html" class="btn" style="background-color: #8e44ad;">
+                        <a href="connectors.html" class="btn btn-purple">
                             <i class="fas fa-arrow-right"></i> Перейти к описанию модуля
                         </a>
                     </div>
@@ -684,7 +862,7 @@
                 <p class="section-intro">Упрощенная версия диагностического модуля без встроенного аккумулятора.</p>
 
                 <div class="system-cards">
-                    <div class="system-card" style="border-top: 5px solid #27ae60;">
+                    <div class="system-card lite">
                         <div class="system-icon" style="color: #27ae60;">
                             <i class="fas fa-feather"></i>
                         </div>
@@ -811,6 +989,18 @@
                     </p> -->
                 </div>
             </div>
+
+        <div class="quick-links-section">
+            <h2><i class="fas fa-link"></i> Быстрые ссылки</h2>
+            <div class="quick-links">
+                <a href="lxt.html"><i class="fas fa-battery-three-quarters"></i> Инструкция LXT</a>
+                <a href="lxt_lite.html"><i class="fas fa-feather"></i> Инструкция Light</a>
+                <a href="xgt.html"><i class="fas fa-bolt"></i> Инструкция XGT</a>
+                <a href="firmware.html"><i class="fas fa-microchip"></i> Обновление прошивки</a>
+                <a href="firmware/uploader.html"><i class="fas fa-download"></i>Flasher</a>
+                <a href="mailto:nikelectronics78@gmail.com"><i class="fas fa-headset"></i> Техподдержка</a>
+            </div>
+        </div>
         </div>
 
         <footer>
