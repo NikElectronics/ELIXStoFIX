@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --sidebar-width: 280px;
+            --sidebar-width: 330px;
             --sidebar-collapsed-width: 70px;
             --primary-color: #2c3e50;
             --secondary-color: #34495e;
@@ -681,6 +681,78 @@
         .sidebar::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.3);
         }
+
+        /* ===== Сайдбар в стиле выдвижного меню главной ===== */
+        .sidebar {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 60%, #14213d 100%) !important;
+        }
+
+        .sidebar-header {
+            background: transparent !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+        }
+
+        .sidebar-content {
+            padding: 12px 10px;
+        }
+
+        .sidebar ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .sidebar li a {
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 12px;
+            margin: 0 6px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar li a i {
+            color: var(--accent-light);
+            margin-right: 12px;
+        }
+
+        .sidebar li a:hover {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent-color)) !important;
+            border-color: transparent;
+            color: #fff !important;
+            transform: translateX(4px);
+        }
+
+        .sidebar li a.active {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent-color)) !important;
+            border-color: transparent;
+            color: #fff !important;
+        }
+
+        /* ===== Бургер-кнопка (стиль как на главной) ===== */
+        .mobile-menu-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 55%, #dc2626 100%) !important;
+            color: white !important;
+            border: 2px solid rgba(255, 255, 255, 0.85) !important;
+            border-radius: 14px !important;
+            width: 54px !important;
+            height: 54px !important;
+            box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45), 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+            animation: hamburger-pulse 2.4s ease-in-out infinite;
+        }
+
+        .mobile-menu-btn:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 34px rgba(239, 68, 68, 0.6), 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+        }
+
+        @keyframes hamburger-pulse {
+            0%, 100% {
+                box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45), 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                box-shadow: 0 10px 32px rgba(239, 68, 68, 0.7), 0 4px 12px rgba(0, 0, 0, 0.25);
+            }
+        }
     </style>
 </head>
 
@@ -711,7 +783,7 @@
                 <li><a href="mailto:nikelectronics78@gmail.com"><i class="fas fa-envelope"></i>
                         <span>Техподдержка</span></a>
                 </li>
-                <li><a href="index.html"><i class="fas fa-arrow-left"></i> <span>К инструкции</span></a></li>
+                <li><a href="index.html"><i class="fas fa-arrow-left"></i> <span>Главная страница</span></a></li>
             </ul>
         </div>
     </div>

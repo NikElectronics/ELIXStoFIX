@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 44,
+            "activePatchIndex": 45,
             "patches": [
                 {
                     "date": 1767699478445,
@@ -184,6 +184,10 @@
                 {
                     "date": 1780048185358,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -873,9 +873,9 @@\n \r\n                 <div class=\"warning pulse\">\r\n                     <p><i class=\"fas fa-exclamation-triangle\"></i> <strong>Внимание!</strong> Сброс ошибок через WEB\r\n                         интерфейс выполняется\r\n-                        только при наличии программного лицензионного ключа!(установлен)</p>\r\n+                        только при наличии программного лицензионного ключа! (установлен)</p>\r\n                 </div>\r\n             </div>\r\n         </div>\r\n \r\n"
+                },
+                {
+                    "date": 1787718438237,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -680,8 +680,35 @@\n \r\n         .sidebar::-webkit-scrollbar-thumb:hover {\r\n             background: rgba(255, 255, 255, 0.3);\r\n         }\r\n+\r\n+        /* ===== Бургер-кнопка (стиль как на главной) ===== */\r\n+        .mobile-menu-btn {\r\n+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 55%, #dc2626 100%) !important;\r\n+            color: white !important;\r\n+            border: 2px solid rgba(255, 255, 255, 0.85) !important;\r\n+            border-radius: 14px !important;\r\n+            width: 54px !important;\r\n+            height: 54px !important;\r\n+            box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45), 0 4px 10px rgba(0, 0, 0, 0.2) !important;\r\n+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;\r\n+            animation: hamburger-pulse 2.4s ease-in-out infinite;\r\n+        }\r\n+\r\n+        .mobile-menu-btn:hover {\r\n+            transform: scale(1.06);\r\n+            box-shadow: 0 12px 34px rgba(239, 68, 68, 0.6), 0 4px 12px rgba(0, 0, 0, 0.25) !important;\r\n+        }\r\n+\r\n+        @keyframes hamburger-pulse {\r\n+            0%, 100% {\r\n+                box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45), 0 4px 10px rgba(0, 0, 0, 0.2);\r\n+            }\r\n+            50% {\r\n+                box-shadow: 0 10px 32px rgba(239, 68, 68, 0.7), 0 4px 12px rgba(0, 0, 0, 0.25);\r\n+            }\r\n+        }\r\n     </style>\r\n </head>\r\n \r\n <body>\r\n@@ -710,9 +737,9 @@\n                 <li class=\"divider\"></li>\r\n                 <li><a href=\"mailto:nikelectronics78@gmail.com\"><i class=\"fas fa-envelope\"></i>\r\n                         <span>Техподдержка</span></a>\r\n                 </li>\r\n-                <li><a href=\"index.html\"><i class=\"fas fa-arrow-left\"></i> <span>К инструкции</span></a></li>\r\n+                <li><a href=\"index.html\"><i class=\"fas fa-arrow-left\"></i> <span>Главная страница</span></a></li>\r\n             </ul>\r\n         </div>\r\n     </div>\r\n \r\n"
                 }
             ],
             "date": 1767699478445,
