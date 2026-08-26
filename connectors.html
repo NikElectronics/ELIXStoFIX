@@ -3,87 +3,199 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Диагностический модуль аккумуляторов Makita LXT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Описание модуля · ЭликсToFix</title>
+    <link rel="icon" type="image/png" href="ava.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #1a2b3c;
+            --secondary-color: #2c3e50;
+            --accent-color: #3498db;
+            --accent-light: #5dade2;
+            --warning-color: #ff9800;
+            --note-color: #3498db;
+            --error-color: #e74c3c;
+            --success-color: #27ae60;
+            --text-color: #333;
+            --transition-speed: 0.3s;
+            --radius-sm: 10px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.16);
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(90rem 90rem at 110% -10%, rgba(162, 28, 175, 0.18), transparent 60%),
+                radial-gradient(80rem 80rem at -10% 15%, rgba(8, 145, 178, 0.22), transparent 55%),
+                #f3f4f6;
+            color: var(--text-color);
             line-height: 1.6;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
-            color: #333;
-            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Аккуратный скроллбар */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #e9ecf1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #b6c2cf;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            padding: 20px;
         }
 
         header {
-            background: linear-gradient(to right, #e60000, #b30000);
-            color: white;
-            padding: 30px;
             text-align: center;
+            padding: 22px 0;
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 45%, #14213d 100%);
+            color: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), #8e44ad, #e74c3c, var(--accent-color));
+            background-size: 300% 100%;
+            animation: header-shimmer 6s linear infinite;
+        }
+
+        @keyframes header-shimmer {
+            0% {
+                background-position: 0% 0;
+            }
+
+            100% {
+                background-position: 100% 0;
+            }
         }
 
         header h1 {
-            font-size: 2.2em;
-            letter-spacing: 1px;
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.55);
+            line-height: 1.3;
+            padding: 0 20px;
         }
 
-        .overview {
-            padding: 30px;
-            text-align: center;
+        header h1 i {
+            color: var(--accent-light);
+            margin-right: 8px;
+            text-shadow: 0 0 14px rgba(93, 173, 226, 0.8);
         }
 
-        .overview img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        header p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 14px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            line-height: 1.6;
+            padding: 0 20px;
         }
 
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        ol,
+        ul {
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        /* Заголовок раздела */
         .section-title {
-            padding: 20px;
-            background: #f0f4f8;
-            color: #2c3e50;
-            font-size: 1.5em;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
+        .section-title i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        /* Карточки элементов */
         .element-card {
             background: white;
-            border-radius: 10px;
-            overflow: visible;
-            /* Позволяет изображению отображаться полностью */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            margin: 20px auto;
-            max-width: 800px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .element-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--shadow-lg);
         }
 
         .element-img {
-            width: 100%;
+            display: block;
+            width: auto;
+            max-width: 50%;
             height: auto;
-            /* Позволяет изображению масштабироваться без обрезки */
+            margin: 0 auto;
+            padding: 10px 0 0;
             object-fit: contain;
-            /* Всё изображение видно целиком */
-            border-bottom: 1px solid #eee;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
@@ -93,18 +205,27 @@
         }
 
         .element-content {
-            padding: 20px;
+            padding: 22px 24px;
         }
 
         .element-content h3 {
-            color: #e60000;
+            color: var(--primary-color);
             margin-bottom: 10px;
-            font-size: 1.4em;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .element-content h3 i {
+            margin-right: 10px;
+            color: var(--accent-color);
         }
 
         .instructions {
-            padding: 30px;
-            background: #f9fafc;
+            padding: 26px;
+            background: #f8f9fa;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
 
         .instructions ol {
@@ -115,48 +236,33 @@
             margin-bottom: 12px;
         }
 
+        /* Заметки и предупреждения */
         .highlight {
-            background-color: #fff8dc;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 5px solid #ffcc00;
+            background-color: rgba(255, 193, 7, 0.12);
+            padding: 14px 18px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            border-left: 4px solid #f0b400;
             margin-top: 20px;
         }
 
-        /* Стили для важного предупреждения */
         .warning {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-            border: 2px solid #ffc107;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
-            position: relative;
-        }
-
-        .warning::before {
-            content: "⚠️";
-            font-size: 24px;
-            position: absolute;
-            top: 15px;
-            left: 15px;
+            background-color: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #e67e22;
+            padding: 14px 18px;
+            margin: 15px 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
         }
 
         .warning p:first-child {
             font-weight: bold;
-            color: #856404;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            padding-left: 30px;
         }
 
         .warning ul {
             margin: 10px 0 0 0;
-            padding-left: 30px;
+            padding-left: 25px;
         }
 
         .warning li {
-            color: #856404;
             margin-bottom: 8px;
             font-weight: 500;
         }
@@ -167,158 +273,478 @@
 
         @keyframes pulse {
             0% {
-                box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+                box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
             }
+
             50% {
-                box-shadow: 0 4px 25px rgba(255, 193, 7, 0.6);
+                box-shadow: 0 4px 25px rgba(230, 126, 34, 0.55);
             }
+
             100% {
-                box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+                box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
             }
+        }
+
+        /* Модальное окно для изображений */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 90%;
+            max-height: 85%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s ease, color 0.3s ease;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close:hover {
+            color: #ff5a5a;
+            transform: rotate(90deg) scale(1.1);
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            background: #2c3e50;
-            color: white;
-            font-size: 0.9em;
+            padding: 30px 20px;
+            margin-top: 36px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            color: #666;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 1.35rem;
+            }
+
+            header p {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+
+            .element-content {
+                padding: 18px;
+            }
+
+            .element-img {
+                max-width: 100%;
+                padding-top: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+        }
+
+
+        /* ===== Выдвижное меню (бургер) ===== */
+        .hamburger {
+            position: sticky;
+            top: 12px;
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 54px;
+            height: 54px;
+            margin-right: auto;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 55%, #dc2626 100%);
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45), 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: hamburger-pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes hamburger-pulse {
+            0%,
+            100% {
+                box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45), 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 10px 32px rgba(239, 68, 68, 0.7), 0 4px 12px rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        .hamburger:hover {
+            transform: translateY(-2px) scale(1.06);
+            box-shadow: 0 12px 34px rgba(239, 68, 68, 0.6), 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 3.5px;
+            background: #fff;
+            border-radius: 3px;
+            transform-origin: center;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active {
+            animation: none;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8.5px) rotate(-45deg);
+        }
+
+        /* Затемнение фона */
+        .side-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 40;
+        }
+
+        .side-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Выдвижная панель */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 300px;
+            max-width: 85vw;
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 65%, #14213d 100%);
+            padding: 22px 18px;
+            transform: translateX(-105%);
+            transition: transform 0.35s ease;
+            z-index: 50;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .side-menu.open {
+            transform: translateX(0);
+        }
+
+        .side-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .side-menu-header i {
+            color: var(--accent-light);
+            margin-right: 8px;
+        }
+
+        .side-menu-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .side-menu-close:hover {
+            background: var(--error-color);
+        }
+
+        .side-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .side-menu .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e8eef5;
+            text-decoration: none;
+            padding: 13px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .side-menu .nav-link i {
+            width: 20px;
+            text-align: center;
+            color: var(--accent-light);
+        }
+
+        .side-menu .nav-link:hover {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
+            border-color: transparent;
+            color: #fff;
+            transform: translateX(4px);
         }
     </style>
 </head>
 
 <body>
-
-    <!-- Модальное окно для просмотра изображений -->
-    <div id="imageModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);">
-        <span id="closeModal" style="position: absolute; top: 20px; right: 35px; color: white; font-size: 40px; font-weight: bold; cursor: pointer;">&times;</span>
-        <img id="modalImage" style="display: block; margin: auto; max-width: 90%; max-height: 80%; margin-top: 60px;">
-    </div>
-
-    <script>
-        // Функция для открытия изображения в модальном окне
-        function openImageModal(imgSrc) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            modal.style.display = 'block';
-            modalImg.src = imgSrc;
-        }
-
-        // Закрытие модального окна
-        document.getElementById('closeModal').onclick = function() {
-            document.getElementById('imageModal').style.display = 'none';
-        }
-
-        // Закрытие при клике вне изображения
-        window.onclick = function(event) {
-            const modal = document.getElementById('imageModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        // Добавляем обработчики кликов на все изображения
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.element-img');
-            images.forEach(function(img) {
-                img.style.cursor = 'pointer';
-                img.onclick = function() {
-                    openImageModal(this.src);
-                };
-            });
-        });
-    </script>
-
     <div class="container">
+        <!-- Бургер-кнопка -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Открыть меню" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Выдвижное меню -->
+        <div class="side-overlay" id="sideOverlay"></div>
+        <nav class="side-menu" id="sideMenu" aria-label="Основное меню">
+            <div class="side-menu-header">
+                <span><i class="fas fa-plug"></i> Меню</span>
+                <button class="side-menu-close" id="menuClose" aria-label="Закрыть меню">&times;</button>
+            </div>
+            <div class="side-menu-links">
+                <a class="nav-link" href="index.html"><i class="fas fa-home"></i> На главную</a>
+                <a class="nav-link" href="mailto:nikelectronics78@gmail.com"><i class="fas fa-headset"></i> Техподдержка</a>
+            </div>
+        </nav>
+
         <header>
-            <h1>Диагностический модуль ЭликсtoFix для аккумуляторов Makita</h1>
+            <h1><i class="fas fa-plug"></i> Диагностический модуль ЭликсtoFix для аккумуляторов Makita</h1>
+            <p>Описание основных элементов устройства и правил подключения</p>
         </header>
 
-        <!-- <div class="overview">
-            <img src="ImagesMain/nemakita.png" alt="Общий вид диагностического модуля Makita LXT">
-            <p style="margin-top: 15px; font-size: 1.1em;">
-                Полная диагностика аккумуляторов Makita LXT: напряжение, температура, состояние ячеек.
-            </p>
-        </div> -->
+        <div class="main-content">
+            <div class="section-title"><i class="fas fa-bolt"></i> Основные элементы устройства</div>
 
-        <div class="section-title" style="font-weight: bold;">⚡️ Основные элементы устройства ⚡️</div>
+                <!-- Элемент 1: Разъём Makita -->
+                <div class="element-card">
+                    <img src="ImagesMain/makita.png" alt="Разъём Makita для подключения к аккумулятору" class="element-img">
+                    <div class="element-content">
+                        <h3><i class="fas fa-plug"></i> Разъём Makita</h3>
+                        <p>Подключите аккумулятор Makita LXT. Совместимость с большинством моделей. Надежный контакт до щелчка.
+                        </p>
+                    </div>
+                </div>
 
-        <!-- Элемент 1: Разъём Makita -->
-        <div class="element-card">
-            <img src="ImagesMain/makita.png" alt="Разъём Makita для подключения к аккумулятору" class="element-img">
-            <div class="element-content">
-                <h3>🔌 Разъём Makita</h3>
-                <p>Подключите аккумулятор Makita LXT. Совместимость с большинством моделей. Надежный контакт до щелчка.
-                </p>
-            </div>
+                <!-- Элемент 2: Кнопка включения -->
+                <div class="element-card">
+                    <img src="ImagesMain/button.png" alt="Кнопка включения" class="element-img">
+                    <div class="element-content">
+                        <h3><i class="fas fa-power-off"></i> Кнопка включения</h3>
+                        <p>
+                            - Одно нажатие включает устройство<br>
+                            - Два нажатия выключает устройство
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Элемент 3: USB-разъем зарядки -->
+                <div class="element-card">
+                    <img src="ImagesMain/nemakita.png" alt="USB-разъем зарядки" class="element-img">
+                    <img src="ImagesMain/usb-charge.png" alt="USB-разъем зарядки" class="element-img">
+                    <div class="element-content">
+                        <h3><i class="fas fa-bolt"></i> USB-разъём зарядки</h3>
+                        <ol>
+                            <li>Подключите устройство при помощи кабеля к зарядному устройству 5в 1A</li>
+                            <li>Индикатор заряда в процессе будет мигать крассным цветом</li>
+                            <li>Дождитесь завершения процесса (горят все светодиоды)</li>
+                        </ol>
+
+                        <div class="warning pulse">
+                            <p><strong><i class="fas fa-exclamation-triangle"></i> ВАЖНО!</strong></p>
+                            <ul>
+                                <li>Не оставляйте устройство без контроля во время заряда!</li>
+                                <!-- <li>Используйте только оригинальное зарядное устройство 5V 1A</li>
+                                <li>Прекратите зарядку при появлении необычных звуков или запаха</li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Элемент 4: Диагностический USB-разъем -->
+                <div class="element-card">
+                    <img src="ImagesMain/usb-comp.png" alt="Диагностический USB-разъем" class="element-img">
+                    <div class="element-content">
+                        <h3><i class="fas fa-laptop"></i> Диагностический USB</h3>
+                        <p>Для подключения к ПК для работы работы с программным обеспечением и прошивки.</p>
+                    </div>
+                </div>
+
+                <div class="instructions">
+                    <!-- <h2 style="color: #2c3e50;">Как использовать модуль</h2> -->
+                    <ol>
+                        <!-- <li>Убедитесь, что аккумулятор чистый и сухой.</li>
+                        <li>Подключите аккумулятор к <strong>разъёму Makita</strong>.</li>
+                        <li>Нажмите <strong>кнопку включения</strong>.</li>
+                        <li>Дождитесь окончания автоматической диагностики.</li>
+                        <li>Подключите <strong>диагностический USB-порт</strong> к компьютеру.</li>
+                        <li>Запустите программное обеспечение и сохраните результаты.</li> -->
+                    </ol>
+                </div>
+
+                <!-- <div class="highlight">
+                    <strong>Совет:</strong> Регулярно обновляйте программное обеспечение для получения наиболее точных данных
+                    диагностики.
+                </div> -->
+            </div><!-- /.main-content -->
+
+            <footer>
+                &copy; 2026 Инструкция по использованию диагностического модуля ЭликсtoFix
+            </footer>
+        </div><!-- /.container -->
+
+        <!-- Модальное окно для изображений -->
+        <div id="imageModal" class="modal">
+            <span id="closeModal" class="close">&times;</span>
+            <img id="modalImage" class="modal-content">
         </div>
 
-        <!-- Элемент 2: Кнопка включения -->
-        <div class="element-card">
-            <img src="ImagesMain/button.png" alt="Кнопка включения" class="element-img">
-            <div class="element-content">
-                <h3>🔘 Кнопка включения</h3>
-                <p>
-                    - Одно нажатие включает устройство<br>
-                    - Два нажатия выключает устройство
-                </p>
-            </div>
-        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Модальное окно для изображений
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImage');
+                const closeBtn = document.getElementById('closeModal');
 
-        <!-- Элемент 3: USB-разъем зарядки -->
-        <div class="element-card">
-            <img src="ImagesMain/nemakita.png" alt="USB-разъем зарядки" class="element-img">
-            <img src="ImagesMain/usb-charge.png" alt="USB-разъем зарядки" class="element-img">
-            <div class="element-content">
-                <h3>🔌 USB-разъём зарядки</h3>
-                            <ol>
-                <li>Подключите устройство при помощи кабеля к зарядному устройству 5в 1A</li>
-                <li>Индикатор заряда в процессе будет мигать крассным цветом</li>
-                <li>Дождитесь завершения процесса (горят все светодиоды)</li>
-            </ol>
+                // Добавляем обработчики кликов на все изображения элементов
+                document.querySelectorAll('.element-img').forEach(function (img) {
+                    img.addEventListener('click', function () {
+                        modal.style.display = 'block';
+                        modalImg.src = this.src;
+                    });
+                });
 
-            <div class="warning pulse">
-                <p><strong>ВАЖНО!</strong></p>
-                <ul>
-                    <li>Не оставляйте устройство без контроля во время заряда!</li>
-                    <!-- <li>Используйте только оригинальное зарядное устройство 5V 1A</li>
-                    <li>Прекратите зарядку при появлении необычных звуков или запаха</li> -->
-                </ul>
-            </div>
-            </div>
-        </div>
+                if (closeBtn) {
+                    closeBtn.onclick = function () {
+                        modal.style.display = 'none';
+                    }
+                }
 
-        <!-- Элемент 4: Диагностический USB-разъем -->
-        <div class="element-card">
-            <img src="ImagesMain/usb-comp.png" alt="Диагностический USB-разъем" class="element-img">
-            <div class="element-content">
-                <h3>💻 Диагностический USB</h3>
-                <p>Для подключения к ПК для работы работы с программным обеспечением и прошивки.</p>
-            </div>
-        </div>
+                window.onclick = function (event) {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                }
 
-        <div class="instructions">
-            <!-- <h2 style="color: #2c3e50;">Как использовать модуль</h2> -->
-            <ol>
-                <!-- <li>Убедитесь, что аккумулятор чистый и сухой.</li>
-                <li>Подключите аккумулятор к <strong>разъёму Makita</strong>.</li>
-                <li>Нажмите <strong>кнопку включения</strong>.</li>
-                <li>Дождитесь окончания автоматической диагностики.</li>
-                <li>Подключите <strong>диагностический USB-порт</strong> к компьютеру.</li>
-                <li>Запустите программное обеспечение и сохраните результаты.</li> -->
-            </ol>
-        </div>
+                // Закрытие по клавише Escape
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'Escape') {
+                        modal.style.display = 'none';
+                    }
+                });
 
-        <!-- <div class="highlight">
-            <strong>Совет:</strong> Регулярно обновляйте программное обеспечение для получения наиболее точных данных
-            диагностики.
-        </div> -->
+                // ===== Выдвижное меню =====
+                const burger = document.getElementById('hamburgerBtn');
+                const menu = document.getElementById('sideMenu');
+                const overlay = document.getElementById('sideOverlay');
+                const menuCloseBtn = document.getElementById('menuClose');
 
-        <footer>
-            &copy; 2026 Инструкция по использованию диагностического модуля ЭликсtoFix
-        </footer>
-    </div>
+                function openMenu() {
+                    burger.classList.add('active');
+                    menu.classList.add('open');
+                    overlay.classList.add('open');
+                    burger.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                }
 
-</body>
+                function closeMenu() {
+                    burger.classList.remove('active');
+                    menu.classList.remove('open');
+                    overlay.classList.remove('open');
+                    burger.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+
+                burger.addEventListener('click', function () {
+                    if (menu.classList.contains('open')) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                });
+
+                menuCloseBtn.addEventListener('click', closeMenu);
+                overlay.addEventListener('click', closeMenu);
+
+                // Закрываем при клике на пункт меню
+                menu.querySelectorAll('.nav-link').forEach(function (link) {
+                    link.addEventListener('click', closeMenu);
+                });
+
+                // Закрываем по клавише Escape
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape') closeMenu();
+                });
+            });
+        </script>
+    </body>
 
 </html>

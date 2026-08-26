@@ -3,47 +3,367 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инструкция по обновлению прошивки</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Обновление прошивки · ЭликсToFix</title>
+    <link rel="icon" type="image/png" href="ava.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #1a2b3c;
+            --secondary-color: #2c3e50;
+            --accent-color: #3498db;
+            --accent-light: #5dade2;
+            --xgt-color: #e74c3c;
+            --lxt-color: #3498db;
+            --success-color: #27ae60;
+            --text-color: #333;
+            --transition-speed: 0.3s;
+            --radius-sm: 10px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.16);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(90rem 90rem at 110% -10%, rgba(162, 28, 175, 0.18), transparent 60%),
+                radial-gradient(80rem 80rem at -10% 15%, rgba(8, 145, 178, 0.22), transparent 55%),
+                #f3f4f6;
+            color: var(--text-color);
             line-height: 1.6;
-            max-width: 800px;
+            min-height: 100vh;
+        }
+
+        /* Аккуратный скроллбар */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #e9ecf1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #b6c2cf;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            color: #333;
         }
 
-        h1,
-        h2,
+        header {
+            text-align: center;
+            padding: 22px 0;
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 45%, #14213d 100%);
+            color: white;
+            border-radius: var(--radius-lg);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), #8e44ad, var(--xgt-color), var(--accent-color));
+            background-size: 300% 100%;
+            animation: header-shimmer 6s linear infinite;
+        }
+
+        @keyframes header-shimmer {
+            0% {
+                background-position: 0% 0;
+            }
+
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.55);
+            line-height: 1.3;
+            padding: 0 20px;
+        }
+
+        header h1 i {
+            color: var(--accent-light);
+            margin-right: 8px;
+            text-shadow: 0 0 14px rgba(93, 173, 226, 0.8);
+        }
+
+        header p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 14px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        h2 i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
         h3 {
-            color: #2c3e50;
+            color: var(--secondary-color);
+            margin: 20px 0 12px;
+            font-size: 1.25rem;
         }
 
+        ol,
+        ul {
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        code {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: #21618c;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-family: Consolas, monospace;
+            font-size: 0.95em;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+
+        /* Вкладки OTA / USB */
+        .tabs-row {
+            display: flex;
+            gap: 14px;
+            margin: 4px 0 22px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--secondary-color);
+            border: 2px solid rgba(52, 152, 219, 0.35);
+            outline: none;
+            cursor: pointer;
+            padding: 13px 26px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 999px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-btn:hover:not(.active) {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(52, 152, 219, 0.25);
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-color);
+            background-image: linear-gradient(135deg, var(--accent-light), var(--accent-color));
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
+        }
+
+        .tab-btn i {
+            font-size: 1.05rem;
+        }
+
+        /* Карточка вкладки с контентом */
+        .tab-content {
+            background-color: #f3f4f6;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: var(--radius-md);
+            padding: 26px;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .tab-content:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Шаги инструкции */
         .step {
-            margin-bottom: 30px;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            background-color: #f8f9fa;
+            background: white;
+            margin-bottom: 22px;
+            padding: 22px 24px;
+            border-left: 4px solid var(--accent-color);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .step:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .step h2 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        /* Заметки и предупреждения */
+        .note {
+            background-color: rgba(52, 152, 219, 0.08);
+            border-left: 4px solid var(--accent-color);
+            padding: 14px 18px;
+            margin: 15px 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        .warning {
+            background-color: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid #e67e22;
+            padding: 14px 18px;
+            margin: 15px 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        /* Скриншоты */
         .screenshot {
             max-width: 100%;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: var(--radius-sm);
             padding: 5px;
             margin: 10px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow-sm);
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .screenshot:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
+            box-shadow: var(--shadow-md);
         }
 
-        /* Стили для модального окна изображения */
+        /* Кнопки скачивания */
+        .download-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            background-image: linear-gradient(135deg, var(--accent-light), var(--accent-color));
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+            margin: 8px 6px 8px 0;
+            font-size: 1rem;
+        }
+
+        .download-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(52, 152, 219, 0.4);
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+        }
+
+        .download-container {
+            text-align: center;
+            margin: 6px 0 22px;
+            padding: 18px;
+            background: white;
+            border-radius: var(--radius-sm);
+            border: 1px dashed rgba(52, 152, 219, 0.45);
+        }
+
+        /* Большая оранжевая кнопка быстрой прошивки */
+        .flash-hero {
+            text-align: center;
+            margin: 4px 0 26px;
+        }
+
+        .btn-flash {
+            display: inline-block;
+            background-color: #e67e22;
+            background-image: linear-gradient(135deg, #f5a623, #e67e22);
+            color: white;
+            padding: 16px 34px;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 1.25rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 18px rgba(230, 126, 34, 0.45);
+        }
+
+        .btn-flash:hover {
+            background-image: linear-gradient(135deg, #f7b733, #d35400);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 26px rgba(230, 126, 34, 0.55);
+        }
+
+        .btn-flash .beta-note {
+            opacity: 0.8;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Модальное окно для изображений */
         .modal {
             display: none;
             position: fixed;
@@ -65,7 +385,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
         }
 
         .close {
@@ -77,348 +398,537 @@
             font-weight: bold;
             cursor: pointer;
             z-index: 1001;
+            transition: transform 0.3s ease, color 0.3s ease;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close:hover {
-            color: #ccc;
+            color: #ff5a5a;
+            transform: rotate(90deg) scale(1.1);
         }
 
-        .note {
-            background-color: #fff8e1;
-            border-left: 4px solid #ffc107;
-            padding: 10px 15px;
-            margin: 15px 0;
-        }
-
-        .warning {
-            background-color: #ffebee;
-            border-left: 4px solid #f44336;
-            padding: 10px 15px;
-            margin: 15px 0;
-        }
-
-        code {
-            background-color: #f5f5f5;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-family: monospace;
-        }
-
-        .download-btn {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            margin: 15px 0;
-        }
-
-        .download-btn:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .download-btn:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .download-container {
+        footer {
             text-align: center;
-            margin: 20px 0;
+            padding: 30px 20px;
+            margin-top: 36px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            color: #666;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
         }
 
-        .tab-btn {
-            background-color: #e0e0e0;
-            border: none;
-            outline: none;
+        footer a {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Выдвижное меню (бургер) ===== */
+        .hamburger {
+            position: sticky;
+            top: 12px;
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 54px;
+            height: 54px;
+            margin-right: auto;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 55%, #dc2626 100%);
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45), 0 4px 10px rgba(0, 0, 0, 0.2);
             cursor: pointer;
-            padding: 14px 16px;
-            font-size: 16px;
-            border-radius: 4px 4px 0 0;
-            transition: 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: hamburger-pulse 2.4s ease-in-out infinite;
         }
 
-        .tab-btn.active {
-            background-color: #3498db;
-            color: white;
+        @keyframes hamburger-pulse {
+            0%,
+            100% {
+                box-shadow: 0 8px 24px rgba(239, 68, 68, 0.45), 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 10px 32px rgba(239, 68, 68, 0.7), 0 4px 12px rgba(0, 0, 0, 0.25);
+            }
         }
 
-        .tab-btn:hover:not(.active) {
-            background-color: #bdc3c7;
+        .hamburger:hover {
+            transform: translateY(-2px) scale(1.06);
+            box-shadow: 0 12px 34px rgba(239, 68, 68, 0.6), 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
-        .tab-content {
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-top: none;
-            border-radius: 0 0 4px 4px;
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 3.5px;
+            background: #fff;
+            border-radius: 3px;
+            transform-origin: center;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active {
+            animation: none;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8.5px) rotate(-45deg);
+        }
+
+        /* Затемнение фона */
+        .side-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 40;
+        }
+
+        .side-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Выдвижная панель */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 300px;
+            max-width: 85vw;
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 65%, #14213d 100%);
+            padding: 22px 18px;
+            transform: translateX(-105%);
+            transition: transform 0.35s ease;
+            z-index: 50;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .side-menu.open {
+            transform: translateX(0);
+        }
+
+        .side-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .side-menu-header i {
+            color: var(--accent-light);
+            margin-right: 8px;
+        }
+
+        .side-menu-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .side-menu-close:hover {
+            background: var(--xgt-color);
+        }
+
+        .side-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .side-menu .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e8eef5;
+            text-decoration: none;
+            padding: 13px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .side-menu .nav-link i {
+            width: 20px;
+            text-align: center;
+            color: var(--accent-light);
+        }
+
+        .side-menu .nav-link:hover {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
+            border-color: transparent;
+            color: #fff;
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.95rem;
+            }
+
+            .tabs-row {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .tab-content {
+                padding: 18px;
+            }
+
+            .step {
+                padding: 18px 16px;
+            }
+
+            .btn-flash {
+                font-size: 1.05rem;
+                padding: 14px 26px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.25rem;
+            }
+
+            .btn-flash {
+                font-size: 0.95rem;
+                padding: 12px 20px;
+            }
         }
     </style>
 </head>
 
 <body>
+    <div class="container">
+        <!-- Бургер-кнопка -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Открыть меню" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-    <div style="margin-bottom: 20px; padding: 10px; background-color: #f0f8ff; border-left: 4px solid #3498db; display: inline-block;">
-        <span>📋 </span><a href="CHANGELOG.md" style="text-decoration: none; color: #2980b9; font-weight: bold;">История обновлений</a>
-    </div>
-
-    <h1>Инструкция по обновлению прошивки</h1>
-
-    <div style="text-align: center; margin: 20px 0;">
-        <a href="firmware/uploader.html" class="download-btn"
-            style="background-color: #27ae60; font-size: 20px; padding: 16px 32px; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.4);">
-            ⚡ Прошить в пару кликов <span style="opacity: 0.75;">(beta версия)</span>
-        </a>
-        <!-- <p style="font-size: 14px; color: #666; margin: 6px 0 0;">Прямая прошивка через браузер — без скачивания файлов и программ</p> -->
-    </div>
-
-    <div style="display: flex; gap: 20px; margin: 20px 0;">
-        <button id="otaTab" class="tab-btn active" onclick="showTab('ota')">OTA обновление</button>
-        <button id="usbTab" class="tab-btn" onclick="showTab('usb')">USB обновление</button>
-    </div>
-
-    <div id="otaContent" class="tab-content">
-
-        <div class="download-container" id="downloadSection">
-            <a href="files/lxtfix_V4(zubr_alpha).bin" download class="download-btn">
-                📥 Скачать прошивку lxtfix_V4 (zubr_alpha)
-            </a>
-            <a href="files/lxtfix_V302.bin" download class="download-btn">
-                📥 Скачать прошивку lxtfix_V302.bin
-            </a>
-        </div>
-
-        <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>
-
-        <div class="warning">
-            <h3>⚠️ ВАЖНО: Перед началом обновления</h3>
-            <p><strong>Обязательно сохраните лицензионный ключ и номер прибора!</strong> При случайном удалении файла с базой данных
-                 (который доступен в режиме администратора) потребуется повторная активация.</p>
-            <p>Рекомендуется:</p>
-            <ul>
-                <li>Сделать скриншот раздела с лицензионной информацией</li>
-                <li>Записать номер прибора и лицензионный ключ на бумаге</li>
-                <li>Сохранить эти данные в надежном месте</li>
-            </ul>
-        </div>
-
-        <div class="step">
-            <h2>Шаг 1: Подключение к устройству</h2>
-            <p>Убедитесь, что устройство включено и подключено к Wi-Fi сети. В коде указано, что устройство создает
-                точку
-                доступа с именем "Makita" и паролем "12345678".</p>
-            <div class="note">
-                <p><strong>Примечание:</strong> В коде устройства заданы следующие настройки:</p>
-                <ul>
-                    <li>SSID: <code>Makita</code></li>
-                    <li>Пароль: <code>12345678</code></li>
-                    <li>Режим: Точка доступа (AP)</li>
-                </ul>
+        <!-- Выдвижное меню -->
+        <div class="side-overlay" id="sideOverlay"></div>
+        <nav class="side-menu" id="sideMenu" aria-label="Основное меню">
+            <div class="side-menu-header">
+                <span><i class="fas fa-plug"></i> Меню</span>
+                <button class="side-menu-close" id="menuClose" aria-label="Закрыть меню">&times;</button>
             </div>
-            <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>
-            <p>Откройте WEB браузер и перейдите по адресу 192.168.4.1 (предварительно отключите сеть "Мобильные данные")
-            </p>
-        </div>
-
-        <div class="step">
-            <h2>Шаг 2: Открытие меню</h2>
-            <p>Откройте меню нажав на иконку указанную на рисунке ниже. </p>
-            <img src="images/menu.png" alt="Главная страница веб-интерфейса" class="screenshot">
-        </div>
-
-        <div class="step">
-            <h2>Шаг 3: Ввод пароля администратора.</h2>
-            <p>После открытия меню нажмите иконку ключ указанную на рисунке.</p>
-            <img src="images/menu_open.png" alt="Главная страница веб-интерфейса" class="screenshot">
-            <p>И введите в поле, открывшегося окна Password, пароль LXTFIX</p>
-            <img src="images/password.png" alt="Главная страница веб-интерфейса" class="screenshot">
-        </div>
-
-        <div class="step">
-            <h2>Шаг 4: Выбор прошивки</h2>
-            <p>После ввода правильного пароля иконка ключа станет зеленым и появится иконка ОТА (облако)".</p>
-            <p>Нажав на иконку OTA откроется проводник файлов вашего устройства. Найдите и выберите заранее скачанную
-                прошивку.</p>
-            <img src="images/pass_good.png" alt="Раздел программатора" class="screenshot">
-            <div class="note">
-                <p><strong>Примечание:</strong> Убедитесь, что файл прошивки имеет правильный формат (обычно .bin) и
-                    совместим с вашим устройством.</p>
+            <div class="side-menu-links">
+                <a class="nav-link" href="index.html"><i class="fas fa-home"></i> На главную</a>
+                <a class="nav-link" href="firmware/uploader.html"><i class="fas fa-download"></i> Flasher</a>
+                <a class="nav-link" href="mailto:nikelectronics78@gmail.com"><i class="fas fa-headset"></i> Техподдержка</a>
             </div>
-        </div>
+        </nav>
 
-        <div class="step">
-            <h2>Шаг 5: Загрузка новой прошивки</h2>
-            <p>После выбора файла прошивки нажмите кнопку ОК для начала загрузки. </p>
-            <img src="images/firmware.png" alt="Интерфейс загрузки прошивки" class="screenshot">
-        </div>
+        <header>
+            <h1><i class="fas fa-microchip"></i> Обновление прошивки</h1>
+            <p>Пошаговая инструкция по обновлению прошивки диагностического модуля — по воздуху (OTA) или через USB</p>
+        </header>
 
-        <div class="step">
-            <h2>Шаг 6: Процесс обновления</h2>
-            <p>При обновлении прошивки иконка облако станет зеленым. Не прерывайте процесс обновления и не отключайте
-                питание устройства до появления сообщения "OTA завершено" в нижней части экрана.</p>
-            <img src="images/green.png" alt="Процесс обновления прошивки" class="screenshot">
-            <div class="warning">
-                <p><strong>Внимание:</strong> Прерывание процесса обновления может привести к повреждению прошивки и
-                    необходимости физического перепрограммирования устройства!</p>
+        <div class="main-content">
+            <div class="tabs-row">
+                <button id="otaTab" class="tab-btn active" onclick="showTab('ota')"><i class="fas fa-wifi"></i> OTA обновление</button>
+                <button id="usbTab" class="tab-btn" onclick="showTab('usb')"><i class="fab fa-usb"></i> USB обновление</button>
             </div>
-        </div>
 
-        <div class="step">
-            <h2>Шаг 7: Завершение обновления</h2>
-            <p>После успешной загрузки прошивки устройство обычно перезагружается автоматически. Если этого не
-                произошло, вы
-                можете перезагрузить устройство вручную с помощью кнопки "Перезагрузить" в веб-интерфейсе или выключив и
-                включив питание.</p>
-        </div>
+            <div id="otaContent" class="tab-content">
 
-        <div class="step">
-            <h2>Шаг 8: Проверка новой версии</h2>
-            <p>После перезагрузки снова откройте меню и проверьте, что версия прошивки изменилась на новую.</p>
-            <img src="images/control.png" alt="Процесс обновления прошивки" class="screenshot">
-        </div>
+                <div class="download-container" id="downloadSection">
+                    <a href="files/lxtfix_V4(zubr_alpha).bin" download class="download-btn">
+                        <i class="fas fa-download"></i> Скачать прошивку lxtfix_V4 (zubr_alpha)
+                    </a>
+                    <a href="files/lxtfix_V302.bin" download class="download-btn">
+                        <i class="fas fa-download"></i> Скачать прошивку lxtfix_V302.bin
+                    </a>
+                </div>
 
-        <div class="note" id="additionalInfo">
-            <h3>Дополнительная информация</h3>
-            <p>В коде устройства реализована система лицензирования через серийный номер. Если после обновления
-                возникают
-                проблемы с лицензией, проверьте правильность введенного ключа в разделе программатора. Обратитесь в
-                техподдержку.</p>
-        </div>
+                <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>
 
-        <div class="warning" id="importantWarnings">
-            <h3>Важные предупреждения</h3>
-            <ul>
-                <li>Под паролем администратора не совершайте иных действий кроме указанных в данной инструкции.</li>
-                <li>Убедитесь, что источник прошивки надежный и файл не поврежден</li>
-                <li>Не прерывайте процесс обновления</li>
-                <li>Убедитесь, что устройство имеет стабильное питание во время обновления</li>
-                <li>После прошивки выйдите из режима администратора введя неверный пароль.</li>
-            </ul>
-        </div>
-    </div>
+                <div class="warning">
+                    <h3><i class="fas fa-exclamation-triangle"></i> ВАЖНО: Перед началом обновления</h3>
+                    <p><strong>Обязательно сохраните лицензионный ключ и номер прибора!</strong> При случайном удалении файла с базой данных
+                        (который доступен в режиме администратора) потребуется повторная активация.</p>
+                    <p>Рекомендуется:</p>
+                    <ul>
+                        <li>Сделать скриншот раздела с лицензионной информацией</li>
+                        <li>Записать номер прибора и лицензионный ключ на бумаге</li>
+                        <li>Сохранить эти данные в надежном месте</li>
+                    </ul>
+                </div>
 
-    <div id="usbContent" class="tab-content" style="display: none;">
-        <div class="download-container" id="downloadSection">
-            <a href="files/lxtfix_V4(zubr_alpha).bin" download class="download-btn">
-                📥 Скачать прошивку lxtfix_V4 (zubr_alpha)
-            </a>
-            <a href="files/lxtfix_V302.bin" download class="download-btn">
-                📥 Скачать прошивку lxtfix_V302
-            </a>
-        </div>
+                <div class="step">
+                    <h2><i class="fas fa-wifi"></i> Шаг 1: Подключение к устройству</h2>
+                    <p>Убедитесь, что устройство включено и подключено к Wi-Fi сети. В коде указано, что устройство создает
+                        точку доступа с именем "Makita" и паролем "12345678".</p>
+                    <div class="note">
+                        <p><strong>Примечание:</strong> В коде устройства заданы следующие настройки:</p>
+                        <ul>
+                            <li>SSID: <code>Makita</code></li>
+                            <li>Пароль: <code>12345678</code></li>
+                            <li>Режим: Точка доступа (AP)</li>
+                        </ul>
+                    </div>
+                    <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>
+                    <p>Откройте WEB браузер и перейдите по адресу 192.168.4.1 (предварительно отключите сеть "Мобильные данные")
+                    </p>
+                </div>
 
-        <div class="warning">
-            <h3>⚠️ ВАЖНО: Перед началом обновления</h3>
-            <p>Обязательно сохраните лицензионный ключ и номер прибора!.</p>
-            <p>Рекомендуется:</p>
-            <ul>
-                <li>Сделать скриншот раздела с лицензионной информацией</li>
-                <li>Записать номер прибора и лицензионный ключ на бумаге</li>
-                <li>Сохранить эти данные в надежном месте</li>
-            </ul>
-        </div>
+                <div class="step">
+                    <h2><i class="fas fa-list-ul"></i> Шаг 2: Открытие меню</h2>
+                    <p>Откройте меню нажав на иконку указанную на рисунке ниже. </p>
+                    <img src="images/menu.png" alt="Главная страница веб-интерфейса" class="screenshot">
+                </div>
 
-        <div class="step">
-            <h2>Шаг 1: Подготовка к USB обновлению</h2>
-            <p>Для обновления прошивки через USB понадобится:</p>
-            <ul>
-                <li>USB кабель (micro-USB или USB-C, в зависимости от модели устройства)</li>
-                <li>Скачанная прошивка (.bin файл)</li>
-                <li>WEB ресурс для прошивки <a href="https://esptool.spacehuhn.com/" target="_blank">ESPWebTool</a></li>
-            </ul>
-            <div class="note">
-                <p><strong>Примечание:</strong> Убедитесь, что у вас установлены драйверы для подключения ESP32 к
-                    компьютеру и устройство определяется.</p>
+                <div class="step">
+                    <h2><i class="fas fa-key"></i> Шаг 3: Ввод пароля администратора.</h2>
+                    <p>После открытия меню нажмите иконку ключ указанную на рисунке.</p>
+                    <img src="images/menu_open.png" alt="Главная страница веб-интерфейса" class="screenshot">
+                    <p>И введите в поле, открывшегося окна Password, пароль LXTFIX</p>
+                    <img src="images/password.png" alt="Главная страница веб-интерфейса" class="screenshot">
+                </div>
+
+                <div class="step">
+                    <h2><i class="fas fa-file-download"></i> Шаг 4: Выбор прошивки</h2>
+                    <p>После ввода правильного пароля иконка ключа станет зеленым и появится иконка ОТА (облако)".</p>
+                    <p>Нажав на иконку OTA откроется проводник файлов вашего устройства. Найдите и выберите заранее скачанную
+                        прошивку.</p>
+                    <img src="images/pass_good.png" alt="Раздел программатора" class="screenshot">
+                    <div class="note">
+                        <p><strong>Примечание:</strong> Убедитесь, что файл прошивки имеет правильный формат (обычно .bin) и
+                            совместим с вашим устройством.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Шаг 5: Загрузка новой прошивки</h2>
+                    <p>После выбора файла прошивки нажмите кнопку ОК для начала загрузки. </p>
+                    <img src="images/firmware.png" alt="Интерфейс загрузки прошивки" class="screenshot">
+                </div>
+
+                <div class="step">
+                    <h2><i class="fas fa-sync-alt"></i> Шаг 6: Процесс обновления</h2>
+                    <p>При обновлении прошивки иконка облако станет зеленым. Не прерывайте процесс обновления и не отключайте
+                        питание устройства до появления сообщения "OTA завершено" в нижней части экрана.</p>
+                    <img src="images/green.png" alt="Процесс обновления прошивки" class="screenshot">
+                    <div class="warning">
+                        <p><strong>Внимание:</strong> Прерывание процесса обновления может привести к повреждению прошивки и
+                            необходимости физического перепрограммирования устройства!</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h2><i class="fas fa-check-circle"></i> Шаг 7: Завершение обновления</h2>
+                    <p>После успешной загрузки прошивки устройство обычно перезагружается автоматически. Если этого не
+                        произошло, вы можете перезагрузить устройство вручную с помощью кнопки "Перезагрузить" в веб-интерфейсе
+                        или выключив и включив питание.</p>
+                </div>
+
+                <div class="step">
+                    <h2><i class="fas fa-clipboard-check"></i> Шаг 8: Проверка новой версии</h2>
+                    <p>После перезагрузки снова откройте меню и проверьте, что версия прошивки изменилась на новую.</p>
+                    <img src="images/control.png" alt="Процесс обновления прошивки" class="screenshot">
+                </div>
+
+                <div class="note" id="additionalInfo">
+                    <h3>Дополнительная информация</h3>
+                    <p>В коде устройства реализована система лицензирования через серийный номер. Если после обновления
+                        возникают проблемы с лицензией, обратитесь в техподдержку.</p>
+                </div>
+
+                <div class="warning" id="importantWarnings">
+                    <h3>Важные предупреждения</h3>
+                    <ul>
+                        <li>Под паролем администратора не совершайте иных действий кроме указанных в данной инструкции.</li>
+                        <li>Убедитесь, что источник прошивки надежный и файл не поврежден</li>
+                        <li>Не прерывайте процесс обновления</li>
+                        <li>Убедитесь, что устройство имеет стабильное питание во время обновления</li>
+                        <li>После прошивки выйдите из режима администратора введя неверный пароль.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        <div class="step">
-            <h2>Шаг 2: Подключение к прибору</h2>
-            <p>Подключите USB кабель к диагностическому модулю.</p>
-            <img src="images/usb-connection.png" alt="Подключение устройства через USB" class="screenshot">
-        </div>
+            <div id="usbContent" class="tab-content" style="display: none;">
+                <div class="flash-hero">
+                    <a href="firmware/uploader.html" class="btn-flash">
+                        <i class="fas fa-bolt"></i> Прошить в пару кликов <span class="beta-note">(beta версия)</span>
+                    </a>
+                    <!-- <p style="font-size: 14px; color: #666; margin: 6px 0 0;">Прямая прошивка через браузер — без скачивания файлов и программ</p> -->
+                </div>
 
-        <div class="step">
-            <h2>Шаг 3: Запуск режима прошивки</h2>
-            <img src="images/esp.png" alt="Запуск прошивки" class="screenshot">
-            <p>Зажмите кнопку BOOT на плате ESP32 и подайте питание подключив USB кабель к компьютеру, удерживая кнопку.
-                После включения питания можно отпустить кнопку.</p>
-            <div class="note">
-                <p><strong>Примечание:</strong> Устройство должно появиться в диспетчере устройств как COM порт.</p>
+                <div class="download-container" id="downloadSectionUsb">
+                    <a href="files/lxtfix_V4(zubr_alpha).bin" download class="download-btn">
+                        <i class="fas fa-download"></i> Скачать прошивку lxtfix_V4 (zubr_alpha)
+                    </a>
+                    <a href="files/lxtfix_V302.bin" download class="download-btn">
+                        <i class="fas fa-download"></i> Скачать прошивку lxtfix_V302
+                    </a>
+                </div>
+
+                <div class="warning">
+                    <h3><i class="fas fa-exclamation-triangle"></i> ВАЖНО: Перед началом обновления</h3>
+                    <p>Обязательно сохраните лицензионный ключ и номер прибора!.</p>
+                    <p>Рекомендуется:</p>
+                    <ul>
+                        <li>Сделать скриншот раздела с лицензионной информацией</li>
+                        <li>Записать номер прибора и лицензионный ключ на бумаге</li>
+                        <li>Сохранить эти данные в надежном месте</li>
+                    </ul>
+                </div>
+
+                <div class="step">
+                    <h2><i class="fas fa-tools"></i> Шаг 1: Подготовка к USB обновлению</h2>
+                    <p>Для обновления прошивки через USB понадобится:</p>
+                    <ul>
+                        <li>USB кабель (micro-USB или USB-C, в зависимости от модели устройства)</li>
+                        <li>Скачанная прошивка (.bin файл)</li>
+                        <li>WEB ресурс для прошивки <a href="https://esptool.spacehuhn.com/" target="_blank">ESPWebTool</a></li>
+                    </ul>
+                    <div class="note">
+                        <p><strong>Примечание:</strong> Убедитесь, что у вас установлены драйверы для подключения ESP32 к
+                            компьютеру и устройство определяется.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h2><i class="fas fa-plug"></i> Шаг 2: Подключение к прибору</h2>
+                    <p>Подключите USB кабель к диагностическому модулю.</p>
+                    <img src="images/usb-connection.png" alt="Подключение устройства через USB" class="screenshot">
+                </div>
+
+                <div class="step">
+                    <h2><i class="fas fa-microchip"></i> Шаг 3: Запуск режима прошивки</h2>
+                    <img src="images/esp.png" alt="Запуск прошивки" class="screenshot">
+                    <p>Зажмите кнопку BOOT на плате ESP32 и подайте питание подключив USB кабель к компьютеру, удерживая кнопку.
+                        После включения питания можно отпустить кнопку.</p>
+                    <div class="note">
+                        <p><strong>Примечание:</strong> Устройство должно появиться в диспетчере устройств как COM порт.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h2><i class="fas fa-sliders-h"></i> Шаг 4: Настройка и загрузка прошивки</h2>
+                    <p>Откройте <a href="https://esptool.spacehuhn.com/" target="_blank">ESPWebTool</a> и настройте параметры:
+                    </p>
+                    <ul>
+                        <li>Нажмите иконку CONNECT</li>
+                        <img src="images/connect.png" alt="Интерфейс программатора" class="screenshot">
+                        <li>Из предлагаемого списка com выберите USB JTAG/Serial debug и нажмите Подключение</li>
+                        <img src="images/JTAG.png" alt="Интерфейс программатора" class="screenshot">
+                        <li>Также дополнительно скачайте файлы <a href="files/bootloader.bin" download>bootloader.bin</a> и <a href="files/partitions.bin" download>partitions.bin</a>,
+                            которые потребуются для прошивки чистого контроллера.</li>
+                        <li>Нажав иконку SELECT и выберите файл прошивки, который вы скачали ранее </li>
+                        <img src="images/Sselect.png" alt="Интерфейс программатора" class="screenshot">
+                        <li>И установите адреса в соответствии со скриншотом </li>
+                        <img src="images/Select.png" alt="Интерфейс программатора" class="screenshot">
+                        <li>Нажмите иконку PROGRAM.</li>
+                        <img src="images/Program.png" alt="Интерфейс программатора" class="screenshot">
+                        <li>Дождитесь окончания загрузки.</li>
+                    </ul>
+                    <!-- <img src="images/programmer-tab.jpeg" alt="Интерфейс программатора" class="screenshot"> -->
+                </div>
+
+                <!-- <div class="step">
+                    <h2>Шаг 5: Загрузка прошивки</h2>
+                    <p>Начните процесс прошивки, нажав кнопку "Start" или "Upload" в программе. Дождитесь завершения процесса.</p>
+                    <img src="images/programmer-tab.jpeg" alt="Процесс загрузки прошивки" class="screenshot">
+                </div> -->
+
+                <div class="step">
+                    <h2><i class="fas fa-power-off"></i> Шаг 5: Перезагрузка устройства</h2>
+                    <p>После успешной загрузки прошивки отключите питание устройства и отсоедините USB кабель. Затем снова
+                        подключите питание, чтобы запустить новую прошивку.</p>
+                </div>
+
+                <div class="step">
+                    <h2><i class="fas fa-clipboard-check"></i> Шаг 6: Проверка новой версии</h2>
+                    <p>После перезагрузки откройте веб-интерфейс устройства и проверьте, что версия прошивки изменилась на
+                        новую.</p>
+                    <img src="images/control.png" alt="Версия прошивки" class="screenshot">
+                </div>
+
+                <div class="note" id="additionalInfoUsb">
+                    <h3>Дополнительная информация</h3>
+                    <p>Если у вас возникли проблемы с подключением устройства к компьютеру, проверьте наличие и
+                        работоспособность USB драйверов.</p>
+                    <p>В коде устройства реализована система лицензирования через серийный номер. Если после обновления
+                        возникают проблемы с лицензией, обратитесь в техподдержку.</p>
+                </div>
+
+                <div class="warning" id="importantWarningsUsb">
+                    <h3>Важные предупреждения</h3>
+                    <ul>
+                        <li>Убедитесь, что используете правильный файл прошивки для вашей модели устройства</li>
+                        <li>Не прерывайте процесс прошивки до его завершения</li>
+                        <li>Убедитесь, что устройство имеет стабильное питание во время обновления</li>
+                        <li>Проверьте правильность настроек COM порта и скорости соединения</li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        <div class="step">
-            <h2>Шаг 4: Настройка и загрузка прошивки</h2>
-            <p>Откройте <a href="https://esptool.spacehuhn.com/" target="_blank">ESPWebTool</a> и настройте параметры:
-            </p>
-            <ul>
-                <li>Нажмите иконку CONNECT</li>
-                <img src="images/connect.png" alt="Интерфейс программатора" class="screenshot">
-                <li>Из предлагаемого списка com выберите USB JTAG/Serial debug и нажмите Подключение</li>
-                <img src="images/JTAG.png" alt="Интерфейс программатора" class="screenshot">
-                <li>Также дополнительно скачайте файлы <a href="files/bootloader.bin" download>bootloader.bin</a> и <a href="files/partitions.bin" download>partitions.bin</a>,
-                     которые потребуются для прошивки чистого контроллера.</li>
-                <li>Нажав иконку SELECT и выберите файл прошивки, который вы скачали ранее </li>
-                <img src="images/Sselect.png" alt="Интерфейс программатора" class="screenshot">
-                <li>И установите адреса в соответствии со скриншотом </li>
-                <img src="images/Select.png" alt="Интерфейс программатора" class="screenshot">
-                <li>Нажмите иконку PROGRAM.</li>
-                <img src="images/Program.png" alt="Интерфейс программатора" class="screenshot">
-                <li>Дождитесь окончания загруки.</li>
-            </ul>
-            <!-- <img src="images/programmer-tab.jpeg" alt="Интерфейс программатора" class="screenshot"> -->
-        </div>
+        </div><!-- /.main-content -->
 
-        <!-- <div class="step">
-            <h2>Шаг 5: Загрузка прошивки</h2>
-            <p>Начните процесс прошивки, нажав кнопку "Start" или "Upload" в программе. Дождитесь завершения процесса.</p>
-            <img src="images/programmer-tab.jpeg" alt="Процесс загрузки прошивки" class="screenshot">
-            <div class="warning">
-                <p><strong>Внимание:</strong> Не отключайте USB кабель и не выключайте устройство до завершения процесса прошивки!</p>
-            </div>
-        </div> -->
-
-        <div class="step">
-            <h2>Шаг 5: Перезагрузка устройства</h2>
-            <p>После успешной загрузки прошивки отключите питание устройства и отсоедините USB кабель. Затем снова
-                подключите питание, чтобы запустить новую прошивку.</p>
-        </div>
-
-        <div class="step">
-            <h2>Шаг 6: Проверка новой версии</h2>
-            <p>После перезагрузки откройте веб-интерфейс устройства и проверьте, что версия прошивки изменилась на
-                новую.</p>
-            <img src="images/control.png" alt="Версия прошивки" class="screenshot">
-        </div>
-
-        <div class="note" id="additionalInfoUsb">
-            <h3>Дополнительная информация</h3>
-            <p>Если у вас возникли проблемы с подключением устройства к компьютеру, проверьте наличие и
-                работоспособность USB драйверов.</p>
-            <p>В коде устройства реализована система лицензирования через серийный номер. Если после обновления
-                возникают
-                проблемы с лицензией, проверьте правильность введенного ключа в разделе программатора. Обратитесь в
-                техподдержку.</p>
-        </div>
-
-        <div class="warning" id="importantWarningsUsb">
-            <h3>Важные предупреждения</h3>
-            <ul>
-                <li>Убедитесь, что используете правильный файл прошивки для вашей модели устройства</li>
-                <li>Не прерывайте процесс прошивки до его завершения</li>
-                <li>Убедитесь, что устройство имеет стабильное питание во время обновления</li>
-                <li>Проверьте правильность настроек COM порта и скорости соединения</li>
-                <!-- <li>Убедитесь, что источник прошивки надежный и файл не поврежден</li> -->
-            </ul>
-        </div>
-    </div>
+        <footer>
+            <p><strong>ЭликсToFix</strong> — модуль диагностики и разблокировки аккумуляторов Makita</p>
+            <p>Вопросы и поддержка: <a href="mailto:nikelectronics78@gmail.com">nikelectronics78@gmail.com</a></p>
+        </footer>
+    </div><!-- /.container -->
 
     <!-- Модальное окно для изображений -->
     <div class="modal" id="imageModal">
@@ -453,7 +963,6 @@
 
             modal.style.display = 'block';
 
-            // Обработчики закрытия
             closeModal.onclick = function () {
                 modal.style.display = 'none';
             };
@@ -465,7 +974,6 @@
 
         // Добавляем функционал для увеличения изображений
         document.addEventListener('click', function (event) {
-            // Проверяем, является ли клик по изображению в контейнере
             if (event.target.classList.contains('screenshot')) {
                 openImageModal(event.target.src, event.target.alt);
             }
@@ -480,6 +988,51 @@
                 }
             }
         });
+
+        // ===== Выдвижное меню =====
+        (function () {
+            const burger = document.getElementById('hamburgerBtn');
+            const menu = document.getElementById('sideMenu');
+            const overlay = document.getElementById('sideOverlay');
+            const closeBtn = document.getElementById('menuClose');
+
+            function openMenu() {
+                burger.classList.add('active');
+                menu.classList.add('open');
+                overlay.classList.add('open');
+                burger.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                burger.classList.remove('active');
+                menu.classList.remove('open');
+                overlay.classList.remove('open');
+                burger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+
+            burger.addEventListener('click', function () {
+                if (menu.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+
+            // Закрываем при клике на пункт меню
+            menu.querySelectorAll('.nav-link').forEach(function (link) {
+                link.addEventListener('click', closeMenu);
+            });
+
+            // Закрываем по клавише Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeMenu();
+            });
+        })();
     </script>
 </body>
 

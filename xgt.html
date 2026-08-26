@@ -157,16 +157,16 @@
         }
 
         .content {
-            margin-left: var(--sidebar-width);
+            margin-left: auto;
+            margin-right: auto;
             padding: 25px;
             transition: all var(--transition-speed);
             position: relative;
             max-width: 1200px;
-            margin-right: auto;
         }
 
         .sidebar.collapsed~.content {
-            margin-left: 0;
+            margin-left: auto;
         }
 
         .section {
@@ -455,7 +455,7 @@
             }
 
             .sidebar.collapsed~.content {
-                margin-left: 0;
+                margin-left: auto;
                 transform: translateX(0);
             }
 
@@ -464,7 +464,7 @@
             }
 
             .content {
-                margin-left: 0;
+                margin-left: auto;
                 padding: 20px 15px;
                 transition: transform var(--transition-speed);
             }
@@ -527,11 +527,11 @@
             }
 
             .sidebar.collapsed~.content {
-                margin-left: 0;
+                margin-left: auto;
             }
 
             .content {
-                margin-left: 0;
+                margin-left: auto;
                 padding: 20px 15px;
             }
 
