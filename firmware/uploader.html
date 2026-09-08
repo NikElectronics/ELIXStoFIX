@@ -948,6 +948,49 @@ html.js-reveal .reveal.revealed {
   50% { box-shadow: 0 0 0 7px transparent; }
 }
   </style>
+  <style>
+    /* Ссылка возврата на главную (index.html). */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 16px;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 999px;
+      background: var(--grad, linear-gradient(120deg, #38bdf8, #818cf8, #c084fc));
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px var(--glow-1, rgba(56, 189, 248, 0.35));
+      transition: transform 0.15s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+        box-shadow 0.15s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)),
+        filter 0.15s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+    }
+
+    .back-link .back-arrow {
+      display: inline-block;
+      transition: transform 0.15s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
+    }
+
+    .back-link:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+      box-shadow: 0 8px 22px var(--glow-1, rgba(56, 189, 248, 0.35)),
+        0 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .back-link:hover .back-arrow {
+      transform: translateX(-3px);
+    }
+
+    .back-link:active {
+      transform: translateY(0);
+    }
+  </style>
   <script>
 /* Light/dark theme. Applies <html data-theme="dark|light">, persists the
    choice in localStorage and falls back to the OS preference. */
@@ -1014,7 +1057,8 @@ html.js-reveal .reveal.revealed {
 <body>
   <div class="uploader-wrap">
     <header class="uploader-header">
-      <h1>Записать или обновить прошивку</h1>
+      <a class="back-link" href="../index.html"><span class="back-arrow">←</span> На главную</a>
+      <h1>Записать или обновить прошивку ЭликсToFix</h1>
       <p class="subtitle">В пару кликов запишете прошивку  — без лишних заморочек.</p>
     </header>
 
@@ -1030,7 +1074,7 @@ html.js-reveal .reveal.revealed {
       <div class="flash-area">
         <div class="flash-status">
           <div class="spinner" id="spinner" hidden></div>
-          <span class="status-text" id="status-text">Подключите контроллер и нажмите "Записать прошивку".</span>
+          <span class="status-text" id="status-text">Подключите контроллер, выберите com порт и нажмите "Записать прошивку".</span>
         </div>
         <button id="flash-btn" class="primary btn-lg btn-block">Записать прошивку</button>
         <div class="progress-track"><div class="bar" id="progress-bar"></div></div>
