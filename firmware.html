@@ -311,39 +311,84 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* Кнопки скачивания */
-        .download-btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            background-image: linear-gradient(135deg, var(--accent-light), var(--accent-color));
-            color: white;
-            padding: 12px 25px;
-            text-decoration: none;
+        /* Список прошивок */
+        .download-container {
+            margin: 6px 0 22px;
+            background: white;
             border-radius: var(--radius-sm);
+            border: 1px solid rgba(52, 152, 219, 0.25);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 18px;
+            color: var(--text-color);
+            text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-            margin: 8px 6px 8px 0;
-            font-size: 1rem;
+            font-size: 0.98rem;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.15);
+            transition: background-color 0.2s ease;
+        }
+
+        .download-btn:last-child {
+            border-bottom: none;
         }
 
         .download-btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(52, 152, 219, 0.4);
+            background-color: rgba(52, 152, 219, 0.08);
         }
 
-        .download-btn i {
-            margin-right: 8px;
+        .download-btn i.fa-download {
+            margin-right: 0;
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent-color));
+            color: white;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(52, 152, 219, 0.35);
         }
 
-        .download-container {
-            text-align: center;
-            margin: 6px 0 22px;
-            padding: 18px;
-            background: white;
-            border-radius: var(--radius-sm);
-            border: 1px dashed rgba(52, 152, 219, 0.45);
+        .download-btn .fw-name {
+            flex: 1;
+        }
+
+        .download-btn .fa-arrow-circle-down {
+            margin-left: auto;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+
+        .download-btn:hover .fa-arrow-circle-down {
+            transform: translateY(3px);
+        }
+
+        .download-btn .badge {
+            margin-left: 8px;
+            padding: 2px 9px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            color: white;
+            background: var(--lxt-color);
+        }
+
+        .download-btn .badge.xgt {
+            background: var(--xgt-color);
+        }
+
+        .download-btn .badge.zubr {
+            background: #27ae60;
         }
 
         /* Большая оранжевая кнопка быстрой прошивки */
@@ -716,14 +761,29 @@
 
                 <div class="download-container" id="downloadSection">
                     <a href="files/lxtfix_V4(zubr_alpha).bin" download class="download-btn">
-                        <i class="fas fa-download"></i> Скачать прошивку lxtfix_V4 (zubr_alpha)
+                        <i class="fas fa-download"></i>
+                        <span class="fw-name">lxtfix_V4 (zubr_alpha)</span>
+                        <span class="badge zubr">ZUBR</span>
+                        <i class="fas fa-arrow-circle-down"></i>
                     </a>
                     <a href="files/lxtfix_V302.bin" download class="download-btn">
-                        <i class="fas fa-download"></i> Скачать прошивку lxtfix_V302.bin
+                        <i class="fas fa-download"></i>
+                        <span class="fw-name">lxtfix_V302.bin</span>
+                        <i class="fas fa-arrow-circle-down"></i>
+                    </a>
+                    <a href="files/lxtfix_V301(+XGT).bin" download class="download-btn">
+                        <i class="fas fa-download"></i>
+                        <span class="fw-name">lxtfix_V301(+XGT).bin</span>
+                        <span class="badge xgt">XGT</span>
+                        <i class="fas fa-arrow-circle-down"></i>
+                    </a>
+                    <a href="files/lxtfix_V3(+XGT).bin" download class="download-btn">
+                        <i class="fas fa-download"></i>
+                        <span class="fw-name">lxtfix_V3(+XGT).bin</span>
+                        <span class="badge xgt">XGT</span>
+                        <i class="fas fa-arrow-circle-down"></i>
                     </a>
                 </div>
-
-                <p>Подключитесь к Wi-Fi сети устройства с любого устройства (компьютера, телефона или планшета)</p>
 
                 <div class="warning">
                     <h3><i class="fas fa-exclamation-triangle"></i> ВАЖНО: Перед началом обновления</h3>
@@ -838,10 +898,27 @@
 
                 <div class="download-container" id="downloadSectionUsb">
                     <a href="files/lxtfix_V4(zubr_alpha).bin" download class="download-btn">
-                        <i class="fas fa-download"></i> Скачать прошивку lxtfix_V4 (zubr_alpha)
+                        <i class="fas fa-download"></i>
+                        <span class="fw-name">lxtfix_V4 (zubr_alpha)</span>
+                        <span class="badge zubr">ZUBR</span>
+                        <i class="fas fa-arrow-circle-down"></i>
                     </a>
                     <a href="files/lxtfix_V302.bin" download class="download-btn">
-                        <i class="fas fa-download"></i> Скачать прошивку lxtfix_V302
+                        <i class="fas fa-download"></i>
+                        <span class="fw-name">lxtfix_V302.bin</span>
+                        <i class="fas fa-arrow-circle-down"></i>
+                    </a>
+                    <a href="files/lxtfix_V301(+XGT).bin" download class="download-btn">
+                        <i class="fas fa-download"></i>
+                        <span class="fw-name">lxtfix_V301(+XGT).bin</span>
+                        <span class="badge xgt">XGT</span>
+                        <i class="fas fa-arrow-circle-down"></i>
+                    </a>
+                    <a href="files/lxtfix_V3(+XGT).bin" download class="download-btn">
+                        <i class="fas fa-download"></i>
+                        <span class="fw-name">lxtfix_V3(+XGT).bin</span>
+                        <span class="badge xgt">XGT</span>
+                        <i class="fas fa-arrow-circle-down"></i>
                     </a>
                 </div>
 
