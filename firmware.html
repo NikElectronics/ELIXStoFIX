@@ -391,6 +391,39 @@
             background: #27ae60;
         }
 
+        .changelog-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            background: rgba(52, 152, 219, 0.05);
+            border-top: 1px solid rgba(52, 152, 219, 0.15);
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .changelog-link i {
+            color: var(--accent-color);
+            font-size: 1rem;
+        }
+
+        .changelog-link .fa-arrow-right {
+            margin-left: auto;
+            font-size: 0.85rem;
+            transition: transform 0.2s ease;
+        }
+
+        .changelog-link:hover {
+            background: rgba(52, 152, 219, 0.12);
+        }
+
+        .changelog-link:hover .fa-arrow-right {
+            transform: translateX(4px);
+        }
+
         /* Большая оранжевая кнопка быстрой прошивки */
         .flash-hero {
             text-align: center;
@@ -742,6 +775,37 @@
             <p>Пошаговая инструкция по обновлению прошивки диагностического модуля — по воздуху (OTA) или через USB</p>
         </header>
 
+        <div class="download-container" id="downloadSection">
+            <a href="files/lxtfix_V4(zubr_alpha).bin" download class="download-btn">
+                <i class="fas fa-download"></i>
+                <span class="fw-name">lxtfix_V4 (zubr_alpha)</span>
+                <span class="badge zubr">ZUBR</span>
+                <i class="fas fa-arrow-circle-down"></i>
+            </a>
+            <a href="files/lxtfix_V302.bin" download class="download-btn">
+                <i class="fas fa-download"></i>
+                <span class="fw-name">lxtfix_V302.bin</span>
+                <i class="fas fa-arrow-circle-down"></i>
+            </a>
+            <a href="files/lxtfix_V301(+XGT).bin" download class="download-btn">
+                <i class="fas fa-download"></i>
+                <span class="fw-name">lxtfix_V301(+XGT).bin</span>
+                <span class="badge xgt">XGT</span>
+                <i class="fas fa-arrow-circle-down"></i>
+            </a>
+            <a href="files/lxtfix_V3(+XGT).bin" download class="download-btn">
+                <i class="fas fa-download"></i>
+                <span class="fw-name">lxtfix_V3(+XGT).bin</span>
+                <span class="badge xgt">XGT</span>
+                <i class="fas fa-arrow-circle-down"></i>
+            </a>
+            <a href="CHANGELOG.md" target="_blank" class="changelog-link">
+                <i class="fas fa-history"></i>
+                <span>История обновлений</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
         <div class="warning pulse" style="text-align: left;">
             <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong></p>
             <ul style="padding-left: 20px; margin: 0;">
@@ -758,32 +822,6 @@
             </div>
 
             <div id="otaContent" class="tab-content">
-
-                <div class="download-container" id="downloadSection">
-                    <a href="files/lxtfix_V4(zubr_alpha).bin" download class="download-btn">
-                        <i class="fas fa-download"></i>
-                        <span class="fw-name">lxtfix_V4 (zubr_alpha)</span>
-                        <span class="badge zubr">ZUBR</span>
-                        <i class="fas fa-arrow-circle-down"></i>
-                    </a>
-                    <a href="files/lxtfix_V302.bin" download class="download-btn">
-                        <i class="fas fa-download"></i>
-                        <span class="fw-name">lxtfix_V302.bin</span>
-                        <i class="fas fa-arrow-circle-down"></i>
-                    </a>
-                    <a href="files/lxtfix_V301(+XGT).bin" download class="download-btn">
-                        <i class="fas fa-download"></i>
-                        <span class="fw-name">lxtfix_V301(+XGT).bin</span>
-                        <span class="badge xgt">XGT</span>
-                        <i class="fas fa-arrow-circle-down"></i>
-                    </a>
-                    <a href="files/lxtfix_V3(+XGT).bin" download class="download-btn">
-                        <i class="fas fa-download"></i>
-                        <span class="fw-name">lxtfix_V3(+XGT).bin</span>
-                        <span class="badge xgt">XGT</span>
-                        <i class="fas fa-arrow-circle-down"></i>
-                    </a>
-                </div>
 
                 <div class="warning">
                     <h3><i class="fas fa-exclamation-triangle"></i> ВАЖНО: Перед началом обновления</h3>
@@ -894,32 +932,6 @@
                         <i class="fas fa-bolt"></i> Прошить в пару кликов <span class="beta-note">(beta версия)</span>
                     </a>
                     <!-- <p style="font-size: 14px; color: #666; margin: 6px 0 0;">Прямая прошивка через браузер — без скачивания файлов и программ</p> -->
-                </div>
-
-                <div class="download-container" id="downloadSectionUsb">
-                    <a href="files/lxtfix_V4(zubr_alpha).bin" download class="download-btn">
-                        <i class="fas fa-download"></i>
-                        <span class="fw-name">lxtfix_V4 (zubr_alpha)</span>
-                        <span class="badge zubr">ZUBR</span>
-                        <i class="fas fa-arrow-circle-down"></i>
-                    </a>
-                    <a href="files/lxtfix_V302.bin" download class="download-btn">
-                        <i class="fas fa-download"></i>
-                        <span class="fw-name">lxtfix_V302.bin</span>
-                        <i class="fas fa-arrow-circle-down"></i>
-                    </a>
-                    <a href="files/lxtfix_V301(+XGT).bin" download class="download-btn">
-                        <i class="fas fa-download"></i>
-                        <span class="fw-name">lxtfix_V301(+XGT).bin</span>
-                        <span class="badge xgt">XGT</span>
-                        <i class="fas fa-arrow-circle-down"></i>
-                    </a>
-                    <a href="files/lxtfix_V3(+XGT).bin" download class="download-btn">
-                        <i class="fas fa-download"></i>
-                        <span class="fw-name">lxtfix_V3(+XGT).bin</span>
-                        <span class="badge xgt">XGT</span>
-                        <i class="fas fa-arrow-circle-down"></i>
-                    </a>
                 </div>
 
                 <div class="warning">
