@@ -15,8 +15,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Прошивка Open Battery Information на ESP32-C3 прямо из браузера — через esptool.js и Web Serial.">
-  <title>Прошивка · Open Battery Information</title>
+  <meta name="description" content="Прошивка ЭликсToFix на ESP32-C3 прямо из браузера — через esptool.js и Web Serial.">
+  <title>Прошивка · ЭликсToFix</title>
   <style>
 @@CSS@@
   </style>
@@ -62,6 +62,16 @@
     .back-link:active {
       transform: translateY(0);
     }
+
+    /* Заметка: шьётся последняя версия прошивки. */
+    .fw-latest-note {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    .fw-latest-note b { color: var(--accent); }
   </style>
   <script>
 @@THEME_JS@@
@@ -71,8 +81,8 @@
   <div class="uploader-wrap">
     <header class="uploader-header">
       <a class="back-link" href="../index.html"><span class="back-arrow">←</span> На главную</a>
-      <h1>Записать прошивку</h1>
-      <p class="subtitle">В один клик запишете прошивку Open Battery Information на ESP32-C3 — без IDE.</p>
+      <h1>Записать или обновить прошивку ЭликсToFix</h1>
+      <p class="subtitle">В пару кликов запишете последнюю версию прошивки — без лишних заморочек.</p>
     </header>
 
     <div class="flash-card">
@@ -87,16 +97,17 @@
       <div class="flash-area">
         <div class="flash-status">
           <div class="spinner" id="spinner" hidden></div>
-          <span class="status-text" id="status-text">Готово. Подключите ESP32-C3 и нажмите кнопку.</span>
+          <span class="status-text" id="status-text">Подключите контроллер, выберите com порт и нажмите "Записать прошивку".</span>
         </div>
         <button id="flash-btn" class="primary btn-lg btn-block">Записать прошивку</button>
         <div class="progress-track"><div class="bar" id="progress-bar"></div></div>
+        <p class="fw-latest-note">⚡ Записывается <b>последняя версия прошивки</b> ЭликсToFix.</p>
         <div id="flash-done-msg" class="flash-done-msg" hidden>✅ Прошивка загружена. Перезагрузите контроллер.</div>
       </div>
     </div>
 
     <p class="requirements-note">
-      Работает в <b>Chrome, Edge, Opera или Firefox</b> на десктопе, через HTTPS или localhost.
+      Работает в <b>Chrome, Edge, Opera или Firefox</b> на компьютере.
     </p>
   </div>
 

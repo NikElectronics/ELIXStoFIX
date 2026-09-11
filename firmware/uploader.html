@@ -15,7 +15,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Прошивка Open ESP32-C3 прямо из браузера — через esptool.js и Web Serial.">
+  <meta name="description" content="Прошивка ЭликсToFix на ESP32-C3 прямо из браузера — через esptool.js и Web Serial.">
   <title>Прошивка · ЭликсToFix</title>
   <style>
 /* Shared design system for the  web app. */
@@ -990,6 +990,16 @@ html.js-reveal .reveal.revealed {
     .back-link:active {
       transform: translateY(0);
     }
+
+    /* Заметка: шьётся последняя версия прошивки. */
+    .fw-latest-note {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    .fw-latest-note b { color: var(--accent); }
   </style>
   <script>
 /* Light/dark theme. Applies <html data-theme="dark|light">, persists the
@@ -1059,7 +1069,7 @@ html.js-reveal .reveal.revealed {
     <header class="uploader-header">
       <a class="back-link" href="../index.html"><span class="back-arrow">←</span> На главную</a>
       <h1>Записать или обновить прошивку ЭликсToFix</h1>
-      <p class="subtitle">В пару кликов запишете прошивку  — без лишних заморочек.</p>
+      <p class="subtitle">В пару кликов запишете последнюю версию прошивки — без лишних заморочек.</p>
     </header>
 
     <div class="flash-card">
@@ -1078,6 +1088,7 @@ html.js-reveal .reveal.revealed {
         </div>
         <button id="flash-btn" class="primary btn-lg btn-block">Записать прошивку</button>
         <div class="progress-track"><div class="bar" id="progress-bar"></div></div>
+        <p class="fw-latest-note">⚡ Записывается <b>последняя версия прошивки</b> ЭликсToFix.</p>
         <div id="flash-done-msg" class="flash-done-msg" hidden>✅ Прошивка загружена. Перезагрузите контроллер.</div>
       </div>
     </div>
