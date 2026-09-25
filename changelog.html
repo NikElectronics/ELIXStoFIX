@@ -147,6 +147,19 @@
             color: var(--accent-color);
         }
 
+        .version-card li a {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid rgba(52, 152, 219, 0.35);
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .version-card li a:hover {
+            color: var(--accent-light);
+            border-bottom-color: var(--accent-light);
+        }
+
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -233,8 +246,27 @@
 
         <div class="version-card latest">
             <div class="version-head">
-                <h2>Версия 4.2</h2>
+                <h2>Версия 5.0</h2>
                 <span class="badge new">НОВОЕ</span>
+                <span class="badge date">25.09.2026</span>
+                <a href="files/lxtfix_V5.0.bin" download class="dl-btn">
+                    <i class="fas fa-download"></i> Скачать
+                </a>
+            </div>
+            <ul>
+                <li><strong>Добавлена поддержка Казахского языка</strong></li>
+                <li><strong>Решена проблема с пробуждением платы BMS</strong> (требуется доработка со <a
+                        href="docs/Schematic_LXT&amp;XGT.png" target="_blank" rel="noopener">старой схемы</a> на <a
+                        href="docs/Schematic_LXT&amp;XGT_V5.png" target="_blank" rel="noopener">новую</a>)</li>
+                <li><strong>Исправлена проблема с неправильным чтением температуры</strong> на BMS с чипом F0513</li>
+                <li><strong>Убрано чтение лишней пятой ячейки на BL1430</strong></li>
+                <li><strong>Мелкие улучшения</strong> WEB интерфейса</li>
+            </ul>
+        </div>
+
+        <div class="version-card">
+            <div class="version-head">
+                <h2>Версия 4.2</h2>
                 <span class="badge date">14.09.2026</span>
                 <a href="files/lxtfix_V4.2.bin" download class="dl-btn">
                     <i class="fas fa-download"></i> Скачать
