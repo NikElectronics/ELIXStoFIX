@@ -1,6 +1,9 @@
 /* ESP32-C3 firmware uploader — single-button wizard.
-   Flashes firmware/firmware.bin (merged bootloader + partitions + app) to an
-   ESP32-C3 SuperMini using esptool.js over Web Serial. */
+   Flashes firmware/bootloader.bin, firmware/partitions.bin and
+   firmware/firmware.bin to an ESP32-C3 SuperMini using esptool.js over Web Serial.
+   The app is written to BOTH app partitions (0x10000 and 0x200000): the stock
+   ESP-IDF bootloader boots whichever image ota_data points at, so writing only
+   the factory partition leaves the device running the old OTA image. */
 
 const $ = (id) => document.getElementById(id);
 
@@ -180,7 +183,7 @@ async function flashEsp32() {
   }
   const appHash = await sha256Hex(firmware.app);
   appendLog(
-    "Прошивка: " + firmware.app.length.toLocaleString() + " байт @ 0x10000." +
+    "Прошивка: " + firmware.app.length.toLocaleString() + " байт @ 0x10000 (factory) и 0x200000 (OTA)." +
       (appHash ? " SHA-256: " + appHash : ""),
     "l-info"
   );
@@ -209,7 +212,13 @@ async function flashEsp32() {
     const fileArray = [];
     if (firmware.bootloader) fileArray.push({ data: firmware.bootloader, address: 0x0000 });
     if (firmware.partitions) fileArray.push({ data: firmware.partitions, address: 0x8000 });
+    /* Стоковый загрузчик ESP-IDF выбирает образ по ota_data: если устройство
+       когда-либо обновлялось по OTA, ota_data указывает на раздел 0x200000, и
+       загрузчик ИГНОРИРУЕТ свежий образ в 0x10000, продолжая грузить СТАРУЮ
+       прошивку из OTA-раздела. Поэтому пишем приложение в оба раздела —
+       какой бы раздел ни выбрал загрузчик, там будет новая прошивка. */
     fileArray.push({ data: firmware.app, address: 0x10000 });
+    fileArray.push({ data: firmware.app, address: 0x200000 });
     await esp.writeFlash({
       fileArray,
       eraseAll: false,
