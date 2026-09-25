@@ -56,8 +56,14 @@ function hasWebSerial() {
 }
 
 /* ---------- firmware source ---------- */
+/* GitHub Pages и raw.githubusercontent отдают .bin с заголовком
+   Cache-Control: max-age=300..600 (кэш на 5-10 минут). Обычный fetch() в этом
+   окне берёт СТАРЫЙ firmware.bin из кэша браузера — поэтому после обновления
+   firmware.bin прошивальщик продолжал записывать предыдущую версию.
+   cache: "no-store" заставляет каждый раз качать образы заново с сервера.
+   (JS/CSS в этом проекте защищены от кэша параметром "?v=".) */
 async function fetchBin(path) {
-  const res = await fetch("./" + path);
+  const res = await fetch("./" + path, { cache: "no-store" });
   if (!res.ok) {
     throw new Error(
       "Не удалось получить firmware/" + path + " (" + res.status + "). " +
@@ -65,6 +71,19 @@ async function fetchBin(path) {
     );
   }
   return new Uint8Array(await res.arrayBuffer());
+}
+
+/* Хэш образа, который реально будет записан. Сверьте с локальным файлом:
+     certutil -hashfile firmware\firmware.bin SHA256
+   Совпадение = прошивается именно ваш свежий firmware.bin, а не кэш. */
+async function sha256Hex(bytes) {
+  try {
+    if (!crypto.subtle || !crypto.subtle.digest) return null;
+    const digest = await crypto.subtle.digest("SHA-256", bytes);
+    return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  } catch (e) {
+    return null;
+  }
 }
 
 async function getFirmware() {
@@ -148,7 +167,7 @@ async function flash() {
 
 /* ---------- ESP32 (esptool) flash ---------- */
 async function flashEsp32() {
-  const { ESPLoader, Transport } = await import("./esptool.js?v=6");
+  const { ESPLoader, Transport } = await import("./esptool.js?v=7");
   appendLog("esptool.js загружен.", "l-ok");
 
   setStatus("Подготовка образов прошивки...", "busy");
@@ -159,7 +178,12 @@ async function flashEsp32() {
   if (firmware.partitions) {
     appendLog("Разделы: " + firmware.partitions.length.toLocaleString() + " байт @ 0x8000.", "l-info");
   }
-  appendLog("Прошивка: " + firmware.app.length.toLocaleString() + " байт @ 0x10000.", "l-info");
+  const appHash = await sha256Hex(firmware.app);
+  appendLog(
+    "Прошивка: " + firmware.app.length.toLocaleString() + " байт @ 0x10000." +
+      (appHash ? " SHA-256: " + appHash : ""),
+    "l-info"
+  );
 
   const terminal = {
     clean() {},
