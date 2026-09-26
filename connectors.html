@@ -551,6 +551,20 @@
             color: #fff;
             transform: translateX(4px);
         }
+
+        /* Плашка-пометка в пунктах меню */
+        .nav-badge {
+            display: inline-block;
+            margin-left: 6px;
+            padding: 1px 9px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #27ae60, #1e8449);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
     </style>
 </head>
 
@@ -572,7 +586,9 @@
             </div>
             <div class="side-menu-links">
                 <a class="nav-link" href="index.html"><i class="fas fa-home"></i> На главную</a>
-                <a class="nav-link" href="docs/Schematic_LXT&amp;XGT.png" target="_blank" rel="noopener"><i class="fas fa-sitemap"></i> Схема прибора</a>
+                <a class="nav-link" href="docs/Schematic_LXT.png" target="_blank" rel="noopener"><i class="fas fa-sitemap"></i> Схема LXT</a>
+                <a class="nav-link" href="docs/Schematic_LXT&amp;XGT.png" target="_blank" rel="noopener"><i class="fas fa-sitemap"></i> Схема LXT+XGT</a>
+                <a class="nav-link" href="docs/Schematic_LXT&amp;XGT_V5.png" target="_blank" rel="noopener"><i class="fas fa-sitemap"></i> Схема V5<span class="nav-badge">актуальная</span></a>
                 <a class="nav-link" href="mailto:nikelectronics78@gmail.com"><i class="fas fa-headset"></i> Техподдержка</a>
             </div>
         </nav>

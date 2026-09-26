@@ -72,6 +72,38 @@
     }
 
     .fw-latest-note b { color: var(--accent); }
+
+    /* Внимание перед прошивкой: смотрите историю обновлений. */
+    .flash-warning {
+      margin: 18px 0 6px;
+      padding: 14px 16px;
+      border: 1px solid var(--warn, #d29922);
+      border-radius: 12px;
+      background: var(--bg-elevated);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.55;
+      box-shadow: inset 3px 0 0 var(--warn, #d29922);
+    }
+
+    .flash-warning .flash-warning-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: var(--warn, #d29922);
+    }
+
+    .flash-warning a {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .flash-warning a:hover {
+      color: var(--accent-hover);
+    }
   </style>
   <script>
 @@THEME_JS@@
@@ -84,6 +116,12 @@
       <h1>Записать или обновить прошивку ЭликсToFix</h1>
       <p class="subtitle">В пару кликов запишете последнюю версию прошивки — без лишних заморочек.</p>
     </header>
+
+    <div class="flash-warning">
+      <div class="flash-warning-title">⚠️ Внимание! Перед прошивкой</div>
+      <p>Внимательно смотрите <a href="../changelog.html">историю обновлений</a> — некоторые версии прошивки
+        (например, V5.0) требуют <a href="../schematic.html">доработки схемы</a> модуля.</p>
+    </div>
 
     <div class="flash-card">
       <div class="flash-flow">
