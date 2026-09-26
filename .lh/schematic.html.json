@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 20,
+            "activePatchIndex": 21,
             "patches": [
                 {
                     "date": 1790357145178,
@@ -88,6 +88,10 @@
                 {
                     "date": 1790443754133,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -845,9 +845,9 @@\n                     между схемами.</li>\r\n                 <li>Приобретите оптрон PC817A и впаяйте в плату модуля строго в соответствии с <strong>новой схемой V5</strong>.</li>\r\n                 <li>После доработки проверьте целостность соединений и отсутствие замыканий.</li>\r\n                 <li>Обновите прошивку до <strong>V5.0</strong> (см. <a href=\"firmware.html\">инструкцию по обновлению</a>)\r\n-                    и проверьте пробуждение платы BMS.</li>\r\n+                    и проверьте работоспособность.</li>\r\n             </ol>\r\n             <div class=\"warning\">\r\n                 <p><i class=\"fas fa-exclamation-triangle\"></i> <strong>Важно:</strong> неверная доработка схемы может\r\n                     привести к неработоспособности модуля или повреждению. При неуверенности в своих силах\r\n"
+                },
+                {
+                    "date": 1790445916424,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -579,15 +579,8 @@\n             transform: translateY(-2px);\r\n             box-shadow: 0 6px 14px rgba(52, 152, 219, 0.2);\r\n         }\r\n \r\n-.btn-row {\r\n-            display: flex;\r\n-            flex-wrap: wrap;\r\n-            gap: 12px;\r\n-            margin-top: 14px;\r\n-        }\r\n-\r\n         footer {\r\n             text-align: center;\r\n             padding: 26px 20px;\r\n             margin-top: 28px;\r\n@@ -840,9 +833,9 @@\n             </div>\r\n \r\n             <h3><i class=\"fas fa-tools\"></i> Что нужно сделать</h3>\r\n             <ol>\r\n-                <li>Откройте обе схемы в новой вкладке (ссылки над изображениями) и внимательно сравните отличия\r\n+                <li>Откройте обе схемы в новой вкладке и внимательно сравните отличия\r\n                     между схемами.</li>\r\n                 <li>Приобретите оптрон PC817A и впаяйте в плату модуля строго в соответствии с <strong>новой схемой V5</strong>.</li>\r\n                 <li>После доработки проверьте целостность соединений и отсутствие замыканий.</li>\r\n                 <li>Обновите прошивку до <strong>V5.0</strong> (см. <a href=\"firmware.html\">инструкцию по обновлению</a>)\r\n@@ -875,13 +868,8 @@\n                 <p><i class=\"fas fa-exclamation-triangle\"></i> <strong>Ответственность:</strong> разработчик не несёт\r\n                     ответственности за повреждение оборудования или травмы, вызванные неправильной доработкой схемы\r\n                     или неправильным подключением диагностического модуля.</p>\r\n             </div>\r\n-            <div class=\"btn-row\">\r\n-                <a href=\"firmware.html\" class=\"btn\"><i class=\"fas fa-microchip\"></i> Инструкция по обновлению прошивки</a>\r\n-                <a href=\"changelog.html\" class=\"btn\"><i class=\"fas fa-history\"></i> История версий</a>\r\n-                <a href=\"index.html\" class=\"btn btn-outline\"><i class=\"fas fa-home\"></i> На главную</a>\r\n-            </div>\r\n         </div>\r\n \r\n         <footer>\r\n             <p>© 2026 <a href=\"index.html\">ЭликсToFix</a> &mdash; модуль диагностики аккумуляторов Makita LXT / XGT.</p>\r\n"
                 }
             ],
             "date": 1790357145177,
