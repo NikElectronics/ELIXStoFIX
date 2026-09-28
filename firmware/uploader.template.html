@@ -73,7 +73,7 @@
 
     .fw-latest-note b { color: var(--accent); }
 
-    /* Внимание перед прошивкой: смотрите историю обновлений. */
+    /* Внимание перед прошивкой: история обновлений и сохранение лицензионных ключей. */
     .flash-warning {
       margin: 18px 0 6px;
       padding: 14px 16px;
@@ -93,6 +93,10 @@
       font-weight: 800;
       margin-bottom: 6px;
       color: var(--warn, #d29922);
+    }
+
+    .flash-warning p + p {
+      margin-top: 8px;
     }
 
     .flash-warning a {
@@ -121,6 +125,7 @@
       <div class="flash-warning-title">⚠️ Внимание! Перед прошивкой</div>
       <p>Внимательно смотрите <a href="../changelog.html">историю обновлений</a> — некоторые версии прошивки
         (например, V5.0) требуют <a href="../schematic.html">доработки схемы</a> модуля.</p>
+      <p><strong>Обязательно сохраните лицензионные ключи и номер прибора!</strong></p>
     </div>
 
     <div class="flash-card">
